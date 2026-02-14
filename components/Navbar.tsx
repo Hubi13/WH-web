@@ -5,9 +5,11 @@ import { usePage } from '../contexts/PageContext';
 
 interface NavbarProps {
   onOpenDealer: () => void;
+  theme?: 'light' | 'dark';
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onOpenDealer }) => {
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
@@ -68,10 +70,11 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer }) => {
             <div className="flex justify-start">
               <button
                 onClick={() => setMenuOpen(true)}
-                className="group flex items-center gap-4 transition-colors text-white hover:text-gray-200"
+                className={`group flex items-center gap-4 transition-colors ${theme === 'light' ? 'text-[#1D1D1F] hover:text-black' : 'text-white hover:text-gray-200'}`}
                 aria-label="Open Menu"
                 aria-expanded={menuOpen}
               >
+
                 <div className="flex flex-col gap-[6px] w-6 h-4 justify-center" aria-hidden="true">
                   <span className="h-[1px] w-full bg-current group-hover:w-full transition-all duration-300"></span>
                   <span className="h-[1px] w-full bg-current group-hover:w-2/3 transition-all duration-300 origin-left"></span>
@@ -93,16 +96,17 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer }) => {
                 <img
                   src="https://imgur.com/6o7WC9J.png"
                   alt="R-Home Logo"
-                  className="h-6 md:h-10 w-auto object-contain brightness-0 invert"
+                  className={`h-6 md:h-10 w-auto object-contain brightness-0 ${theme === 'light' ? '' : 'invert'}`}
                 />
               </a>
             </div>
+
 
             {/* Right: Find Dealer */}
             <div className="flex justify-end items-center">
               <button
                 onClick={onOpenDealer}
-                className="group flex items-center gap-3 transition-colors duration-300 text-white hover:text-gray-200"
+                className={`group flex items-center gap-3 transition-colors duration-300 ${theme === 'light' ? 'text-[#1D1D1F] hover:text-black' : 'text-white hover:text-gray-200'}`}
                 aria-label="Find a Dealer"
               >
                 <Search size={20} strokeWidth={1.5} aria-hidden="true" />
@@ -111,6 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer }) => {
                 </span>
               </button>
             </div>
+
 
           </div>
         </div>

@@ -79,7 +79,10 @@ const AppContent = () => {
 
       <div className="opacity-100 flex flex-col min-h-screen w-full">
         <header className="fixed top-0 w-full z-50">
-          <Navbar onOpenDealer={() => setShowDealerLocator(true)} />
+          <Navbar
+            onOpenDealer={() => setShowDealerLocator(true)}
+            theme={currentPage === 'philosophy' ? 'light' : 'dark'}
+          />
         </header>
 
 
