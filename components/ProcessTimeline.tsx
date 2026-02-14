@@ -7,6 +7,7 @@ const ProcessTimeline: React.FC = () => {
     const { t, language } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const lineRef = useRef<HTMLDivElement>(null);
+    const dotRef = useRef<HTMLDivElement>(null);
     const [activeStep, setActiveStep] = useState(0);
 
     const getText = (step: any, type: 'title' | 'description') => {
@@ -17,35 +18,59 @@ const ProcessTimeline: React.FC = () => {
 
     useEffect(() => {
         let rafId: number;
+        let containerTop = 0;
+        let containerHeight = 0;
+        let isVisible = false;
+
+        const updateLayout = () => {
+            if (!containerRef.current) return;
+            const rect = containerRef.current.getBoundingClientRect();
+            const scrollY = window.scrollY;
+            containerTop = rect.top + scrollY;
+            containerHeight = rect.height;
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+        }, { threshold: 0.1 });
+
+        if (containerRef.current) observer.observe(containerRef.current);
 
         const handleScroll = () => {
-            if (!containerRef.current || !lineRef.current) return;
+            if (!isVisible || !lineRef.current) return;
 
             rafId = requestAnimationFrame(() => {
-                if (!containerRef.current || !lineRef.current) return;
-
-                const rect = containerRef.current.getBoundingClientRect();
+                const scrollY = window.scrollY;
                 const viewportHeight = window.innerHeight;
 
-                // Start filling when the top of the section is near the middle of the viewport
+                const sectionRelativeScroll = scrollY - containerTop;
                 const startOffset = viewportHeight * 0.5;
-                const totalDist = rect.height - (viewportHeight * 0.5); // Adjust total distance to finish before bottom
+                const totalDist = containerHeight - (viewportHeight * 0.5);
 
-                const scrolled = (rect.top * -1) + startOffset;
+                const scrolled = sectionRelativeScroll + startOffset;
+                let progress = scrolled / totalDist;
+                progress = Math.max(0, Math.min(1, progress));
 
-                let progress = (scrolled / totalDist) * 100;
-                progress = Math.max(0, Math.min(100, progress));
+                // GPU-Accelerated transform instead of height
+                lineRef.current.style.transform = `scaleY(${progress}) translateZ(0)`;
 
-                // Direct DOM update for instant, lag-free response
-                lineRef.current.style.height = `${progress}%`;
+                // Position the dot at the end of the line
+                if (dotRef.current) {
+                    const dotY = progress * containerHeight;
+                    dotRef.current.style.transform = `translate3d(-50%, ${dotY}px, 0)`;
+                }
             });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', updateLayout);
+        updateLayout();
         handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', updateLayout);
+            observer.disconnect();
             if (rafId) cancelAnimationFrame(rafId);
         };
     }, []);
@@ -95,15 +120,19 @@ const ProcessTimeline: React.FC = () => {
                     {/* Central Spine (Background Track) */}
                     <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2"></div>
 
-                    {/* Central Spine (Active Progress) - Removed CSS transitions for instant scroll response */}
+                    {/* Central Spine (Active Progress) - Optimized with scaleY for performance */}
                     <div
                         ref={lineRef}
-                        className="absolute left-6 md:left-1/2 top-0 w-[2px] bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] md:-translate-x-1/2 will-change-[height]"
-                        style={{ height: '0%' }}
-                    >
-                        {/* Glowing Leading Dot */}
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1)]"></div>
-                    </div>
+                        className="absolute left-6 md:left-1/2 top-0 w-[2px] h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] md:-translate-x-1/2 origin-top will-change-transform"
+                        style={{ transform: 'scaleY(0)' }}
+                    ></div>
+
+                    {/* Glowing Leading Dot - Moved outside scaled container to prevent distortion */}
+                    <div
+                        ref={dotRef}
+                        className="absolute left-6 md:left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1)] z-30 will-change-transform"
+                        style={{ transform: 'translate3d(-50%, 0, 0)' }}
+                    ></div>
 
                     {/* Steps */}
                     <div className="space-y-16 md:space-y-48 pb-32">
