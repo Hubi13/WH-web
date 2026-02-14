@@ -47,45 +47,32 @@ const AcousticDemo: React.FC = () => {
                 return;
             }
 
-            time += 0.04;
+            time += 0.05;
+            // Lerp current to target
             currentAmp += (targetAmpRef.current - currentAmp) * 0.05;
 
-            ctx.fillStyle = '#050505';
+            ctx.fillStyle = '#111'; // Dark background
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             const cy = canvas.height / 2;
-            const isMobile = window.innerWidth < 768;
 
-            // Adjust wave parameters for mobile vs desktop
-            // User requested: "fale są zdecydowanie zbyt duże i zbyt rozproszone"
-            // Fix: Increase frequency, decrease amplitude, and make lines denser
-            const lineCount = isMobile ? 6 : 10;
-            const amplitudeScale = isMobile ? 0.35 : 1.0;
-            const frequencyScale = isMobile ? 2.2 : 1.0;
+            // Reduced line count for mobile performance
+            const lineCount = window.innerWidth < 768 ? 4 : 8;
 
+            // Draw "Noise"
             for (let line = 0; line < lineCount; line++) {
                 ctx.beginPath();
-                const alpha = (isMobile ? 0.6 : 0.4) - (line * (isMobile ? 0.08 : 0.03));
-                ctx.strokeStyle = `rgba(255, 255, 255, ${Math.max(0.1, alpha)})`;
-                ctx.lineWidth = isMobile ? 1.0 : 1.5;
+                const alpha = 0.5 - (line * 0.05);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.lineWidth = 1.5;
 
-                const step = isMobile ? 4 : 5; // Denser points for smoother curves
+                // Step increased for performance on smaller screens
+                const step = window.innerWidth < 768 ? 10 : 5;
 
                 for (let x = 0; x < canvas.width; x += step) {
-                    // Refined wave function: higher frequency, tighter movement
-                    const freq1 = 0.01 * frequencyScale;
-                    const freq2 = 0.025 * frequencyScale;
-
-                    const wave1 = Math.sin(x * freq1 + time + line * 0.5);
-                    const wave2 = Math.cos(x * freq2 - time * 0.8 + line);
-
-                    const noise = wave1 * wave2 * currentAmp * amplitudeScale;
-
-                    // Add subtle harmonic jitter
-                    const jitter = Math.sin(x * 0.05 + time * 2) * (currentAmp * 0.05);
-
-                    const y = cy + noise + jitter;
-
+                    // Complex wave function
+                    const noise = Math.sin(x * 0.01 + time + line) * Math.cos(x * 0.03 - time) * currentAmp;
+                    const y = cy + noise + (Math.random() * currentAmp * 0.2); // Add jitter
                     if (x === 0) ctx.moveTo(x, y);
                     else ctx.lineTo(x, y);
                 }
@@ -96,16 +83,8 @@ const AcousticDemo: React.FC = () => {
         };
 
         const resize = () => {
-            const dpr = window.devicePixelRatio || 1;
-            const rect = containerRef.current?.getBoundingClientRect();
-            if (!rect) return;
-
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            ctx.scale(dpr, dpr);
-
-            canvas.style.width = `${rect.width}px`;
-            canvas.style.height = `${rect.height}px`;
+            canvas.width = containerRef.current?.offsetWidth || window.innerWidth;
+            canvas.height = containerRef.current?.offsetHeight || window.innerHeight * 0.6;
         };
 
         window.addEventListener('resize', resize);

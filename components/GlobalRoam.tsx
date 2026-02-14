@@ -12,6 +12,7 @@ const GlobalRoam: React.FC = () => {
     if (!container || !scrollContent) return;
 
     let rafId: number;
+    let isTicking = false;
     let containerTop = 0;
     let containerHeight = 0;
     let isVisible = false;
@@ -30,26 +31,24 @@ const GlobalRoam: React.FC = () => {
     intersectionObserver.observe(container);
 
     const handleScroll = () => {
-      if (!isVisible) return;
+      if (!isVisible || isTicking) return;
 
+      isTicking = true;
       rafId = requestAnimationFrame(() => {
         const scrollY = window.scrollY;
         const viewHeight = window.innerHeight;
-        const viewWidth = window.innerWidth;
 
-        // Calculate progress within the sticky section
-        const sectionRelativeScroll = scrollY - containerTop;
-        const scrollableHeight = containerHeight - viewHeight;
+        // Use cached values instead of getBoundingClientRect
+        const top = containerTop - scrollY;
+        const height = containerHeight - viewHeight;
 
-        let progress = sectionRelativeScroll / scrollableHeight;
-        progress = Math.max(0, Math.min(1, progress));
+        let percent = -top / height;
+        percent = Math.max(0, Math.min(1, percent));
 
-        // Calculate horizontal distance (scrollContent width minus viewport width)
-        const horizontalDist = scrollContent.scrollWidth - viewWidth;
-        const xPos = -horizontalDist * progress;
+        const moveAmount = (scrollContent.scrollWidth - window.innerWidth) * percent;
+        scrollContent.style.transform = `translate3d(-${moveAmount}px, 0, 0)`;
 
-        // Single consolidated transform for performance
-        scrollContent.style.transform = `translate3d(${xPos}px, 0, 0)`;
+        isTicking = false;
       });
     };
 
@@ -88,83 +87,64 @@ const GlobalRoam: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative h-[500vh] bg-[#050505]">
+    // Explicit z-index ensures this section sits correctly in the stack when sticky
+    <section ref={containerRef} className="relative h-[400vh] bg-white z-10">
+
+      {/* Sticky container needs to handle the view */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
 
-        {/* Fixed Overlay Background (Grid) */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:40px_40px]"></div>
+        {/* Header Overlay */}
+        <div className="absolute top-32 left-6 md:left-12 z-30 mix-blend-difference text-white pointer-events-none">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] mb-2 block">{t.globalRoam.badge}</span>
+          <h2 className="font-display text-4xl">{t.globalRoam.title}</h2>
+        </div>
 
-        {/* Content Track */}
+        {/* Horizontal Track - Added will-change for GPU optimization */}
         <div
           ref={scrollRef}
           className="absolute top-0 left-0 h-full flex will-change-transform"
+          style={{ willChange: 'transform' }}
         >
-          {/* Intro Panel */}
-          <div className="w-[100vw] h-full flex items-center px-6 md:px-24 flex-shrink-0 relative z-10">
-            <div className="max-w-2xl">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-6 block">
-                {t.globalRoam.badge}
-              </span>
-              <h2 className="font-display text-5xl md:text-8xl text-white font-light tracking-tight mb-8">
-                {t.globalRoam.title}
-              </h2>
-              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-lg">
-                {t.globalRoam.desc}
-              </p>
+
+          {/* Intro / Spacer Panel */}
+          <div className="w-[100vw] md:w-[30vw] h-full bg-white flex items-center justify-center border-r border-gray-100 flex-shrink-0">
+            <div className="rotate-90 text-[10px] uppercase tracking-[0.3em] text-[#888]">
+              Explore Environments
             </div>
           </div>
 
-          {/* Scene Panels */}
           {scenes.map((scene, idx) => (
-            <div key={scene.id} className="w-[100vw] h-full relative flex-shrink-0 group overflow-hidden">
-              {/* Panel Background Image */}
-              <div className="absolute inset-0 bg-[#0A0A0A]">
-                <img
-                  src={scene.img}
-                  alt={scene.title}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-1000 scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div key={scene.id} className="w-[100vw] md:w-[60vw] h-full relative border-r border-white/20 group overflow-hidden flex-shrink-0">
+              <img
+                src={scene.img}
+                alt={scene.title}
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+
+              <div className="absolute bottom-12 left-12 text-white p-8 bg-black/20 backdrop-blur-md border border-white/10 max-w-sm z-20">
+                <h3 className="text-3xl font-light mb-4">{scene.title}</h3>
+                <p className="text-sm font-light opacity-90">{scene.desc}</p>
               </div>
 
-              {/* Panel Content Overlay */}
-              <div className="absolute inset-0 p-8 md:p-24 flex flex-col justify-end">
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="font-mono text-xs text-white/40">SCENE 0{idx + 1}</span>
-                    <div className="h-[1px] w-12 bg-white/20"></div>
-                  </div>
-                  <h3 className="text-4xl md:text-6xl font-display font-light text-white mb-6">
-                    {scene.title}
-                  </h3>
-                  <p className="text-white/60 text-sm md:text-base font-light max-w-sm leading-relaxed">
-                    {scene.desc}
-                  </p>
-                </div>
-
-                {/* Aesthetic Tech Corners */}
-                <div className="absolute top-12 left-12 w-4 h-4 border-t border-l border-white/20"></div>
-                <div className="absolute bottom-12 right-12 w-4 h-4 border-b border-r border-white/20"></div>
+              <div className="absolute top-12 right-12 text-white/50 font-mono text-xs z-20">
+                0{idx + 1}
               </div>
             </div>
           ))}
 
           {/* Outro Panel */}
-          <div className="w-[100vw] h-full bg-[#1D1D1F] flex items-center justify-center flex-shrink-0">
-            <div className="text-center px-6">
-              <div className="w-16 h-1 w-24 bg-white/20 mx-auto mb-12"></div>
-              <h2 className="text-white text-3xl md:text-5xl font-display font-light mb-4">
-                End of Exploration
-              </h2>
-              <span className="text-[10px] uppercase tracking-[0.5em] text-white/30">R-Home Architecture v1.1.4</span>
+          <div className="w-[100vw] h-full bg-[#1D1D1F] flex items-center justify-center text-white flex-shrink-0">
+            <div className="text-center">
+              <p className="text-2xl font-light mb-8 max-w-xl mx-auto px-6">
+                {t.globalRoam.desc}
+              </p>
+              <span className="text-[10px] uppercase tracking-widest text-white/40">End of Journey</span>
             </div>
           </div>
-        </div>
 
-        {/* Progress Indicator (Bottom) */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-white/10 z-20 hidden md:block">
-          <div className="h-full bg-white/40 w-1/3"></div>
         </div>
 
       </div>
