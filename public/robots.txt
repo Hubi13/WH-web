@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://r-home.systems/sitemap.xml
