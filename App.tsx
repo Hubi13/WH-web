@@ -78,11 +78,10 @@ const AppContent = () => {
       </aside>
 
       <div className="opacity-100 flex flex-col min-h-screen w-full">
-        {currentPage === 'home' && (
-          <header className="fixed top-0 w-full z-50">
-            <Navbar onOpenDealer={() => setShowDealerLocator(true)} />
-          </header>
-        )}
+        <header className="fixed top-0 w-full z-50">
+          <Navbar onOpenDealer={() => setShowDealerLocator(true)} />
+        </header>
+
 
         {currentPage === 'home' && <MainContent />}
 
@@ -120,7 +119,7 @@ const AppContent = () => {
           <main className="w-full flex-grow"><AtelierPage /></main>
         )}
 
-        {currentPage === 'home' && <Footer />}
+        <Footer />
       </div>
     </div>
   );
