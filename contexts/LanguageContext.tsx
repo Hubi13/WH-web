@@ -61,18 +61,18 @@ const translations = {
       col3Desc: 'Integrated neural networks manage climate, energy, and security without user intervention.'
     },
     story: {
-        chapter1: {
-            title: "Architecture of Silence",
-            text: "True luxury is the absence of noise. Our walls are engineered not just to block sound, but to absorb and cancel frequencies."
-        },
-        chapter2: {
-            title: "Radical Transparency",
-            text: "Floor-to-ceiling vision glass that insulates like a solid wall. Blur the line between sanctuary and nature."
-        },
-        chapter3: {
-            title: "Atmospheric Control",
-            text: "Hospital-grade air filtration and circadian lighting systems that adapt to your biology."
-        }
+      chapter1: {
+        title: "Architecture of Silence",
+        text: "True luxury is the absence of noise. Our walls are engineered not just to block sound, but to absorb and cancel frequencies."
+      },
+      chapter2: {
+        title: "Radical Transparency",
+        text: "Floor-to-ceiling vision glass that insulates like a solid wall. Blur the line between sanctuary and nature."
+      },
+      chapter3: {
+        title: "Atmospheric Control",
+        text: "Hospital-grade air filtration and circadian lighting systems that adapt to your biology."
+      }
     },
     models: {
       badge: 'The 2025 Collection',
@@ -104,26 +104,72 @@ const translations = {
       }
     },
     acousticDemo: {
-        title: "Sonic Isolation",
-        desc: "Experience the difference of our decoupled wall systems. Toggle to hear the R-Home sanctuary standard.",
-        outside: "Urban Chaos (80dB)",
-        inside: "R-Home Sanctuary (35dB)"
+      title: "Sonic Isolation",
+      desc: "Experience the difference of our decoupled wall systems. Toggle to hear the R-Home sanctuary standard.",
+      outside: "Urban Chaos (80dB)",
+      inside: "R-Home Sanctuary (35dB)"
     },
     globalRoam: {
-        badge: "Deployment",
-        title: "Global Capability.",
-        desc: "Designed to be deployed anywhere. From Alpine peaks to coastal cliffs, R-Home adapts to the environment.",
-        locations: [
-            { title: "Alpine", desc: "Thermal retention in extreme cold." },
-            { title: "Coastal", desc: "Corrosion resistance and wind load stability." },
-            { title: "Forest", desc: "Seamless integration with organic topography." }
-        ]
+      badge: "Deployment",
+      title: "Global Capability.",
+      desc: "Designed to be deployed anywhere. From Alpine peaks to coastal cliffs, R-Home adapts to the environment.",
+      locations: [
+        { title: "Alpine", desc: "Thermal retention in extreme cold." },
+        { title: "Coastal", desc: "Corrosion resistance and wind load stability." },
+        { title: "Forest", desc: "Seamless integration with organic topography." }
+      ]
     },
     materials: {
       badge: 'Materiality',
       title: 'Material',
       titleBold: 'Intelligence.',
-      desc: 'We use materials that age gracefully. Cross-laminated timber, anodized aluminum, and honed stone.'
+      desc: 'We use materials that age gracefully. Cross-laminated timber, anodized aluminum, and honed stone.',
+      items: {
+        structural: {
+          title: 'Nordic CLT',
+          subtitle: 'Structural Core',
+          desc: 'High-density cross-laminated timber sourced from managed Nordic forests. Offering superior thermal mass and a carbon-negative footprint.',
+          specs: [
+            { label: 'Grade', value: 'C24 PEFC' },
+            { label: 'Load', value: '450kg/m³' },
+            { label: 'Carbon', value: 'Negative' },
+            { label: 'Finish', value: 'Honed' }
+          ]
+        },
+        facade: {
+          title: 'Vision Glass',
+          subtitle: 'Pure Transparency',
+          desc: 'Triple-glazed argon-filled units with low-E coating. Maximizing light while maintaining Passive House thermal standards.',
+          specs: [
+            { label: 'Ug', value: '0.5 W/m²K' },
+            { label: 'Light', value: '72% VT' },
+            { label: 'Safety', value: 'Tempered' },
+            { label: 'Fill', value: 'Argon' }
+          ]
+        },
+        tactile: {
+          title: 'Honed Stone',
+          subtitle: 'Thermal Mass',
+          desc: 'Natural stone finishes honed for a matte, silken touch. Integrated into floors and walls for durability and passive heat storage.',
+          specs: [
+            { label: 'Source', value: 'EU Quota' },
+            { label: 'Touch', value: 'Silk Matte' },
+            { label: 'Density', value: '2.6g/cm³' },
+            { label: 'LZO', value: 'Zero VOC' }
+          ]
+        },
+        detail: {
+          title: 'Anodized Alloy',
+          subtitle: 'Precision Detail',
+          desc: 'Aircraft-grade aluminum used in frames and hardware. Engineered to millimetric precision and finished for extreme longevity.',
+          specs: [
+            { label: 'Grade', value: '6061-T6' },
+            { label: 'Toler.', value: '0.1mm' },
+            { label: 'Cycle', value: '100% Rec.' },
+            { label: 'Coating', value: '25μm Anod.' }
+          ]
+        }
+      }
     },
     process: {
       badge: 'The Lifecycle',
@@ -140,21 +186,21 @@ const translations = {
       download: 'Download Catalog'
     },
     features: {
-        badge: 'Technical Specifications',
-        title: 'System Capabilities',
-        c1Mono: '01 - Structure',
-        c1Title: 'Mass Timber CLT',
-        c1Desc: 'Carbon-negative structural core providing immense strength and thermal mass.',
-        c2Mono: '02 - Intelligence',
-        c2Title: 'Integrated Core',
-        c2Neural: 'Neural Net',
-        c2Uptime: '99.9% Uptime',
-        c3Mono: '03 - Acoustics',
-        c3Label: 'Decoupled',
-        c4Mono: '04 - Efficiency',
-        c4Label: 'Net Zero',
-        c5Title: 'Perimeter Defense',
-        c5Secure: 'Secure'
+      badge: 'Technical Specifications',
+      title: 'System Capabilities',
+      c1Mono: '01 - Structure',
+      c1Title: 'Mass Timber CLT',
+      c1Desc: 'Carbon-negative structural core providing immense strength and thermal mass.',
+      c2Mono: '02 - Intelligence',
+      c2Title: 'Integrated Core',
+      c2Neural: 'Neural Net',
+      c2Uptime: '99.9% Uptime',
+      c3Mono: '03 - Acoustics',
+      c3Label: 'Decoupled',
+      c4Mono: '04 - Efficiency',
+      c4Label: 'Net Zero',
+      c5Title: 'Perimeter Defense',
+      c5Secure: 'Secure'
     },
     identity: {
       badge: 'Identity',
@@ -169,20 +215,20 @@ const translations = {
       card3Desc: 'Passive systems that work for you, not against you.'
     },
     gallery: {
-        badge: 'Detail',
-        title: 'Material Interface',
-        caption1: 'Interior Volume / R-Sequence',
-        caption2: 'Anodized Interface / Detail'
+      badge: 'Detail',
+      title: 'Material Interface',
+      caption1: 'Interior Volume / R-Sequence',
+      caption2: 'Anodized Interface / Detail'
     },
     bespoke: {
-        badge: 'Bespoke Program',
-        title: 'Beyond',
-        titleBold: 'Standard.',
-        desc: 'For clients requiring unique footprints or specific site adaptations, our engineering team offers full bespoke services.',
-        step1: 'Consultation',
-        step2: 'Digital Twin',
-        step3: 'Fabrication',
-        cta: 'Inquire Bespoke'
+      badge: 'Bespoke Program',
+      title: 'Beyond',
+      titleBold: 'Standard.',
+      desc: 'For clients requiring unique footprints or specific site adaptations, our engineering team offers full bespoke services.',
+      step1: 'Consultation',
+      step2: 'Digital Twin',
+      step3: 'Fabrication',
+      cta: 'Inquire Bespoke'
     },
     footer: {
       address: 'Złota 44\n00-120 Warsaw, Poland',
@@ -263,18 +309,18 @@ const translations = {
       col3Desc: 'Zintegrowane sieci neuronowe zarządzają klimatem, energią i bezpieczeństwem.'
     },
     story: {
-        chapter1: {
-            title: "Architektura Ciszy",
-            text: "Prawdziwy luksus to brak hałasu. Nasze ściany nie tylko blokują dźwięk, ale go absorbują."
-        },
-        chapter2: {
-            title: "Radykalna Przejrzystość",
-            text: "Szkło od podłogi do sufitu, które izoluje jak lita ściana. Zacieramy granicę między sanktuarium a naturą."
-        },
-        chapter3: {
-            title: "Kontrola Atmosfery",
-            text: "Szpitalna filtracja powietrza i oświetlenie cyrkadialne adaptujące się do Twojej biologii."
-        }
+      chapter1: {
+        title: "Architektura Ciszy",
+        text: "Prawdziwy luksus to brak hałasu. Nasze ściany nie tylko blokują dźwięk, ale go absorbują."
+      },
+      chapter2: {
+        title: "Radykalna Przejrzystość",
+        text: "Szkło od podłogi do sufitu, które izoluje jak lita ściana. Zacieramy granicę między sanktuarium a naturą."
+      },
+      chapter3: {
+        title: "Kontrola Atmosfery",
+        text: "Szpitalna filtracja powietrza i oświetlenie cyrkadialne adaptujące się do Twojej biologii."
+      }
     },
     models: {
       badge: 'Kolekcja 2025',
@@ -306,26 +352,72 @@ const translations = {
       }
     },
     acousticDemo: {
-        title: "Izolacja Dźwięku",
-        desc: "Doświadcz różnicy naszych odsprzęglonych systemów ściennych. Przełącz, aby usłyszeć standard ciszy R-Home.",
-        outside: "Miejski Chaos (80dB)",
-        inside: "Sanktuarium R-Home (35dB)"
+      title: "Izolacja Dźwięku",
+      desc: "Doświadcz różnicy naszych odsprzęglonych systemów ściennych. Przełącz, aby usłyszeć standard ciszy R-Home.",
+      outside: "Miejski Chaos (80dB)",
+      inside: "Sanktuarium R-Home (35dB)"
     },
     globalRoam: {
-        badge: "Wdrożenie",
-        title: "Globalna Zdolność.",
-        desc: "Zaprojektowane do wdrożenia wszędzie. Od alpejskich szczytów po wybrzeża, R-Home adaptuje się do otoczenia.",
-        locations: [
-            { title: "Alpy", desc: "Retencja ciepła w ekstremalnym zimnie." },
-            { title: "Wybrzeże", desc: "Odporność na korozję i obciążenie wiatrem." },
-            { title: "Las", desc: "Płynna integracja z organiczną topografią." }
-        ]
+      badge: "Wdrożenie",
+      title: "Globalna Zdolność.",
+      desc: "Zaprojektowane do wdrożenia wszędzie. Od alpejskich szczytów po wybrzeża, R-Home adaptuje się do otoczenia.",
+      locations: [
+        { title: "Alpy", desc: "Retencja ciepła w ekstremalnym zimnie." },
+        { title: "Wybrzeże", desc: "Odporność na korozję i obciążenie wiatrem." },
+        { title: "Las", desc: "Płynna integracja z organiczną topografią." }
+      ]
     },
     materials: {
       badge: 'Materialność',
       title: 'Inteligencja',
       titleBold: 'Materiałowa.',
-      desc: 'Używamy materiałów, które starzeją się z godnością. Drewno CLT, anodowane aluminium i szlifowany kamień.'
+      desc: 'Używamy materiałów, które starzeją się z godnością. Drewno CLT, anodowane aluminium i szlifowany kamień.',
+      items: {
+        structural: {
+          title: 'Nordic CLT',
+          subtitle: 'Rdzeń Konstrukcyjny',
+          desc: 'Drewno CLT o wysokiej gęstości z zarządzanych lasów północnych. Oferuje doskonałą masę termiczną i ujemny ślad węglowy.',
+          specs: [
+            { label: 'Klasa', value: 'C24 PEFC' },
+            { label: 'Nośność', value: '450kg/m³' },
+            { label: 'Węgiel', value: 'Ujemny' },
+            { label: 'Szlif', value: 'Gładki' }
+          ]
+        },
+        facade: {
+          title: 'Szkło Vision',
+          subtitle: 'Czysta Przejrzystość',
+          desc: 'Potrójne pakiety szybowe wypełnione argonem z powłoką niskoemisyjną. Maksymalizacja światła przy standardach Passive House.',
+          specs: [
+            { label: 'Ug', value: '0.5 W/m²K' },
+            { label: 'Światło', value: '72% VT' },
+            { label: 'Bezpiecz.', value: 'Hartowane' },
+            { label: 'Gaz', value: 'Argon' }
+          ]
+        },
+        tactile: {
+          title: 'Kamień Szlifowany',
+          subtitle: 'Masa Termiczna',
+          desc: 'Wykończenia z kamienia naturalnego szlifowane na mat. Zintegrowane z podłogami i ścianami dla trwałości i akumulacji ciepła.',
+          specs: [
+            { label: 'Źródło', value: 'EU Quota' },
+            { label: 'Dotyk', value: 'Matowy Jedwab' },
+            { label: 'Gęstość', value: '2.6g/cm³' },
+            { label: 'LZO', value: 'Zero VOC' }
+          ]
+        },
+        detail: {
+          title: 'Stop Anodowany',
+          subtitle: 'Precyzyjny Detal',
+          desc: 'Aluminium lotnicze używane w ramach i okuciach. Zaprojektowane z milimetrową precyzją i wykończone dla ekstremalnej trwałości.',
+          specs: [
+            { label: 'Klasa', value: '6061-T6' },
+            { label: 'Toler.', value: '0.1mm' },
+            { label: 'Recykling', value: '100% Rec.' },
+            { label: 'Powłoka', value: '25μm Anod.' }
+          ]
+        }
+      }
     },
     process: {
       badge: 'Cykl Życia',
@@ -342,21 +434,21 @@ const translations = {
       download: 'Pobierz Katalog'
     },
     features: {
-        badge: 'Specyfikacja Techniczna',
-        title: 'Możliwości Systemu',
-        c1Mono: '01 - Konstrukcja',
-        c1Title: 'Mass Timber CLT',
-        c1Desc: 'Ujemny węglowo rdzeń konstrukcyjny zapewniający ogromną wytrzymałość.',
-        c2Mono: '02 - Inteligencja',
-        c2Title: 'R-OS Core',
-        c2Neural: 'Sieć Neuronowa',
-        c2Uptime: '99.9% Czasu Pracy',
-        c3Mono: '03 - Akustyka',
-        c3Label: 'Odsprzęglona',
-        c4Mono: '04 - Wydajność',
-        c4Label: 'Net Zero',
-        c5Title: 'Ochrona Perymetru',
-        c5Secure: 'Zabezpieczony'
+      badge: 'Specyfikacja Techniczna',
+      title: 'Możliwości Systemu',
+      c1Mono: '01 - Konstrukcja',
+      c1Title: 'Mass Timber CLT',
+      c1Desc: 'Ujemny węglowo rdzeń konstrukcyjny zapewniający ogromną wytrzymałość.',
+      c2Mono: '02 - Inteligencja',
+      c2Title: 'R-OS Core',
+      c2Neural: 'Sieć Neuronowa',
+      c2Uptime: '99.9% Czasu Pracy',
+      c3Mono: '03 - Akustyka',
+      c3Label: 'Odsprzęglona',
+      c4Mono: '04 - Wydajność',
+      c4Label: 'Net Zero',
+      c5Title: 'Ochrona Perymetru',
+      c5Secure: 'Zabezpieczony'
     },
     identity: {
       badge: 'Tożsamość',
@@ -371,20 +463,20 @@ const translations = {
       card3Desc: 'Systemy pasywne, które pracują dla Ciebie, a nie przeciwko Tobie.'
     },
     gallery: {
-        badge: 'Detal',
-        title: 'Interfejs Materiałowy',
-        caption1: 'Wolumen Wnętrza / R-Sequence',
-        caption2: 'Anodowany Interfejs / Detal'
+      badge: 'Detal',
+      title: 'Interfejs Materiałowy',
+      caption1: 'Wolumen Wnętrza / R-Sequence',
+      caption2: 'Anodowany Interfejs / Detal'
     },
     bespoke: {
-        badge: 'Program Bespoke',
-        title: 'Poza',
-        titleBold: 'Standard.',
-        desc: 'Dla klientów wymagających unikalnych rozwiązań, nasz zespół inżynierów oferuje pełne usługi bespoke.',
-        step1: 'Konsultacja',
-        step2: 'Cyfrowy Bliźniak',
-        step3: 'Fabrykacja',
-        cta: 'Zapytaj o Bespoke'
+      badge: 'Program Bespoke',
+      title: 'Poza',
+      titleBold: 'Standard.',
+      desc: 'Dla klientów wymagających unikalnych rozwiązań, nasz zespół inżynierów oferuje pełne usługi bespoke.',
+      step1: 'Konsultacja',
+      step2: 'Cyfrowy Bliźniak',
+      step3: 'Fabrykacja',
+      cta: 'Zapytaj o Bespoke'
     },
     footer: {
       address: 'Złota 44\n00-120 Warszawa, Polska',
@@ -465,18 +557,18 @@ const translations = {
       col3Desc: 'Redes neuronales integradas gestionan el clima, la energía y la seguridad.'
     },
     story: {
-        chapter1: {
-            title: "Arquitectura del Silencio",
-            text: "El verdadero lujo es la ausencia de ruido. Nuestras paredes no solo bloquean el sonido, lo absorben."
-        },
-        chapter2: {
-            title: "Transparencia Radical",
-            text: "Vidrio de piso a techo que aísla como una pared sólida. Difumina la línea entre santuario y naturaleza."
-        },
-        chapter3: {
-            title: "Control Atmosférico",
-            text: "Filtración de aire de grado hospitalario e iluminación circadiana que se adapta a tu biología."
-        }
+      chapter1: {
+        title: "Arquitectura del Silencio",
+        text: "El verdadero lujo es la ausencia de ruido. Nuestras paredes no solo bloquean el sonido, lo absorben."
+      },
+      chapter2: {
+        title: "Transparencia Radical",
+        text: "Vidrio de piso a techo que aísla como una pared sólida. Difumina la línea entre santuario y naturaleza."
+      },
+      chapter3: {
+        title: "Control Atmosférico",
+        text: "Filtración de aire de grado hospitalario e iluminación circadiana que se adapta a tu biología."
+      }
     },
     models: {
       badge: 'Colección 2025',
@@ -508,26 +600,72 @@ const translations = {
       }
     },
     acousticDemo: {
-        title: "Aislamiento Sónico",
-        desc: "Experimenta la diferencia de nuestros sistemas de paredes desacopladas.",
-        outside: "Caos Urbano (80dB)",
-        inside: "Santuario R-Home (35dB)"
+      title: "Aislamiento Sónico",
+      desc: "Experimenta la diferencia de nuestros sistemas de paredes desacopladas.",
+      outside: "Caos Urbano (80dB)",
+      inside: "Santuario R-Home (35dB)"
     },
     globalRoam: {
-        badge: "Despliegue",
-        title: "Capacidad Global.",
-        desc: "Diseñado para desplegarse en cualquier lugar. Desde picos alpinos hasta acantilados costeros.",
-        locations: [
-            { title: "Alpino", desc: "Retención térmica en frío extremo." },
-            { title: "Costero", desc: "Resistencia a la corrosión y carga de viento." },
-            { title: "Bosque", desc: "Integración perfecta con topografía orgánica." }
-        ]
+      badge: "Despliegue",
+      title: "Capacidad Global.",
+      desc: "Diseñado para desplegarse en cualquier lugar. Desde picos alpinos hasta acantilados costeros.",
+      locations: [
+        { title: "Alpino", desc: "Retención térmica en frío extremo." },
+        { title: "Costero", desc: "Resistencia a la corrosión y carga de viento." },
+        { title: "Bosque", desc: "Integración perfecta con topografía orgánica." }
+      ]
     },
     materials: {
       badge: 'Materialidad',
       title: 'Inteligencia',
       titleBold: 'Material.',
-      desc: 'Usamos materiales que envejecen con gracia. Madera contralaminada, aluminio anodizado y piedra pulida.'
+      desc: 'Usamos materiales que envejecen con gracia. Madera contralaminada, aluminio anodizado y piedra pulida.',
+      items: {
+        structural: {
+          title: 'CLT Nórdico',
+          subtitle: 'Núcleo Estructural',
+          desc: 'Madera contralaminada de alta densidad procedente de bosques nórdicos gestionados. Ofrece una masa térmica superior.',
+          specs: [
+            { label: 'Grado', value: 'C24 PEFC' },
+            { label: 'Carga', value: '450kg/m³' },
+            { label: 'Carbono', value: 'Negativo' },
+            { label: 'Acabado', value: 'Pulido' }
+          ]
+        },
+        facade: {
+          title: 'Vidrio Vision',
+          subtitle: 'Transparencia Pura',
+          desc: 'Unidades de triple acristalamiento rellenas de argón con revestimiento de baja emisividad para estándares Passive House.',
+          specs: [
+            { label: 'Ug', value: '0.5 W/m²K' },
+            { label: 'Luz', value: '72% VT' },
+            { label: 'Segurid.', value: 'Templado' },
+            { label: 'Gas', value: 'Argón' }
+          ]
+        },
+        tactile: {
+          title: 'Piedra Pulida',
+          subtitle: 'Masa Térmica',
+          desc: 'Acabados de piedra natural pulidos para un tacto mate y sedoso. Integrados para durabilidad y almacenamiento térmico.',
+          specs: [
+            { label: 'Origen', value: 'EU Quota' },
+            { label: 'Tacto', value: 'Mate Seda' },
+            { label: 'Densidad', value: '2.6g/cm³' },
+            { label: 'COV', value: 'Cero VOC' }
+          ]
+        },
+        detail: {
+          title: 'Aleación Anodizada',
+          subtitle: 'Detalle de Precisión',
+          desc: 'Aluminio de grado aeronáutico utilizado en marcos y herrajes. Diseñado con precisión milimétrica.',
+          specs: [
+            { label: 'Grado', value: '6061-T6' },
+            { label: 'Toler.', value: '0.1mm' },
+            { label: 'Ciclo', value: '100% Rec.' },
+            { label: 'Recub.', value: '25μm Anod.' }
+          ]
+        }
+      }
     },
     process: {
       badge: 'Ciclo de Vida',
@@ -544,21 +682,21 @@ const translations = {
       download: 'Descargar Catálogo'
     },
     features: {
-        badge: 'Especificaciones Técnicas',
-        title: 'Capacidades del Sistema',
-        c1Mono: '01 - Estructura',
-        c1Title: 'Madera Masiva CLT',
-        c1Desc: 'Núcleo estructural carbono negativo que proporciona inmensa fuerza.',
-        c2Mono: '02 - Inteligencia',
-        c2Title: 'Núcleo Integrado',
-        c2Neural: 'Red Neuronal',
-        c2Uptime: '99.9% Tiempo de Actividad',
-        c3Mono: '03 - Acústica',
-        c3Label: 'Desacoplado',
-        c4Mono: '04 - Eficiencia',
-        c4Label: 'Neto Cero',
-        c5Title: 'Defensa Perimetral',
-        c5Secure: 'Seguro'
+      badge: 'Especificaciones Técnicas',
+      title: 'Capacidades del Sistema',
+      c1Mono: '01 - Estructura',
+      c1Title: 'Madera Masiva CLT',
+      c1Desc: 'Núcleo estructural carbono negativo que proporciona inmensa fuerza.',
+      c2Mono: '02 - Inteligencia',
+      c2Title: 'Núcleo Integrado',
+      c2Neural: 'Red Neuronal',
+      c2Uptime: '99.9% Tiempo de Actividad',
+      c3Mono: '03 - Acústica',
+      c3Label: 'Desacoplado',
+      c4Mono: '04 - Eficiencia',
+      c4Label: 'Neto Cero',
+      c5Title: 'Defensa Perimetral',
+      c5Secure: 'Seguro'
     },
     identity: {
       badge: 'Identidad',
@@ -573,20 +711,20 @@ const translations = {
       card3Desc: 'Sistemas pasivos que trabajan para ti, no contra ti.'
     },
     gallery: {
-        badge: 'Detalle',
-        title: 'Interfaz Material',
-        caption1: 'Volumen Interior / R-Sequence',
-        caption2: 'Interfaz Material / Detalle'
+      badge: 'Detalle',
+      title: 'Interfaz Material',
+      caption1: 'Volumen Interior / R-Sequence',
+      caption2: 'Interfaz Material / Detalle'
     },
     bespoke: {
-        badge: 'Programa A Medida',
-        title: 'Más Allá',
-        titleBold: 'del Estándar.',
-        desc: 'Para clientes que requieren adaptaciones únicas, nuestro equipo ofrece servicios completos a medida.',
-        step1: 'Consulta',
-        step2: 'Gemelo Digital',
-        step3: 'Fabricación',
-        cta: 'Consultar A Medida'
+      badge: 'Programa A Medida',
+      title: 'Más Allá',
+      titleBold: 'del Estándar.',
+      desc: 'Para clientes que requieren adaptaciones únicas, nuestro equipo ofrece servicios completos a medida.',
+      step1: 'Consulta',
+      step2: 'Gemelo Digital',
+      step3: 'Fabricación',
+      cta: 'Consultar A Medida'
     },
     footer: {
       address: 'Złota 44\n00-120 Varsovia, Polonia',

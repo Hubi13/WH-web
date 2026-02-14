@@ -1,101 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    
-    <title>R-Home | Automotive-Grade Modular Architecture</title>
-    <meta name="description" content="R-Home Systems engineers bespoke modular homes using cross-laminated timber and automotive manufacturing precision. Discover the future of net-zero living." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://r-home.systems/" />
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://r-home.systems/" />
-    <meta property="og:title" content="R-Home | Automotive-Grade Modular Architecture" />
-    <meta property="og:description" content="R-Home Systems engineers bespoke modular homes using cross-laminated timber and automotive manufacturing precision." />
-    <meta property="og:image" content="https://i.imgur.com/iWyQPX1.jpeg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    
-    <meta name="theme-color" content="#050505" />
-    
-    <!-- Performance: Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://i.imgur.com">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- ANALYTICS START -->
-    <!-- Google tag (gtag.js) - Deferred to not block LCP -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        'anonymize_ip': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
-    </script>
-    <!-- ANALYTICS END -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Montserrat', 'sans-serif'],
-              serif: ['Montserrat', 'sans-serif'], 
-              display: ['Montserrat', 'sans-serif'], 
-              mono: ['Montserrat', 'sans-serif'],
+  <title>R-Home | Automotive-Grade Modular Architecture</title>
+  <meta name="description"
+    content="R-Home Systems engineers bespoke modular homes using cross-laminated timber and automotive manufacturing precision. Discover the future of net-zero living." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://r-home.systems/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://r-home.systems/" />
+  <meta property="og:title" content="R-Home | Automotive-Grade Modular Architecture" />
+  <meta property="og:description"
+    content="R-Home Systems engineers bespoke modular homes using cross-laminated timber and automotive manufacturing precision." />
+  <meta property="og:image" content="https://i.imgur.com/iWyQPX1.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="theme-color" content="#050505" />
+
+  <!-- Performance: Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://i.imgur.com">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- ANALYTICS START -->
+  <!-- Google tag (gtag.js) - Deferred to not block LCP -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
+  <!-- ANALYTICS END -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Montserrat', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+            mono: ['Montserrat', 'sans-serif'],
+          },
+          letterSpacing: {
+            widest: '0.25em',
+            ultra: '0.35em',
+          },
+          colors: {
+            rhome: {
+              50: '#FFFFFF',
+              100: '#FAFAFC',
+              200: '#F5F5F7',
+              300: '#E8E8ED',
+              400: '#86868B',
+              500: '#6E6E73',
+              600: '#424245',
+              700: '#1D1D1F',
+              800: '#121212',
+              900: '#000000',
             },
-            letterSpacing: {
-              widest: '0.25em',
-              ultra: '0.35em',
+          },
+          backgroundImage: {
+            'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'reveal': 'reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
             },
-            colors: {
-              rhome: {
-                50: '#FFFFFF',
-                100: '#FAFAFC',
-                200: '#F5F5F7',
-                300: '#E8E8ED',
-                400: '#86868B',
-                500: '#6E6E73',
-                600: '#424245',
-                700: '#1D1D1F',
-                800: '#121212',
-                900: '#000000',
-              },
-            },
-            backgroundImage: {
-              'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
-            },
-            animation: {
-              'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'reveal': 'reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            },
-            keyframes: {
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(40px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              reveal: {
-                '0%': { clipPath: 'inset(100% 0 0 0)' },
-                '100%': { clipPath: 'inset(0 0 0 0)' },
-              }
+            reveal: {
+              '0%': { clipPath: 'inset(100% 0 0 0)' },
+              '100%': { clipPath: 'inset(0 0 0 0)' },
             }
           }
         }
       }
-    </script>
-    
+    }
+  </script>
+
   <script type="importmap">
 {
   "imports": {
@@ -110,13 +114,14 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-[#F5F5F7] text-rhome-700 antialiased overflow-x-hidden font-sans">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-    
-    <script type="application/ld+json">
+
+<body class="bg-[#F5F5F7] text-rhome-700 antialiased overflow-x-hidden font-sans">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -143,5 +148,6 @@
       ]
     }
     </script>
-  </body>
+</body>
+
 </html>

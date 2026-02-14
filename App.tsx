@@ -33,7 +33,7 @@ const MainContent = () => (
     <Hero />
     <Stats />
     <Philosophy />
-    <ShowcaseSection /> 
+    <ShowcaseSection />
     <ModelSelector />
     <AcousticDemo />
     <GlobalRoam />
@@ -59,8 +59,8 @@ const AppContent = () => {
             entry.target.classList.add('is-visible');
           }
         });
-      }, { 
-        threshold: 0.15, 
+      }, {
+        threshold: 0.15,
         rootMargin: "0px 0px -50px 0px"
       });
 
@@ -72,56 +72,56 @@ const AppContent = () => {
 
   return (
     <div className="min-h-screen font-sans selection:bg-white selection:text-black bg-[#050505] flex flex-col">
-        <CustomCursor />
-        <aside aria-label="Dealer Locator Modal">
-          <DealerLocator isOpen={showDealerLocator} onClose={() => setShowDealerLocator(false)} />
-        </aside>
+      <CustomCursor />
+      <aside aria-label="Dealer Locator Modal">
+        <DealerLocator isOpen={showDealerLocator} onClose={() => setShowDealerLocator(false)} />
+      </aside>
 
-        <div className="opacity-100 flex flex-col min-h-screen w-full">
-            {currentPage === 'home' && (
-              <header className="fixed top-0 w-full z-50">
-                 <Navbar onOpenDealer={() => setShowDealerLocator(true)} />
-              </header>
-            )}
-            
-            {currentPage === 'home' && <MainContent />}
-            
-            {currentPage === 'dealer' && (
-              <main className="w-full flex-grow"><DealerPage /></main>
-            )}
-            {currentPage === 'catalogue' && (
-              <main className="w-full flex-grow"><CataloguePage /></main>
-            )}
-            {currentPage === 'catalogs' && (
-              <main className="w-full flex-grow"><CatalogsHub /></main>
-            )}
-            {currentPage === 'certificates' && (
-              <main className="w-full flex-grow"><CertificatesPage /></main>
-            )}
-            {currentPage === 'rhomebook' && (
-              <main className="w-full flex-grow"><TechnicalCatalogPage /></main>
-            )}
-            {currentPage === 'faq' && (
-              <main className="w-full flex-grow"><FaqPage /></main>
-            )}
-            {currentPage === 'news' && (
-              <main className="w-full flex-grow"><NewsPage /></main>
-            )}
-            {currentPage === 'legal' && (
-              <main className="w-full flex-grow"><LegalPage /></main>
-            )}
-            {currentPage === 'philosophy' && (
-              <main className="w-full flex-grow"><PhilosophyPage /></main>
-            )}
-            {currentPage === 'careers' && (
-              <main className="w-full flex-grow"><CareersPage /></main>
-            )}
-            {currentPage === 'atelier' && (
-              <main className="w-full flex-grow"><AtelierPage /></main>
-            )}
+      <div className="opacity-100 flex flex-col min-h-screen w-full">
+        {currentPage === 'home' && (
+          <header className="fixed top-0 w-full z-50">
+            <Navbar onOpenDealer={() => setShowDealerLocator(true)} />
+          </header>
+        )}
 
-            {currentPage === 'home' && <Footer />}
-        </div>
+        {currentPage === 'home' && <MainContent />}
+
+        {currentPage === 'dealer' && (
+          <main className="w-full flex-grow"><DealerPage /></main>
+        )}
+        {currentPage === 'catalogue' && (
+          <main className="w-full flex-grow"><CataloguePage /></main>
+        )}
+        {currentPage === 'catalogs' && (
+          <main className="w-full flex-grow"><CatalogsHub /></main>
+        )}
+        {currentPage === 'certificates' && (
+          <main className="w-full flex-grow"><CertificatesPage /></main>
+        )}
+        {currentPage === 'rhomebook' && (
+          <main className="w-full flex-grow"><TechnicalCatalogPage /></main>
+        )}
+        {currentPage === 'faq' && (
+          <main className="w-full flex-grow"><FaqPage /></main>
+        )}
+        {currentPage === 'news' && (
+          <main className="w-full flex-grow"><NewsPage /></main>
+        )}
+        {currentPage === 'legal' && (
+          <main className="w-full flex-grow"><LegalPage /></main>
+        )}
+        {currentPage === 'philosophy' && (
+          <main className="w-full flex-grow"><PhilosophyPage /></main>
+        )}
+        {currentPage === 'careers' && (
+          <main className="w-full flex-grow"><CareersPage /></main>
+        )}
+        {currentPage === 'atelier' && (
+          <main className="w-full flex-grow"><AtelierPage /></main>
+        )}
+
+        {currentPage === 'home' && <Footer />}
+      </div>
     </div>
   );
 };
