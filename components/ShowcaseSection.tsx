@@ -167,7 +167,7 @@ const ShowcaseSection: React.FC = () => {
                                 loading="lazy"
                                 decoding="async"
                             />
-                            <div className="absolute inset-0 bg-black/45"></div>
+                            <div className="absolute inset-0 bg-black/55"></div>
 
                             <div className="absolute bottom-14 left-8 md:bottom-20 md:left-20 z-10 text-white max-w-xl pr-6">
                                 <h2 className="font-display text-[clamp(2rem,7vw,5rem)] font-light leading-tight mb-4">{t.story.chapter3.title}</h2>
@@ -177,7 +177,7 @@ const ShowcaseSection: React.FC = () => {
 
                         <div
                             ref={curtainRef}
-                            className="absolute inset-0 z-20 bg-[#060606]/94 backdrop-blur-sm flex items-end justify-center pb-28 will-change-transform border-b border-white/25"
+                            className="absolute inset-0 z-20 bg-[#040404]/97 backdrop-blur-xl flex items-end justify-center pb-28 will-change-transform border-b border-white/25"
                             style={{ willChange: 'transform, opacity' }}
                         >
                             <div className="text-center px-6 max-w-3xl">
@@ -205,9 +205,9 @@ const ShowcaseSection: React.FC = () => {
                             loading="lazy"
                             decoding="async"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/40 to-black/70"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/72"></div>
 
-                        <div className="absolute inset-x-5 bottom-6 rounded-2xl border border-white/20 bg-black/50 backdrop-blur-sm p-5 text-white">
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[76vw] max-w-[320px] aspect-square rounded-2xl border border-white/25 bg-black/55 backdrop-blur-sm p-5 text-white flex flex-col justify-center text-center">
                             <span className="block text-[10px] uppercase tracking-[0.24em] text-white/70 mb-2">03 - Atmosphere</span>
                             <h3 className="font-display text-3xl font-light mb-2">Light as Material.</h3>
                             <p className="text-sm text-white/80 leading-relaxed">{t.story.chapter3.text}</p>

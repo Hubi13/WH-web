@@ -39,8 +39,6 @@ const MaterialLab: React.FC = () => {
   return (
     <section ref={sectionRef} id="materials" className="py-12 md:py-32 bg-[#F5F5F7] overflow-hidden border-t border-gray-200">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12">
-
-        {/* Header */}
         <div className="mb-8 md:mb-16">
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#86868B] mb-4 block">
             {t.materials.badge}
@@ -50,27 +48,38 @@ const MaterialLab: React.FC = () => {
           </h2>
         </div>
 
-        {/* Mobile Selection (Horizontal Pill Scroll) */}
-        <div className="flex lg:hidden overflow-x-auto pb-6 mb-8 no-scrollbar gap-3 snap-x">
+        <div className="block lg:hidden space-y-5 mb-10">
           {materialList.map((mat) => (
-            <button
-              key={mat.id}
-              onClick={() => setActiveId(mat.id)}
-              className={`
-                                flex-shrink-0 px-6 py-3 rounded-full text-xs font-semibold tracking-wide transition-all snap-start
-                                ${activeId === mat.id
-                  ? 'bg-black text-white shadow-lg'
-                  : 'bg-white text-black/60 border border-gray-200'}
-                            `}
-            >
-              {mat.title}
-            </button>
+            <article key={mat.id} className="rounded-2xl border border-black/10 bg-white overflow-hidden">
+              <div className="relative aspect-[16/10]">
+                <img
+                  src={TEXTURE_IMAGES[mat.id as keyof typeof TEXTURE_IMAGES]}
+                  alt={mat.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/45"></div>
+                <div className="absolute left-4 bottom-4 text-white">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-white/75 block mb-1">{mat.subtitle}</span>
+                  <h3 className="text-2xl font-light leading-tight">{mat.title}</h3>
+                </div>
+              </div>
+
+              <div className="p-4">
+                <p className="text-[#5C5C62] text-sm leading-relaxed mb-4">{mat.desc}</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {mat.specs?.map((spec: any, idx: number) => (
+                    <div key={idx} className="rounded-lg border border-black/10 bg-[#F8F8F8] px-3 py-2">
+                      <span className="block text-[9px] uppercase tracking-[0.15em] text-[#8A8A90]">{spec.label}</span>
+                      <span className="block text-[11px] font-medium text-[#1D1D1F] mt-1">{spec.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-
-          {/* Featured Image Section */}
+        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           <div className="lg:col-span-8 relative group">
             <div className="w-full aspect-[4/3] rounded-2xl p-1 bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl backdrop-blur-md overflow-hidden relative">
               <div className="w-full h-full rounded-xl overflow-hidden relative bg-white">
@@ -78,21 +87,17 @@ const MaterialLab: React.FC = () => {
                   key={activeId}
                   src={TEXTURE_IMAGES[activeId as keyof typeof TEXTURE_IMAGES]}
                   alt={activeMaterial.title}
-                  className="w-full h-full object-cover transition-all duration-[1.2s] ease-out will-change-transform scale-100 animate-in fade-in zoom-in-95"
+                  className="w-full h-full object-cover transition-all duration-[1.2s] ease-out will-change-transform scale-100"
                 />
 
-                {/* Info Overlay - Optimized for performance */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-10 pointer-events-none">
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div>
                       <span className="text-white/60 text-[10px] uppercase tracking-widest mb-2 block">{activeMaterial.subtitle}</span>
                       <h3 className="text-white text-2xl md:text-4xl font-light mb-2">{activeMaterial.title}</h3>
-                      <p className="text-white/70 text-xs md:text-sm max-w-lg font-light leading-relaxed">
-                        {activeMaterial.desc}
-                      </p>
+                      <p className="text-white/70 text-xs md:text-sm max-w-lg font-light leading-relaxed">{activeMaterial.desc}</p>
                     </div>
 
-                    {/* Specs - Grid optimized for mobile */}
                     <div className="grid grid-cols-2 gap-2 md:gap-3 min-w-[200px]">
                       {activeMaterial.specs?.map((spec: any, idx: number) => (
                         <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-2 rounded-lg">
@@ -107,18 +112,17 @@ const MaterialLab: React.FC = () => {
             </div>
           </div>
 
-          {/* Desktop Sidebar (Hidden on Mobile) */}
-          <div className="hidden lg:flex lg:col-span-4 flex-col gap-4">
+          <div className="lg:col-span-4 flex flex-col gap-4">
             {materialList.map((mat) => (
               <div
                 key={mat.id}
                 onClick={() => setActiveId(mat.id)}
                 className={`
-                                    relative cursor-pointer group rounded-2xl border-[4px] transition-all duration-500 overflow-hidden aspect-[16/5]
-                                    ${activeId === mat.id
+                  relative cursor-pointer group rounded-2xl border-[4px] transition-all duration-500 overflow-hidden aspect-[16/5]
+                  ${activeId === mat.id
                     ? 'border-white shadow-2xl scale-[1.02] z-10'
                     : 'border-white/40 shadow-sm hover:shadow-xl hover:border-white hover:scale-[1.01]'}
-                                `}
+                `}
                 style={{ flex: 1 }}
               >
                 <div className="absolute inset-0 w-full h-full bg-gray-100">
@@ -132,25 +136,14 @@ const MaterialLab: React.FC = () => {
                 <div className="absolute inset-0 p-6 flex flex-col justify-center">
                   <span className="text-white/70 text-[9px] font-bold uppercase tracking-[0.2em] mb-1">{mat.subtitle}</span>
                   <h4 className="text-white text-xl font-medium tracking-tight">{mat.title}</h4>
-                  {activeId === mat.id && (
-                    <div className="h-0.5 w-12 bg-white mt-3 rounded-full animate-grow-x" />
-                  )}
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
   );
 };
-
-const Plus = ({ size, className }: { size: number, className: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <line x1="12" y1="5" x2="12" y2="19"></line>
-    <line x1="5" y1="12" x2="19" y2="12"></line>
-  </svg>
-);
 
 export default MaterialLab;
