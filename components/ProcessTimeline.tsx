@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const ProcessTimeline: React.FC = () => {
     const { t, language } = useLanguage();
-    const [activeStep, setActiveStep] = useState(LIFECYCLE_STEPS[0]?.id ?? 1);
+    const [activeId, setActiveId] = useState(LIFECYCLE_STEPS[0]?.id ?? 1);
 
     const getText = (step: any, type: 'title' | 'description') => {
         if (language === 'PL') return step[`${type}PL`];
@@ -13,79 +13,107 @@ const ProcessTimeline: React.FC = () => {
     };
 
     const activeIndex = useMemo(() => {
-        const idx = LIFECYCLE_STEPS.findIndex((item) => item.id === activeStep);
+        const idx = LIFECYCLE_STEPS.findIndex((step) => step.id === activeId);
         return idx < 0 ? 0 : idx;
-    }, [activeStep]);
+    }, [activeId]);
 
-    const activeData = LIFECYCLE_STEPS[activeIndex] ?? LIFECYCLE_STEPS[0];
+    const activeStep = LIFECYCLE_STEPS[activeIndex] ?? LIFECYCLE_STEPS[0];
 
     return (
-        <section id="process" className="py-20 md:py-36 bg-[#050505] text-white relative overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.08),transparent_40%),radial-gradient(circle_at_82%_80%,rgba(255,255,255,0.06),transparent_32%)]"></div>
-            <div className="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)]"></div>
+        <section id="process" className="relative bg-[#050505] text-white py-20 md:py-36 overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_16%_20%,rgba(255,255,255,0.09),transparent_38%),radial-gradient(circle_at_84%_78%,rgba(255,255,255,0.07),transparent_34%)]"></div>
 
             <div className="max-w-[1450px] mx-auto px-6 relative z-10">
                 <div className="text-center mb-12 md:mb-16">
                     <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-white/45 mb-4">{t.process.badge}</span>
-                    <h2 className="font-display text-4xl md:text-6xl font-light">{t.process.title}</h2>
-                    <p className="text-white/60 max-w-3xl mx-auto mt-6 leading-relaxed">{t.process.desc}</p>
+                    <h2 className="font-display text-4xl md:text-6xl font-light mb-5">{t.process.title}</h2>
+                    <p className="text-white/60 max-w-3xl mx-auto leading-relaxed">{t.process.desc}</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-                    <aside className="lg:col-span-4 lg:sticky lg:top-24 h-fit rounded-2xl border border-white/20 bg-white/[0.03] p-6 md:p-8">
-                        <div className="text-[10px] uppercase tracking-[0.24em] text-white/45 mb-3">Linear Predictable</div>
-                        <div className="font-mono text-sm text-white/70 mb-5">Phase 0{activeData.id} / 0{LIFECYCLE_STEPS.length}</div>
+                <div className="mb-10 md:mb-12 overflow-x-auto pb-2">
+                    <div className="relative min-w-[720px]">
+                        <div className="absolute left-0 right-0 top-5 h-[2px] bg-white/15"></div>
+                        <div
+                            className="absolute left-0 top-5 h-[2px] bg-white transition-all duration-500"
+                            style={{ width: `${((activeIndex + 1) / LIFECYCLE_STEPS.length) * 100}%` }}
+                        ></div>
 
-                        <div className="h-[2px] w-full rounded-full bg-white/15 overflow-hidden mb-6">
-                            <div
-                                className="h-full bg-white transition-all duration-500"
-                                style={{ width: `${((activeIndex + 1) / LIFECYCLE_STEPS.length) * 100}%` }}
-                            ></div>
-                        </div>
-
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-8 h-8 rounded-full border border-white/35 bg-white text-black flex items-center justify-center">
-                                <activeData.icon size={15} />
-                            </div>
-                            <h3 className="text-2xl font-display font-light">{getText(activeData, 'title')}</h3>
-                        </div>
-
-                        <p className="text-white/65 leading-relaxed text-sm md:text-base">{getText(activeData, 'description')}</p>
-                    </aside>
-
-                    <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                        {LIFECYCLE_STEPS.map((step) => {
-                            const isActive = step.id === activeStep;
-
-                            return (
-                                <button
-                                    key={step.id}
-                                    type="button"
-                                    aria-pressed={isActive}
-                                    onClick={() => setActiveStep(step.id)}
-                                    onMouseEnter={() => setActiveStep(step.id)}
-                                    className={`text-left rounded-2xl border p-6 md:p-7 transition-all duration-300 ${isActive
-                                        ? 'border-white/45 bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.08)]'
-                                        : 'border-white/15 bg-white/[0.03] hover:bg-white/[0.06]'
-                                        }`}
-                                >
-                                    <div className="flex items-center justify-between mb-6">
-                                        <span className="text-[11px] uppercase tracking-[0.2em] text-white/45">Phase 0{step.id}</span>
-                                        <div className={`w-8 h-8 rounded-full border flex items-center justify-center ${isActive ? 'border-white bg-white text-black' : 'border-white/25 text-white/60'}`}>
-                                            <step.icon size={15} />
+                        <div className="relative grid grid-cols-4 gap-4">
+                            {LIFECYCLE_STEPS.map((step) => {
+                                const isActive = step.id === activeId;
+                                return (
+                                    <button
+                                        key={step.id}
+                                        type="button"
+                                        onClick={() => setActiveId(step.id)}
+                                        className="text-left"
+                                    >
+                                        <div className={`w-10 h-10 rounded-full border flex items-center justify-center mb-4 transition-colors ${isActive ? 'border-white bg-white text-black' : 'border-white/30 bg-[#050505] text-white/75'}`}>
+                                            <step.icon size={16} />
                                         </div>
-                                    </div>
-
-                                    <h4 className="text-2xl font-display font-light mb-3">{getText(step, 'title')}</h4>
-                                    <p className="text-white/65 text-sm md:text-base leading-relaxed">{getText(step, 'description')}</p>
-
-                                    <div className="mt-6 h-[1px] w-full bg-white/15 relative overflow-hidden">
-                                        <div className={`absolute inset-y-0 left-0 bg-white transition-all duration-500 ${isActive ? 'w-full' : 'w-0'}`}></div>
-                                    </div>
-                                </button>
-                            );
-                        })}
+                                        <div className="text-[10px] uppercase tracking-[0.22em] text-white/45 mb-2">Phase 0{step.id}</div>
+                                        <div className={`text-sm transition-colors ${isActive ? 'text-white' : 'text-white/55'}`}>{getText(step, 'title')}</div>
+                                    </button>
+                                );
+                            })}
+                        </div>
                     </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+                    <article className="lg:col-span-7 rounded-2xl border border-white/20 bg-white/[0.04] p-6 md:p-8">
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-10 h-10 rounded-full border border-white bg-white text-black flex items-center justify-center">
+                                <activeStep.icon size={16} />
+                            </div>
+                            <div>
+                                <p className="text-[10px] uppercase tracking-[0.24em] text-white/45">Linear Predictable</p>
+                                <p className="font-mono text-sm text-white/70">Phase 0{activeStep.id}</p>
+                            </div>
+                        </div>
+
+                        <h3 className="font-display text-3xl md:text-4xl font-light mb-4">{getText(activeStep, 'title')}</h3>
+                        <p className="text-white/65 leading-relaxed max-w-2xl">{getText(activeStep, 'description')}</p>
+
+                        <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            {LIFECYCLE_STEPS.map((step) => {
+                                const isActive = step.id === activeStep.id;
+                                return (
+                                    <div key={step.id} className={`rounded-xl border px-3 py-3 text-center ${isActive ? 'border-white/40 bg-white/10' : 'border-white/15 bg-white/[0.02]'}`}>
+                                        <div className="text-[10px] uppercase tracking-[0.2em] text-white/50">0{step.id}</div>
+                                        <div className="text-sm mt-1 text-white/85">{getText(step, 'title')}</div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </article>
+
+                    <aside className="lg:col-span-5 rounded-2xl border border-white/20 bg-white/[0.03] p-6 md:p-8">
+                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/45 mb-5">Execution Order</p>
+
+                        <div className="space-y-3">
+                            {LIFECYCLE_STEPS.map((step) => {
+                                const isActive = step.id === activeStep.id;
+                                return (
+                                    <button
+                                        key={step.id}
+                                        type="button"
+                                        onClick={() => setActiveId(step.id)}
+                                        className={`w-full text-left rounded-xl border px-4 py-4 transition-colors ${isActive ? 'border-white/40 bg-white/10' : 'border-white/15 bg-white/[0.02] hover:bg-white/[0.06]'}`}
+                                    >
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div>
+                                                <div className="text-[10px] uppercase tracking-[0.22em] text-white/45 mb-1">Phase 0{step.id}</div>
+                                                <div className="text-lg font-light text-white mb-1">{getText(step, 'title')}</div>
+                                                <p className="text-sm text-white/60 leading-relaxed">{getText(step, 'description')}</p>
+                                            </div>
+                                            <div className={`w-2.5 h-2.5 mt-2 rounded-full ${isActive ? 'bg-white' : 'bg-white/30'}`}></div>
+                                        </div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </aside>
                 </div>
             </div>
         </section>
