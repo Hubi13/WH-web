@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const AcousticDemo: React.FC = () => {
@@ -6,25 +6,7 @@ const AcousticDemo: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isInside, setIsInside] = useState(false);
-    const [isVisible, setIsVisible] = useState(false); // Visibility state for performance
-
-    // Intersection Observer to stop rendering when off-screen
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            { threshold: 0.1 }
-        );
-
-        if (containerRef.current) {
-            observer.observe(containerRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-    // Real implementation with Refs for animation control
+    const isVisibleRef = useRef(false);
     const targetAmpRef = useRef(100);
 
     useEffect(() => {
@@ -33,69 +15,124 @@ const AcousticDemo: React.FC = () => {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d', { alpha: false }); // Optimization: alpha false
+        const container = containerRef.current;
+        if (!canvas || !container) return;
+
+        const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
         if (!ctx) return;
 
-        let frameId: number;
+        let rafId = 0;
+        let destroyed = false;
         let time = 0;
         let currentAmp = 100;
+        let logicalWidth = 1;
+        let logicalHeight = 1;
+        let frameInterval = 1000 / 60;
+        let lastRenderTime = 0;
 
-        const draw = () => {
-            if (!isVisible) {
-                frameId = requestAnimationFrame(draw);
-                return;
-            }
+        const isMobile = () => window.innerWidth < 768;
 
+        const deterministicNoise = (x: number, line: number, t: number) => {
+            const a = Math.sin((x * 0.011) + (t * 1.1) + (line * 0.71));
+            const b = Math.cos((x * 0.027) - (t * 0.9) + (line * 1.37));
+            const c = Math.sin(((x + line * 97) * 0.19) + (t * 2.6));
+            return (a * b) + (c * 0.35);
+        };
+
+        const resizeCanvas = () => {
+            const rect = container.getBoundingClientRect();
+            logicalWidth = Math.max(1, Math.floor(rect.width));
+            logicalHeight = Math.max(1, Math.floor(rect.height));
+
+            const mobile = isMobile();
+            const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2);
+            frameInterval = 1000 / (mobile ? 30 : 60);
+
+            canvas.width = Math.max(1, Math.floor(logicalWidth * dpr));
+            canvas.height = Math.max(1, Math.floor(logicalHeight * dpr));
+            canvas.style.width = `${logicalWidth}px`;
+            canvas.style.height = `${logicalHeight}px`;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const draw = (now: number) => {
+            if (destroyed) return;
+            rafId = requestAnimationFrame(draw);
+
+            if (!isVisibleRef.current) return;
+            if (now - lastRenderTime < frameInterval) return;
+
+            lastRenderTime = now;
             time += 0.05;
-            // Lerp current to target
-            currentAmp += (targetAmpRef.current - currentAmp) * 0.05;
+            currentAmp += (targetAmpRef.current - currentAmp) * 0.06;
 
-            ctx.fillStyle = '#111'; // Dark background
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#111';
+            ctx.fillRect(0, 0, logicalWidth, logicalHeight);
 
-            const cy = canvas.height / 2;
+            const cy = logicalHeight / 2;
+            const mobile = isMobile();
+            const lineCount = mobile ? 4 : 8;
+            const step = mobile ? 10 : 5;
 
-            // Reduced line count for mobile performance
-            const lineCount = window.innerWidth < 768 ? 4 : 8;
-
-            // Draw "Noise"
             for (let line = 0; line < lineCount; line++) {
                 ctx.beginPath();
                 const alpha = 0.5 - (line * 0.05);
                 ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
                 ctx.lineWidth = 1.5;
 
-                // Step increased for performance on smaller screens
-                const step = window.innerWidth < 768 ? 10 : 5;
-
-                for (let x = 0; x < canvas.width; x += step) {
-                    // Complex wave function
-                    const noise = Math.sin(x * 0.01 + time + line) * Math.cos(x * 0.03 - time) * currentAmp;
-                    const y = cy + noise + (Math.random() * currentAmp * 0.2); // Add jitter
+                for (let x = 0; x < logicalWidth; x += step) {
+                    const wave = deterministicNoise(x, line, time) * currentAmp;
+                    const jitter = deterministicNoise(x + 53, line + 11, time * 1.7) * currentAmp * 0.2;
+                    const y = cy + wave + jitter;
                     if (x === 0) ctx.moveTo(x, y);
                     else ctx.lineTo(x, y);
                 }
+
                 ctx.stroke();
             }
-
-            frameId = requestAnimationFrame(draw);
         };
 
-        const resize = () => {
-            canvas.width = containerRef.current?.offsetWidth || window.innerWidth;
-            canvas.height = containerRef.current?.offsetHeight || window.innerHeight * 0.6;
+        const visibilityObserver = new IntersectionObserver(
+            ([entry]) => {
+                isVisibleRef.current = Boolean(entry?.isIntersecting);
+                if (isVisibleRef.current) {
+                    lastRenderTime = 0;
+                    currentAmp += (targetAmpRef.current - currentAmp) * 0.12;
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        visibilityObserver.observe(container);
+
+        const resizeObserver = new ResizeObserver(() => {
+            resizeCanvas();
+            lastRenderTime = 0;
+        });
+
+        resizeObserver.observe(container);
+
+        const handleViewportChange = () => {
+            resizeCanvas();
+            lastRenderTime = 0;
         };
 
-        window.addEventListener('resize', resize);
-        resize();
+        window.addEventListener('resize', handleViewportChange, { passive: true });
+        window.addEventListener('orientationchange', handleViewportChange, { passive: true });
 
-        draw();
+        resizeCanvas();
+        isVisibleRef.current = false;
+        rafId = requestAnimationFrame(draw);
+
         return () => {
-            window.removeEventListener('resize', resize);
-            cancelAnimationFrame(frameId);
+            destroyed = true;
+            cancelAnimationFrame(rafId);
+            visibilityObserver.disconnect();
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', handleViewportChange);
+            window.removeEventListener('orientationchange', handleViewportChange);
         };
-    }, [isVisible]); // Re-bind if visibility changes, though draw loop handles the pause
+    }, []);
 
     return (
         <section className="bg-[#111] text-white py-20 md:py-32 relative overflow-hidden md:cursor-crosshair">

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { requestScrollRuntimeTick, subscribeScrollFrame } from '../utils/scrollRuntime';
 
 const ShowcaseSection: React.FC = () => {
     const { t } = useLanguage();
@@ -8,40 +9,75 @@ const ShowcaseSection: React.FC = () => {
     // Refs for Curtain Logic
     const curtainSectionRef = useRef<HTMLDivElement>(null);
     const curtainRef = useRef<HTMLDivElement>(null);
+    const curtainMetricsRef = useRef({ start: 0, range: 1 });
+    const isCurtainVisibleRef = useRef(false);
 
     useEffect(() => {
-        let rafId: number;
-        let isTicking = false;
+        const section = curtainSectionRef.current;
+        const curtain = curtainRef.current;
+        if (!section || !curtain) return;
 
-        const handleScroll = () => {
-            if (!isTicking) {
-                rafId = requestAnimationFrame(() => {
-                    if (curtainSectionRef.current && curtainRef.current) {
-                        const rect = curtainSectionRef.current.getBoundingClientRect();
-                        const viewportHeight = window.innerHeight;
-                        const totalHeight = rect.height - viewportHeight;
+        const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
-                        // Calculate progress 0 to 1 based on sticky container scroll
-                        const rawProgress = (rect.top * -1) / totalHeight;
-                        const progress = Math.max(0, Math.min(1, rawProgress));
-
-                        // Lift the curtain (translate Y negative)
-                        const liftAmount = progress * 100;
-
-                        // Direct transform manipulation optimized
-                        curtainRef.current.style.transform = `translate3d(0, -${liftAmount}%, 0)`;
-                    }
-                    isTicking = false;
-                });
-                isTicking = true;
-            }
+        const measure = () => {
+            const rect = section.getBoundingClientRect();
+            curtainMetricsRef.current = {
+                start: rect.top + window.scrollY,
+                range: Math.max(1, rect.height - window.innerHeight),
+            };
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        const applyAt = (scrollY: number) => {
+            const { start, range } = curtainMetricsRef.current;
+            const progress = clamp((scrollY - start) / range, 0, 1);
+            curtain.style.transform = `translate3d(0, -${progress * 100}%, 0)`;
+        };
+
+        const visibilityObserver = new IntersectionObserver(
+            ([entry]) => {
+                isCurtainVisibleRef.current = Boolean(entry?.isIntersecting);
+                if (isCurtainVisibleRef.current) requestScrollRuntimeTick();
+            },
+            { threshold: 0.01 }
+        );
+
+        visibilityObserver.observe(section);
+
+        const resizeObserver = new ResizeObserver(() => {
+            measure();
+            applyAt(window.scrollY || window.pageYOffset || 0);
+            requestScrollRuntimeTick();
+        });
+
+        resizeObserver.observe(section);
+
+        const handleViewportChange = () => {
+            measure();
+            applyAt(window.scrollY || window.pageYOffset || 0);
+            requestScrollRuntimeTick();
+        };
+
+        window.addEventListener('resize', handleViewportChange, { passive: true });
+        window.addEventListener('orientationchange', handleViewportChange, { passive: true });
+
+        const unsubscribe = subscribeScrollFrame(
+            ({ scrollY }) => {
+                if (!isCurtainVisibleRef.current) return;
+                applyAt(scrollY);
+            },
+            () => isCurtainVisibleRef.current
+        );
+
+        measure();
+        applyAt(window.scrollY || window.pageYOffset || 0);
+        requestScrollRuntimeTick();
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-            if (rafId) cancelAnimationFrame(rafId);
+            unsubscribe();
+            visibilityObserver.disconnect();
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', handleViewportChange);
+            window.removeEventListener('orientationchange', handleViewportChange);
         };
     }, []);
 

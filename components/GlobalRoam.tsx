@@ -1,67 +1,83 @@
 import React, { useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { requestScrollRuntimeTick, subscribeScrollFrame } from '../utils/scrollRuntime';
 
 const GlobalRoam: React.FC = () => {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const metricsRef = useRef({ start: 0, range: 1, travel: 0 });
+  const isVisibleRef = useRef(false);
 
   useEffect(() => {
     const container = containerRef.current;
     const scrollContent = scrollRef.current;
     if (!container || !scrollContent) return;
 
-    let rafId: number;
-    let isTicking = false;
-    let containerTop = 0;
-    let containerHeight = 0;
-    let isVisible = false;
+    const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
-    const updateLayout = () => {
-      if (!container) return;
+    const measure = () => {
       const rect = container.getBoundingClientRect();
-      containerTop = rect.top + window.scrollY;
-      containerHeight = rect.height;
+      metricsRef.current = {
+        start: rect.top + window.scrollY,
+        range: Math.max(1, rect.height - window.innerHeight),
+        travel: Math.max(0, scrollContent.scrollWidth - window.innerWidth),
+      };
     };
 
-    const intersectionObserver = new IntersectionObserver((entries) => {
-      isVisible = entries[0].isIntersecting;
-    }, { threshold: 0.01 });
+    const applyAt = (scrollY: number) => {
+      const { start, range, travel } = metricsRef.current;
+      const progress = clamp((scrollY - start) / range, 0, 1);
+      const moveAmount = travel * progress;
+      scrollContent.style.transform = `translate3d(-${moveAmount}px, 0, 0)`;
+    };
+
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = Boolean(entry?.isIntersecting);
+        if (isVisibleRef.current) requestScrollRuntimeTick();
+      },
+      { threshold: 0.01 }
+    );
 
     intersectionObserver.observe(container);
 
-    const handleScroll = () => {
-      if (!isVisible || isTicking) return;
+    const resizeObserver = new ResizeObserver(() => {
+      measure();
+      applyAt(window.scrollY || window.pageYOffset || 0);
+      requestScrollRuntimeTick();
+    });
 
-      isTicking = true;
-      rafId = requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        const viewHeight = window.innerHeight;
+    resizeObserver.observe(container);
+    resizeObserver.observe(scrollContent);
 
-        // Use cached values instead of getBoundingClientRect
-        const top = containerTop - scrollY;
-        const height = containerHeight - viewHeight;
-
-        let percent = -top / height;
-        percent = Math.max(0, Math.min(1, percent));
-
-        const moveAmount = (scrollContent.scrollWidth - window.innerWidth) * percent;
-        scrollContent.style.transform = `translate3d(-${moveAmount}px, 0, 0)`;
-
-        isTicking = false;
-      });
+    const handleViewportChange = () => {
+      measure();
+      applyAt(window.scrollY || window.pageYOffset || 0);
+      requestScrollRuntimeTick();
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', updateLayout);
-    updateLayout();
-    handleScroll();
+    window.addEventListener('resize', handleViewportChange, { passive: true });
+    window.addEventListener('orientationchange', handleViewportChange, { passive: true });
+
+    const unsubscribe = subscribeScrollFrame(
+      ({ scrollY }) => {
+        if (!isVisibleRef.current) return;
+        applyAt(scrollY);
+      },
+      () => isVisibleRef.current
+    );
+
+    measure();
+    applyAt(window.scrollY || window.pageYOffset || 0);
+    requestScrollRuntimeTick();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateLayout);
+      unsubscribe();
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', handleViewportChange);
+      window.removeEventListener('orientationchange', handleViewportChange);
       intersectionObserver.disconnect();
-      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 

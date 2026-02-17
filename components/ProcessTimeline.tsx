@@ -1,14 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { LIFECYCLE_STEPS } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Check, Circle, Hexagon } from 'lucide-react';
+import { requestScrollRuntimeTick, subscribeScrollFrame } from '../utils/scrollRuntime';
 
 const ProcessTimeline: React.FC = () => {
     const { t, language } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const lineRef = useRef<HTMLDivElement>(null);
     const dotRef = useRef<HTMLDivElement>(null);
+    const metricsRef = useRef({ start: 0, height: 1 });
+    const isVisibleRef = useRef(false);
+    const stepRefs = useRef<Map<number, HTMLDivElement>>(new Map());
     const [activeStep, setActiveStep] = useState(0);
+    const setStepRef = useCallback((id: number, node: HTMLDivElement | null) => {
+        if (node) {
+            stepRefs.current.set(id, node);
+        } else {
+            stepRefs.current.delete(id);
+        }
+    }, []);
 
     const getText = (step: any, type: 'title' | 'description') => {
         if (language === 'PL') return step[`${type}PL`];
@@ -17,79 +28,101 @@ const ProcessTimeline: React.FC = () => {
     };
 
     useEffect(() => {
-        let rafId: number;
-        let containerTop = 0;
-        let containerHeight = 0;
-        let isVisible = false;
+        const container = containerRef.current;
+        const line = lineRef.current;
+        const dot = dotRef.current;
+        if (!container || !line || !dot) return;
 
-        const updateLayout = () => {
-            if (!containerRef.current) return;
-            const rect = containerRef.current.getBoundingClientRect();
-            const scrollY = window.scrollY;
-            containerTop = rect.top + scrollY;
-            containerHeight = rect.height;
+        const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+
+        const measure = () => {
+            const rect = container.getBoundingClientRect();
+            metricsRef.current = {
+                start: rect.top + window.scrollY,
+                height: Math.max(1, rect.height),
+            };
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            isVisible = entries[0].isIntersecting;
-        }, { threshold: 0.1 });
+        const applyAt = (scrollY: number, viewportHeight: number) => {
+            const { start, height } = metricsRef.current;
+            const sectionRelativeScroll = scrollY - start;
+            const startOffset = viewportHeight * 0.5;
+            const totalDist = Math.max(1, height - (viewportHeight * 0.5));
+            const scrolled = sectionRelativeScroll + startOffset;
+            const progress = clamp(scrolled / totalDist, 0, 1);
 
-        if (containerRef.current) observer.observe(containerRef.current);
-
-        const handleScroll = () => {
-            if (!isVisible || !lineRef.current) return;
-
-            rafId = requestAnimationFrame(() => {
-                const scrollY = window.scrollY;
-                const viewportHeight = window.innerHeight;
-
-                const sectionRelativeScroll = scrollY - containerTop;
-                const startOffset = viewportHeight * 0.5;
-                const totalDist = containerHeight - (viewportHeight * 0.5);
-
-                const scrolled = sectionRelativeScroll + startOffset;
-                let progress = scrolled / totalDist;
-                progress = Math.max(0, Math.min(1, progress));
-
-                // GPU-Accelerated transform instead of height
-                lineRef.current.style.transform = `scaleY(${progress}) translateZ(0)`;
-
-                // Position the dot at the end of the line
-                if (dotRef.current) {
-                    const dotY = progress * containerHeight;
-                    dotRef.current.style.transform = `translate3d(-50%, ${dotY}px, 0)`;
-                }
-            });
+            line.style.transform = `scaleY(${progress}) translateZ(0)`;
+            dot.style.transform = `translate3d(-50%, ${progress * height}px, 0)`;
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', updateLayout);
-        updateLayout();
-        handleScroll();
+        const visibilityObserver = new IntersectionObserver(
+            ([entry]) => {
+                isVisibleRef.current = Boolean(entry?.isIntersecting);
+                if (isVisibleRef.current) requestScrollRuntimeTick();
+            },
+            { threshold: 0.1 }
+        );
+
+        visibilityObserver.observe(container);
+
+        const resizeObserver = new ResizeObserver(() => {
+            measure();
+            applyAt(window.scrollY || window.pageYOffset || 0, window.innerHeight);
+            requestScrollRuntimeTick();
+        });
+
+        resizeObserver.observe(container);
+
+        const handleViewportChange = () => {
+            measure();
+            applyAt(window.scrollY || window.pageYOffset || 0, window.innerHeight);
+            requestScrollRuntimeTick();
+        };
+
+        window.addEventListener('resize', handleViewportChange, { passive: true });
+        window.addEventListener('orientationchange', handleViewportChange, { passive: true });
+
+        const unsubscribe = subscribeScrollFrame(
+            ({ scrollY, viewportHeight }) => {
+                if (!isVisibleRef.current) return;
+                applyAt(scrollY, viewportHeight);
+            },
+            () => isVisibleRef.current
+        );
+
+        measure();
+        applyAt(window.scrollY || window.pageYOffset || 0, window.innerHeight);
+        requestScrollRuntimeTick();
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', updateLayout);
-            observer.disconnect();
-            if (rafId) cancelAnimationFrame(rafId);
+            unsubscribe();
+            visibilityObserver.disconnect();
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', handleViewportChange);
+            window.removeEventListener('orientationchange', handleViewportChange);
         };
     }, []);
 
     // Intersection Observer for highlighting specific steps
     useEffect(() => {
+        const elements = Array.from(stepRefs.current.values());
+        if (elements.length === 0) return;
+
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveStep(Number(entry.target.getAttribute('data-id')));
-                }
-            });
+            const visibleEntries = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (visibleEntries.length > 0) {
+                const nextId = Number(visibleEntries[0].target.getAttribute('data-id'));
+                if (!Number.isNaN(nextId)) setActiveStep(nextId);
+            }
         }, {
             threshold: 0.5, // Require 50% visibility to trigger
             rootMargin: '-10% 0px -10% 0px' // Tighter margin to prevent flickering
         });
 
-        const steps = document.querySelectorAll('.process-step');
-        steps.forEach(s => observer.observe(s));
+        elements.forEach((element) => observer.observe(element));
 
         return () => observer.disconnect();
     }, []);
@@ -145,6 +178,7 @@ const ProcessTimeline: React.FC = () => {
                                 <div
                                     key={step.id}
                                     data-id={step.id}
+                                    ref={(node) => setStepRef(step.id, node)}
                                     className={`process-step relative flex flex-col md:flex-row items-start md:items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                                 >
 
