@@ -51,10 +51,10 @@ const ProcessTimeline: React.FC = () => {
                                     type="button"
                                     onClick={() => setActiveId(step.id)}
                                     className={`text-left rounded-xl border p-4 transition-colors ${isActive
-                                        ? 'border-white/45 bg-white/10'
-                                        : isDone
-                                            ? 'border-white/25 bg-white/[0.06]'
-                                            : 'border-white/15 bg-white/[0.02] hover:bg-white/[0.06]'
+                                            ? 'border-white/45 bg-white/10'
+                                            : isDone
+                                                ? 'border-white/25 bg-white/[0.06]'
+                                                : 'border-white/15 bg-white/[0.02] hover:bg-white/[0.06]'
                                         }`}
                                     aria-pressed={isActive}
                                 >
@@ -72,40 +72,20 @@ const ProcessTimeline: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-8">
-                    <article className="xl:col-span-8 rounded-2xl border border-white/20 bg-[#080808] p-6 md:p-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-full border border-white bg-white text-black flex items-center justify-center">
-                                <activeStep.icon size={16} />
-                            </div>
-                            <div>
-                                <p className="text-[10px] uppercase tracking-[0.24em] text-white/45">Current Step</p>
-                                <p className="font-mono text-sm text-white/70">0{activeIndex + 1}</p>
-                            </div>
+                <article className="rounded-2xl border border-white/20 bg-[#080808] p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-full border border-white bg-white text-black flex items-center justify-center">
+                            <activeStep.icon size={16} />
                         </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-[0.24em] text-white/45">Current Step</p>
+                            <p className="font-mono text-sm text-white/70">0{activeIndex + 1}</p>
+                        </div>
+                    </div>
 
-                        <h3 className="font-display text-3xl md:text-4xl font-light mb-4">{getText(activeStep, 'title')}</h3>
-                        <p className="text-white/65 leading-relaxed max-w-2xl">{getText(activeStep, 'description')}</p>
-                    </article>
-
-                    <aside className="xl:col-span-4 rounded-2xl border border-white/20 bg-white/[0.03] p-6 md:p-7">
-                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/45 mb-4">What We Do Next</p>
-                        <ul className="space-y-3 text-sm text-white/70">
-                            {LIFECYCLE_STEPS.slice(activeIndex + 1).map((step, offset) => (
-                                <li key={step.id} className="rounded-lg border border-white/15 bg-white/[0.02] px-3 py-2">
-                                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/45 block mb-1">Next {offset + 1}</span>
-                                    {getText(step, 'title')}
-                                </li>
-                            ))}
-                            {activeIndex === LIFECYCLE_STEPS.length - 1 && (
-                                <li className="rounded-lg border border-white/15 bg-white/[0.02] px-3 py-2">
-                                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/45 block mb-1">Complete</span>
-                                    Process finalized and ready for handover.
-                                </li>
-                            )}
-                        </ul>
-                    </aside>
-                </div>
+                    <h3 className="font-display text-3xl md:text-4xl font-light mb-4">{getText(activeStep, 'title')}</h3>
+                    <p className="text-white/65 leading-relaxed max-w-2xl">{getText(activeStep, 'description')}</p>
+                </article>
             </div>
         </section>
     );

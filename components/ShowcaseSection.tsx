@@ -207,10 +207,13 @@ const ShowcaseSection: React.FC = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/72"></div>
 
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[76vw] max-w-[320px] aspect-square rounded-2xl border border-white/25 bg-black/55 backdrop-blur-sm p-5 text-white flex flex-col justify-center text-center">
-                            <span className="block text-[10px] uppercase tracking-[0.24em] text-white/70 mb-2">03 - Atmosphere</span>
-                            <h3 className="font-display text-3xl font-light mb-2">Light as Material.</h3>
-                            <p className="text-sm text-white/80 leading-relaxed">{t.story.chapter3.text}</p>
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <div className="absolute -inset-3 rounded-[1.6rem] border border-white/20 rotate-6"></div>
+                            <div className="relative w-[62vw] max-w-[250px] aspect-square rounded-2xl border border-white/25 bg-black/55 backdrop-blur-sm p-4 text-white flex flex-col justify-center text-center">
+                                <span className="block text-[10px] uppercase tracking-[0.24em] text-white/70 mb-2">03 - Atmosphere</span>
+                                <h3 className="font-display text-[1.8rem] font-light mb-2 leading-tight">Light as Material.</h3>
+                                <p className="text-xs text-white/80 leading-relaxed">{t.story.chapter3.text}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
