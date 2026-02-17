@@ -1,25 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { LIFECYCLE_STEPS } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Check, Circle, Hexagon } from 'lucide-react';
-import { requestScrollRuntimeTick, subscribeScrollFrame } from '../utils/scrollRuntime';
 
 const ProcessTimeline: React.FC = () => {
     const { t, language } = useLanguage();
-    const containerRef = useRef<HTMLDivElement>(null);
-    const lineRef = useRef<HTMLDivElement>(null);
-    const dotRef = useRef<HTMLDivElement>(null);
-    const metricsRef = useRef({ start: 0, height: 1 });
-    const isVisibleRef = useRef(false);
-    const stepRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-    const [activeStep, setActiveStep] = useState(0);
-    const setStepRef = useCallback((id: number, node: HTMLDivElement | null) => {
-        if (node) {
-            stepRefs.current.set(id, node);
-        } else {
-            stepRefs.current.delete(id);
-        }
-    }, []);
+    const [activeStep, setActiveStep] = useState(1);
 
     const getText = (step: any, type: 'title' | 'description') => {
         if (language === 'PL') return step[`${type}PL`];
@@ -27,239 +12,62 @@ const ProcessTimeline: React.FC = () => {
         return step[type];
     };
 
-    useEffect(() => {
-        const container = containerRef.current;
-        const line = lineRef.current;
-        const dot = dotRef.current;
-        if (!container || !line || !dot) return;
-
-        const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-
-        const measure = () => {
-            const rect = container.getBoundingClientRect();
-            metricsRef.current = {
-                start: rect.top + window.scrollY,
-                height: Math.max(1, rect.height),
-            };
-        };
-
-        const applyAt = (scrollY: number, viewportHeight: number) => {
-            const { start, height } = metricsRef.current;
-            const sectionRelativeScroll = scrollY - start;
-            const startOffset = viewportHeight * 0.5;
-            const totalDist = Math.max(1, height - (viewportHeight * 0.5));
-            const scrolled = sectionRelativeScroll + startOffset;
-            const progress = clamp(scrolled / totalDist, 0, 1);
-
-            line.style.transform = `scaleY(${progress}) translateZ(0)`;
-            dot.style.transform = `translate3d(-50%, ${progress * height}px, 0)`;
-        };
-
-        const visibilityObserver = new IntersectionObserver(
-            ([entry]) => {
-                isVisibleRef.current = Boolean(entry?.isIntersecting);
-                if (isVisibleRef.current) requestScrollRuntimeTick();
-            },
-            { threshold: 0.1 }
-        );
-
-        visibilityObserver.observe(container);
-
-        const resizeObserver = new ResizeObserver(() => {
-            measure();
-            applyAt(window.scrollY || window.pageYOffset || 0, window.innerHeight);
-            requestScrollRuntimeTick();
-        });
-
-        resizeObserver.observe(container);
-
-        const handleViewportChange = () => {
-            measure();
-            applyAt(window.scrollY || window.pageYOffset || 0, window.innerHeight);
-            requestScrollRuntimeTick();
-        };
-
-        window.addEventListener('resize', handleViewportChange, { passive: true });
-        window.addEventListener('orientationchange', handleViewportChange, { passive: true });
-
-        const unsubscribe = subscribeScrollFrame(
-            ({ scrollY, viewportHeight }) => {
-                if (!isVisibleRef.current) return;
-                applyAt(scrollY, viewportHeight);
-            },
-            () => isVisibleRef.current
-        );
-
-        measure();
-        applyAt(window.scrollY || window.pageYOffset || 0, window.innerHeight);
-        requestScrollRuntimeTick();
-
-        return () => {
-            unsubscribe();
-            visibilityObserver.disconnect();
-            resizeObserver.disconnect();
-            window.removeEventListener('resize', handleViewportChange);
-            window.removeEventListener('orientationchange', handleViewportChange);
-        };
-    }, []);
-
-    // Intersection Observer for highlighting specific steps
-    useEffect(() => {
-        const elements = Array.from(stepRefs.current.values());
-        if (elements.length === 0) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            const visibleEntries = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-            if (visibleEntries.length > 0) {
-                const nextId = Number(visibleEntries[0].target.getAttribute('data-id'));
-                if (!Number.isNaN(nextId)) setActiveStep(nextId);
-            }
-        }, {
-            threshold: 0.5, // Require 50% visibility to trigger
-            rootMargin: '-10% 0px -10% 0px' // Tighter margin to prevent flickering
-        });
-
-        elements.forEach((element) => observer.observe(element));
-
-        return () => observer.disconnect();
-    }, []);
+    const activeIndex = useMemo(() => Math.max(0, LIFECYCLE_STEPS.findIndex((item) => item.id === activeStep)), [activeStep]);
 
     return (
-        <section ref={containerRef} id="process" className="py-20 md:py-40 bg-[#050505] text-white relative overflow-hidden">
-
-            {/* Background Decor */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 w-[1px] h-full bg-white/5"></div>
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:40px_40px]"></div>
-            </div>
+        <section id="process" className="py-20 md:py-36 bg-[#050505] text-white relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,0.08),transparent_35%),radial-gradient(circle_at_85%_85%,rgba(255,255,255,0.06),transparent_30%)]"></div>
+            <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.12)_50%,transparent_100%)]"></div>
 
             <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-
-                {/* Header */}
-                <div className="text-center mb-16 md:mb-32 relative z-20">
-                    <div className="inline-flex items-center justify-center p-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm mb-6">
-                        <Hexagon size={16} className="text-white/60" />
-                    </div>
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-white/40 mb-4">{t.process.badge}</span>
+                <div className="text-center mb-14 md:mb-20">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-white/45 mb-4">{t.process.badge}</span>
                     <h2 className="font-display text-4xl md:text-6xl font-light text-white">{t.process.title}</h2>
+                    <p className="text-white/60 max-w-3xl mx-auto mt-6 leading-relaxed">{t.process.desc}</p>
                 </div>
 
-                {/* Timeline Container */}
-                <div className="relative">
-
-                    {/* Central Spine (Background Track) */}
-                    <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2"></div>
-
-                    {/* Central Spine (Active Progress) - Optimized with scaleY for performance */}
-                    <div
-                        ref={lineRef}
-                        className="absolute left-6 md:left-1/2 top-0 w-[2px] h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] md:-translate-x-1/2 origin-top will-change-transform"
-                        style={{ transform: 'scaleY(0)' }}
-                    ></div>
-
-                    {/* Glowing Leading Dot - Moved outside scaled container to prevent distortion */}
-                    <div
-                        ref={dotRef}
-                        className="absolute left-6 md:left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1)] z-30 will-change-transform"
-                        style={{ transform: 'translate3d(-50%, 0, 0)' }}
-                    ></div>
-
-                    {/* Steps */}
-                    <div className="space-y-16 md:space-y-48 pb-32">
-                        {LIFECYCLE_STEPS.map((step, index) => {
-                            const isEven = index % 2 === 0;
-                            const isActive = activeStep === step.id;
-                            const isPast = activeStep > step.id;
-
-                            return (
-                                <div
-                                    key={step.id}
-                                    data-id={step.id}
-                                    ref={(node) => setStepRef(step.id, node)}
-                                    className={`process-step relative flex flex-col md:flex-row items-start md:items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                                >
-
-                                    {/* Central Node Marker */}
-                                    <div className="absolute left-6 md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-20">
-                                        <div className={`
-                                    w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-500 relative z-20
-                                    ${(isActive || isPast) ? 'border-white shadow-[0_0_25px_rgba(255,255,255,0.6)]' : 'border-white/20 shadow-none'}
-                                    ${isPast ? 'bg-white scale-100' : isActive ? 'bg-[#050505] scale-110' : 'bg-[#050505] scale-100'}
-                                 `}>
-                                            {isActive ? (
-                                                <div className="w-3 h-3 bg-white rounded-full animate-pulse shadow-[0_0_10px_rgba(255,255,255,1)]"></div>
-                                            ) : isPast ? (
-                                                <Check size={20} className="text-black" strokeWidth={3} />
-                                            ) : (
-                                                <Circle size={10} className="text-white/20 fill-white/20" />
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    {/* Horizontal Connector Line (Desktop Only) */}
-                                    <div className={`hidden md:block absolute top-1/2 h-[1px] bg-white/20 w-[60px] lg:w-[100px] transition-all duration-1000 ease-out ${isActive ? 'opacity-100 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]' : 'opacity-20'} ${isEven ? 'right-1/2 mr-6' : 'left-1/2 ml-6'}`}></div>
-
-                                    {/* Content Card */}
-                                    <div className={`
-                                 w-full md:w-[45%] lg:w-[42%] pl-20 md:pl-0 mt-2 md:mt-0 relative group
-                                 transition-all duration-1000 ease-out transform
-                                 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-8'}
-                                 ${isEven ? 'md:text-right md:pr-24' : 'md:text-left md:pl-24'}
-                             `}>
-                                        <div className={`
-                                    bg-[#0A0A0A] border p-6 md:p-12 relative overflow-hidden transition-all duration-500 rounded-3xl
-                                    ${isActive ? 'border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-white/20'}
-                                 `}>
-
-                                            {/* Big Background Number */}
-                                            <div className={`
-                                        absolute -bottom-8 font-display font-bold text-[60px] md:text-[180px] leading-none select-none pointer-events-none transition-colors duration-1000
-                                        ${isEven ? '-left-4 md:-left-8' : '-right-4 md:-right-8'}
-                                        ${isActive ? 'text-white/[0.04]' : 'text-white/[0.01]'}
-                                     `}>
-                                                0{step.id}
-                                            </div>
-
-                                            {/* Active Glint Gradient */}
-                                            <div className={`absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 transition-opacity duration-1000 ${isActive ? 'opacity-100' : ''}`}></div>
-
-                                            <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'} relative z-10`}>
-                                                <div className="flex items-center gap-4 mb-6 text-white/50">
-                                                    <span className="font-mono text-xs">PHASE 0{step.id}</span>
-                                                    <div className="h-[1px] w-8 bg-white/20"></div>
-                                                    <step.icon size={18} />
-                                                </div>
-
-                                                <h3 className="text-2xl md:text-3xl font-display font-light mb-4 text-white">
-                                                    {getText(step, 'title')}
-                                                </h3>
-
-                                                <p className="text-white/60 font-light leading-relaxed text-sm md:text-base">
-                                                    {getText(step, 'description')}
-                                                </p>
-                                            </div>
-
-                                            {/* Tech Corners */}
-                                            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/40"></div>
-                                            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/40"></div>
-                                            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/40"></div>
-                                            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/40"></div>
-                                        </div>
-                                    </div>
-
-                                    {/* Empty side for layout balance */}
-                                    <div className="hidden md:block w-[45%] lg:w-[42%]"></div>
-
-                                </div>
-                            );
-                        })}
+                <div className="mb-10 md:mb-12">
+                    <div className="h-[2px] w-full bg-white/15 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-white transition-all duration-700"
+                            style={{ width: `${((activeIndex + 1) / LIFECYCLE_STEPS.length) * 100}%` }}
+                        ></div>
                     </div>
-
+                    <div className="mt-3 text-[10px] uppercase tracking-[0.22em] text-white/45">
+                        Phase 0{activeStep} / 0{LIFECYCLE_STEPS.length}
+                    </div>
                 </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                    {LIFECYCLE_STEPS.map((step) => {
+                        const isActive = activeStep === step.id;
+
+                        return (
+                            <article
+                                key={step.id}
+                                onMouseEnter={() => setActiveStep(step.id)}
+                                onFocus={() => setActiveStep(step.id)}
+                                onTouchStart={() => setActiveStep(step.id)}
+                                className={`group rounded-2xl border p-6 md:p-8 transition-all duration-500 cursor-default ${isActive ? 'border-white/45 bg-white/10 shadow-[0_0_35px_rgba(255,255,255,0.08)]' : 'border-white/15 bg-white/[0.03] hover:bg-white/[0.06]'
+                                    }`}
+                            >
+                                <div className="flex items-center justify-between mb-8">
+                                    <span className="text-[11px] tracking-[0.2em] uppercase text-white/45">Phase 0{step.id}</span>
+                                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center ${isActive ? 'border-white bg-white text-black' : 'border-white/25 text-white/60'}`}>
+                                        <step.icon size={15} />
+                                    </div>
+                                </div>
+
+                                <h3 className="text-2xl md:text-3xl font-display font-light mb-3">{getText(step, 'title')}</h3>
+                                <p className="text-white/65 leading-relaxed">{getText(step, 'description')}</p>
+
+                                <div className="mt-8 h-[1px] w-full bg-white/15 relative overflow-hidden">
+                                    <div className={`absolute inset-y-0 left-0 bg-white transition-all duration-700 ${isActive ? 'w-full' : 'w-0'}`}></div>
+                                </div>
+                            </article>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );

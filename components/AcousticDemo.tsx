@@ -1,186 +1,123 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+
+const BAR_COUNT = 26;
 
 const AcousticDemo: React.FC = () => {
     const { t } = useLanguage();
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
     const [isInside, setIsInside] = useState(false);
-    const isVisibleRef = useRef(false);
-    const targetAmpRef = useRef(100);
+    const [bars, setBars] = useState<number[]>(() => Array.from({ length: BAR_COUNT }, () => 30));
+    const zoneRef = useRef<HTMLDivElement>(null);
+    const visibleRef = useRef(false);
+
+    const toggleState = () => setIsInside((prev) => !prev);
 
     useEffect(() => {
-        targetAmpRef.current = isInside ? 5 : 100;
-    }, [isInside]);
+        const zone = zoneRef.current;
+        if (!zone) return;
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const container = containerRef.current;
-        if (!canvas || !container) return;
-
-        const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
-        if (!ctx) return;
-
-        let rafId = 0;
-        let destroyed = false;
-        let time = 0;
-        let currentAmp = 100;
-        let logicalWidth = 1;
-        let logicalHeight = 1;
-        let frameInterval = 1000 / 60;
-        let lastRenderTime = 0;
-
-        const isMobile = () => window.innerWidth < 768;
-
-        const deterministicNoise = (x: number, line: number, t: number) => {
-            const a = Math.sin((x * 0.011) + (t * 1.1) + (line * 0.71));
-            const b = Math.cos((x * 0.027) - (t * 0.9) + (line * 1.37));
-            const c = Math.sin(((x + line * 97) * 0.19) + (t * 2.6));
-            return (a * b) + (c * 0.35);
-        };
-
-        const resizeCanvas = () => {
-            const rect = container.getBoundingClientRect();
-            logicalWidth = Math.max(1, Math.floor(rect.width));
-            logicalHeight = Math.max(1, Math.floor(rect.height));
-
-            const mobile = isMobile();
-            const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2);
-            frameInterval = 1000 / (mobile ? 30 : 60);
-
-            canvas.width = Math.max(1, Math.floor(logicalWidth * dpr));
-            canvas.height = Math.max(1, Math.floor(logicalHeight * dpr));
-            canvas.style.width = `${logicalWidth}px`;
-            canvas.style.height = `${logicalHeight}px`;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        };
-
-        const draw = (now: number) => {
-            if (destroyed) return;
-            rafId = requestAnimationFrame(draw);
-
-            if (!isVisibleRef.current) return;
-            if (now - lastRenderTime < frameInterval) return;
-
-            lastRenderTime = now;
-            time += 0.05;
-            currentAmp += (targetAmpRef.current - currentAmp) * 0.06;
-
-            ctx.fillStyle = '#111';
-            ctx.fillRect(0, 0, logicalWidth, logicalHeight);
-
-            const cy = logicalHeight / 2;
-            const mobile = isMobile();
-            const lineCount = mobile ? 4 : 8;
-            const step = mobile ? 10 : 5;
-
-            for (let line = 0; line < lineCount; line++) {
-                ctx.beginPath();
-                const alpha = 0.5 - (line * 0.05);
-                ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-                ctx.lineWidth = 1.5;
-
-                for (let x = 0; x < logicalWidth; x += step) {
-                    const wave = deterministicNoise(x, line, time) * currentAmp;
-                    const jitter = deterministicNoise(x + 53, line + 11, time * 1.7) * currentAmp * 0.2;
-                    const y = cy + wave + jitter;
-                    if (x === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-
-                ctx.stroke();
-            }
-        };
-
-        const visibilityObserver = new IntersectionObserver(
+        const observer = new IntersectionObserver(
             ([entry]) => {
-                isVisibleRef.current = Boolean(entry?.isIntersecting);
-                if (isVisibleRef.current) {
-                    lastRenderTime = 0;
-                    currentAmp += (targetAmpRef.current - currentAmp) * 0.12;
-                }
+                visibleRef.current = Boolean(entry?.isIntersecting);
             },
-            { threshold: 0.1 }
+            { threshold: 0.15 }
         );
 
-        visibilityObserver.observe(container);
+        observer.observe(zone);
 
-        const resizeObserver = new ResizeObserver(() => {
-            resizeCanvas();
-            lastRenderTime = 0;
-        });
-
-        resizeObserver.observe(container);
-
-        const handleViewportChange = () => {
-            resizeCanvas();
-            lastRenderTime = 0;
-        };
-
-        window.addEventListener('resize', handleViewportChange, { passive: true });
-        window.addEventListener('orientationchange', handleViewportChange, { passive: true });
-
-        resizeCanvas();
-        isVisibleRef.current = false;
-        rafId = requestAnimationFrame(draw);
-
-        return () => {
-            destroyed = true;
-            cancelAnimationFrame(rafId);
-            visibilityObserver.disconnect();
-            resizeObserver.disconnect();
-            window.removeEventListener('resize', handleViewportChange);
-            window.removeEventListener('orientationchange', handleViewportChange);
-        };
+        return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        let timerId: number | null = null;
+
+        const tick = () => {
+            if (!visibleRef.current) return;
+            const base = isInside ? 16 : 64;
+            const variance = isInside ? 12 : 32;
+            setBars((prev) => prev.map(() => Math.max(6, Math.min(96, base + (Math.random() * variance - variance * 0.5)))));
+        };
+
+        timerId = window.setInterval(tick, isInside ? 180 : 110);
+        tick();
+
+        return () => {
+            if (timerId !== null) {
+                window.clearInterval(timerId);
+            }
+        };
+    }, [isInside]);
+
+    const meter = useMemo(() => (isInside ? 35 : 82), [isInside]);
+
     return (
-        <section className="bg-[#111] text-white py-20 md:py-32 relative overflow-hidden md:cursor-crosshair">
-            <div className="max-w-[1800px] mx-auto px-6 md:px-12 mb-12 relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end">
-                <div className="mb-6 md:mb-0">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#666] mb-4 block">Interactive Demo</span>
-                    <h2 className="font-display text-4xl md:text-5xl font-light">{t.acousticDemo.title}</h2>
-                </div>
-                <p className="text-sm text-[#888] max-w-md md:text-right leading-relaxed">
-                    {t.acousticDemo.desc}
-                </p>
-            </div>
+        <section className="bg-[#0D0D0E] text-white py-20 md:py-32 relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.08),transparent_35%)]"></div>
 
-            {/* Canvas Container */}
-            <div
-                ref={containerRef}
-                className="relative w-full h-[50vh] md:h-[60vh] bg-[#050505] border-y border-white/10 group"
-                onMouseEnter={() => setIsInside(true)}
-                onMouseLeave={() => setIsInside(false)}
-                onTouchStart={() => setIsInside(true)}
-                onTouchEnd={() => setIsInside(false)}
-            >
-                <canvas ref={canvasRef} className="w-full h-full block" />
-
-                {/* Center Interaction Zone Visual */}
-                <div className={`
-                absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                w-[clamp(180px,40vw,320px)] h-[clamp(180px,40vw,320px)] rounded-full border border-white/20 
-                flex items-center justify-center
-                transition-all duration-700 pointer-events-none
-                ${isInside ? 'bg-white/5 scale-110 border-white/50' : 'bg-transparent scale-100'}
-           `}>
-                    <span className={`text-[clamp(8px,1.5vw,12px)] font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isInside ? 'text-white' : 'text-white/30'}`}>
-                        {isInside ? 'Sanctuary' : 'Enter Zone'}
-                    </span>
-                </div>
-
-                {/* Decibel Meter */}
-                <div className="absolute bottom-6 left-6 md:bottom-8 md:left-12 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 pointer-events-none">
-                    <div className="flex items-center gap-4">
-                        <div className={`w-2 h-2 rounded-full ${isInside ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></div>
-                        <span className="font-mono text-xl md:text-2xl text-white tabular-nums">
-                            {isInside ? '35' : '82'}<span className="text-sm text-[#666] ml-1">dB</span>
-                        </span>
+            <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-14 gap-6">
+                    <div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 mb-4 block">Interactive Demo</span>
+                        <h2 className="font-display text-4xl md:text-5xl font-light">{t.acousticDemo.title}</h2>
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest text-[#666] md:border-l border-[#333] md:pl-4">
-                        {isInside ? t.acousticDemo.inside : t.acousticDemo.outside}
-                    </span>
+                    <p className="text-sm text-white/60 max-w-md md:text-right leading-relaxed">{t.acousticDemo.desc}</p>
+                </div>
+
+                <div
+                    ref={zoneRef}
+                    className="relative border border-white/15 bg-[#050505] rounded-2xl overflow-hidden"
+                    onMouseEnter={() => setIsInside(true)}
+                    onMouseLeave={() => setIsInside(false)}
+                    onTouchStart={() => setIsInside(true)}
+                    onTouchEnd={() => setIsInside(false)}
+                >
+                    <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_60%)]"></div>
+
+                    <div className="relative h-[52vh] md:h-[58vh] px-5 md:px-10 pb-8 pt-20 md:pt-24 flex flex-col justify-end">
+                        <div className="absolute top-5 left-5 md:top-7 md:left-8">
+                            <button
+                                type="button"
+                                onClick={toggleState}
+                                className="text-[10px] uppercase tracking-[0.22em] border border-white/30 bg-white/5 hover:bg-white/10 transition-colors px-4 py-2 rounded-full"
+                            >
+                                {isInside ? 'Switch to Outside' : 'Enter Sanctuary'}
+                            </button>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3 md:gap-5 mb-8 text-[10px] uppercase tracking-[0.22em]">
+                            <div className={`border rounded-lg px-3 py-2 ${!isInside ? 'border-red-400/50 text-red-300 bg-red-500/10' : 'border-white/15 text-white/45'}`}>
+                                {t.acousticDemo.outside}
+                            </div>
+                            <div className={`border rounded-lg px-3 py-2 text-right ${isInside ? 'border-emerald-400/50 text-emerald-300 bg-emerald-500/10' : 'border-white/15 text-white/45'}`}>
+                                {t.acousticDemo.inside}
+                            </div>
+                        </div>
+
+                        <div className="h-[55%] min-h-[180px] flex items-end gap-1.5 md:gap-2">
+                            {bars.map((bar, idx) => (
+                                <div key={idx} className="flex-1 flex items-end h-full">
+                                    <div
+                                        className="w-full rounded-sm transition-all duration-150 ease-out"
+                                        style={{
+                                            height: `${bar}%`,
+                                            background: isInside
+                                                ? 'linear-gradient(180deg, rgba(16,185,129,0.9), rgba(16,185,129,0.2))'
+                                                : 'linear-gradient(180deg, rgba(239,68,68,0.9), rgba(239,68,68,0.2))',
+                                            opacity: 0.55 + (idx % 5) * 0.07,
+                                        }}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-6 md:mt-8 flex items-center justify-between gap-4 border-t border-white/10 pt-5">
+                            <div className="flex items-center gap-3">
+                                <div className={`w-2.5 h-2.5 rounded-full ${isInside ? 'bg-emerald-400' : 'bg-red-400'} animate-pulse`}></div>
+                                <div className="font-mono text-2xl md:text-3xl tabular-nums leading-none">{meter}<span className="text-sm text-white/45 ml-1">dB</span></div>
+                            </div>
+                            <span className="text-[10px] uppercase tracking-[0.22em] text-white/45">Acoustic Delta {isInside ? '-47' : '+47'} dB</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
