@@ -55,7 +55,7 @@ const LegalPage: React.FC = () => {
                                   // Ignore history errors in sandboxed environments
                                 }
                             }}
-                            className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 ${
+                            className={`w-full flex items-center gap-4 p-4 rounded-lg text-left transition-all duration-300 ${
                                 activeTab === item.id 
                                 ? 'bg-white text-black' 
                                 : 'text-[#888] hover:bg-white/5 hover:text-white'
@@ -161,11 +161,11 @@ const LegalPage: React.FC = () => {
                             </p>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                                <div className="p-6 border border-white/20 rounded-xl bg-white/5">
+                                <div className="p-6 border border-white/20 rounded-lg bg-white/5">
                                     <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-2">Essential</h4>
                                     <p className="text-sm">Required for the 3D Configurator to retain your selected options between page reloads.</p>
                                 </div>
-                                <div className="p-6 border border-white/20 rounded-xl bg-white/5">
+                                <div className="p-6 border border-white/20 rounded-lg bg-white/5">
                                     <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-2">Analytical</h4>
                                     <p className="text-sm">Anonymous telemetry to help us optimize load times for high-fidelity assets.</p>
                                 </div>
@@ -191,7 +191,7 @@ const LegalPage: React.FC = () => {
                             
                             <div className="flex flex-col md:flex-row gap-8 items-start pt-8 pb-8">
                                 {/* Visual Label */}
-                                <div className="w-full md:w-64 bg-white text-black p-4 rounded-lg shadow-xl shrink-0">
+                                <div className="w-full md:w-64 bg-white text-black p-4 rounded-md shadow-xl shrink-0">
                                     <div className="border-b-2 border-black pb-2 mb-2 flex justify-between items-end">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" className="h-4 w-auto" alt="EU Flag" />
                                         <span className="font-bold text-sm">ENERGIA</span>

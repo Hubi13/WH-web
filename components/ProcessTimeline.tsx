@@ -17,7 +17,6 @@ const ProcessTimeline: React.FC = () => {
         return idx < 0 ? 0 : idx;
     }, [activeId]);
 
-    const activeStep = LIFECYCLE_STEPS[activeIndex] ?? LIFECYCLE_STEPS[0];
 
     return (
         <section id="process" className="relative py-20 md:py-36 bg-[#050505] text-white overflow-hidden">
@@ -30,7 +29,7 @@ const ProcessTimeline: React.FC = () => {
                     <p className="text-white/60 max-w-3xl mx-auto leading-relaxed">{t.process.desc}</p>
                 </div>
 
-                <div className="rounded-2xl border border-white/15 bg-white/[0.03] p-5 md:p-7 mb-6">
+                <div className="rounded-xl border border-white/15 bg-white/[0.03] p-5 md:p-7 mb-6">
                     <div className="flex items-center justify-between gap-4 mb-4">
                         <div className="text-[10px] uppercase tracking-[0.24em] text-white/45">Step by Step</div>
                         <div className="font-mono text-sm text-white/70">Step {activeIndex + 1} / {LIFECYCLE_STEPS.length}</div>
@@ -50,7 +49,7 @@ const ProcessTimeline: React.FC = () => {
                                     key={step.id}
                                     type="button"
                                     onClick={() => setActiveId(step.id)}
-                                    className={`text-left rounded-xl border p-4 transition-colors ${isActive
+                                    className={`text-left rounded-lg border p-4 transition-colors ${isActive
                                             ? 'border-white/45 bg-white/10'
                                             : isDone
                                                 ? 'border-white/25 bg-white/[0.06]'
@@ -72,23 +71,12 @@ const ProcessTimeline: React.FC = () => {
                     </div>
                 </div>
 
-                <article className="rounded-2xl border border-white/20 bg-[#080808] p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 rounded-full border border-white bg-white text-black flex items-center justify-center">
-                            <activeStep.icon size={16} />
-                        </div>
-                        <div>
-                            <p className="text-[10px] uppercase tracking-[0.24em] text-white/45">Current Step</p>
-                            <p className="font-mono text-sm text-white/70">0{activeIndex + 1}</p>
-                        </div>
-                    </div>
 
-                    <h3 className="font-display text-3xl md:text-4xl font-light mb-4">{getText(activeStep, 'title')}</h3>
-                    <p className="text-white/65 leading-relaxed max-w-2xl">{getText(activeStep, 'description')}</p>
-                </article>
             </div>
         </section>
     );
 };
 
 export default ProcessTimeline;
+
+

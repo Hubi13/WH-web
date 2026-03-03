@@ -64,8 +64,8 @@ const ModelSelector: React.FC = () => {
                         key={activeModel.id}
                         className="lg:col-span-8 relative aspect-[4/3] sm:aspect-[16/9] animate-fade-in-up group"
                     >
-                        <div className="absolute inset-0 p-1 rounded-xl bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md">
-                            <div className="w-full h-full rounded-lg overflow-hidden relative bg-white shadow-inner">
+                        <div className="absolute inset-0 p-1 rounded-lg bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md">
+                            <div className="w-full h-full rounded-md overflow-hidden relative bg-white shadow-inner">
                                 <img
                                     src={activeModel.image}
                                     alt={`${activeModel.name} modular home`}
@@ -119,7 +119,7 @@ const ModelSelector: React.FC = () => {
                         <a
                             href="/dealer"
                             onClick={(e) => { e.preventDefault(); setPage('dealer'); }}
-                            className="w-full py-3.5 md:py-5 bg-[#1D1D1F] text-white rounded-xl flex items-center justify-center gap-3 md:gap-4 hover:bg-[#000] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#1D1D1F]/20 no-underline"
+                            className="w-full py-3.5 md:py-5 bg-[#1D1D1F] text-white rounded-lg flex items-center justify-center gap-3 md:gap-4 hover:bg-[#000] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#1D1D1F]/20 no-underline"
                         >
                             <span className="font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">{t.models.configure}</span>
                             <ArrowRight size={16} />

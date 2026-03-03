@@ -43,7 +43,7 @@ const TechnologyPage: React.FC = () => {
                         <button
                             key={item.id}
                             onClick={() => setActiveTab(item.id)}
-                            className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 ${
+                            className={`w-full flex items-center gap-4 p-4 rounded-lg text-left transition-all duration-300 ${
                                 activeTab === item.id 
                                 ? 'bg-white text-black' 
                                 : 'text-[#888] hover:bg-white/5 hover:text-white'
@@ -67,25 +67,25 @@ const TechnologyPage: React.FC = () => {
                             <p>
                                 R-OS is the central nervous system of every West Home. Unlike fragmented smart home devices, R-OS is a unified layer that manages climate, energy, and security with predictive AI.
                             </p>
-                            <div className="p-8 border border-white/10 rounded-2xl bg-[#111] mt-8">
+                            <div className="p-8 border border-white/10 rounded-xl bg-[#111] mt-8">
                                 <div className="flex justify-between items-center mb-8">
                                     <span className="text-xs uppercase tracking-widest">System Status</span>
                                     <span className="text-green-500 text-xs font-mono">ONLINE</span>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                                    <div className="p-4 bg-black rounded-lg">
+                                    <div className="p-4 bg-black rounded-md">
                                         <div className="text-2xl font-light text-white">21°C</div>
                                         <div className="text-[10px] text-[#666] mt-1">Thermal</div>
                                     </div>
-                                    <div className="p-4 bg-black rounded-lg">
+                                    <div className="p-4 bg-black rounded-md">
                                         <div className="text-2xl font-light text-white">98%</div>
                                         <div className="text-[10px] text-[#666] mt-1">Air Quality</div>
                                     </div>
-                                    <div className="p-4 bg-black rounded-lg">
+                                    <div className="p-4 bg-black rounded-md">
                                         <div className="text-2xl font-light text-white">Low</div>
                                         <div className="text-[10px] text-[#666] mt-1">Latency</div>
                                     </div>
-                                    <div className="p-4 bg-black rounded-lg">
+                                    <div className="p-4 bg-black rounded-md">
                                         <div className="text-2xl font-light text-white">Secure</div>
                                         <div className="text-[10px] text-[#666] mt-1">Perimeter</div>
                                     </div>
@@ -102,8 +102,8 @@ const TechnologyPage: React.FC = () => {
                             We use materials engineered for the extremes. From aerogel-infused insulation to self-healing exterior coatings.
                         </p>
                         <div className="grid grid-cols-1 gap-6 mt-8">
-                            <div className="flex gap-6 p-6 border border-white/10 bg-white/5 rounded-xl">
-                                <div className="w-24 h-24 bg-[#222] shrink-0 rounded-lg overflow-hidden">
+                            <div className="flex gap-6 p-6 border border-white/10 bg-white/5 rounded-lg">
+                                <div className="w-24 h-24 bg-[#222] shrink-0 rounded-md overflow-hidden">
                                     <img src="https://i.imgur.com/H4BsEqJ.jpeg" className="w-full h-full object-cover opacity-50" />
                                 </div>
                                 <div>
@@ -113,8 +113,8 @@ const TechnologyPage: React.FC = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex gap-6 p-6 border border-white/10 bg-white/5 rounded-xl">
-                                <div className="w-24 h-24 bg-[#222] shrink-0 rounded-lg overflow-hidden">
+                            <div className="flex gap-6 p-6 border border-white/10 bg-white/5 rounded-lg">
+                                <div className="w-24 h-24 bg-[#222] shrink-0 rounded-md overflow-hidden">
                                     <img src="https://i.imgur.com/7ou8tEP.jpeg" className="w-full h-full object-cover opacity-50" />
                                 </div>
                                 <div>

@@ -77,7 +77,7 @@ const CatalogsHub: React.FC = () => {
                         <button
                             key={item.id}
                             onClick={() => setActiveCategory(item.id)}
-                            className={`w-full flex items-center justify-between p-4 rounded-xl text-left transition-all duration-300 ${
+                            className={`w-full flex items-center justify-between p-4 rounded-lg text-left transition-all duration-300 ${
                                 activeCategory === item.id 
                                 ? 'bg-[#1D1D1F] text-white shadow-lg' 
                                 : 'text-[#666] hover:bg-white hover:text-black hover:shadow-sm'
@@ -91,7 +91,7 @@ const CatalogsHub: React.FC = () => {
                         </button>
                     ))}
 
-                    <div className="mt-12 p-8 bg-white rounded-2xl border border-gray-200 shadow-sm">
+                    <div className="mt-12 p-8 bg-white rounded-xl border border-gray-200 shadow-sm">
                         <h4 className="text-[10px] font-bold uppercase tracking-widest mb-4 text-[#1D1D1F]">Potrzebujesz pomocy?</h4>
                         <p className="text-xs text-[#666] leading-relaxed mb-6">Jeśli nie znalazłeś szukanego dokumentu, skontaktuj się z naszym działem technicznym.</p>
                         <a href="mailto:support@r-home.systems" className="text-xs font-bold border-b border-black pb-1 hover:opacity-60 transition-opacity">support@r-home.systems</a>
@@ -117,9 +117,9 @@ const CatalogsHub: React.FC = () => {
                     <section className="mb-24">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {(activeCategory === 'all' || activeCategory === 'brand') && (
-                                <div className="group bg-white p-10 rounded-[2.5rem] border border-gray-200 hover:shadow-xl transition-all duration-500 flex flex-col justify-between aspect-square md:aspect-auto md:min-h-[400px]">
+                                <div className="group bg-white p-10 rounded-[1.75rem] border border-gray-200 hover:shadow-xl transition-all duration-500 flex flex-col justify-between aspect-square md:aspect-auto md:min-h-[400px]">
                                     <div>
-                                        <div className="w-12 h-12 bg-[#F5F5F7] rounded-2xl flex items-center justify-center mb-8">
+                                        <div className="w-12 h-12 bg-[#F5F5F7] rounded-xl flex items-center justify-center mb-8">
                                             <BookOpen size={24} strokeWidth={1.5} />
                                         </div>
                                         <h3 className="text-3xl font-display font-light mb-4">Katalog West Home</h3>
@@ -132,9 +132,9 @@ const CatalogsHub: React.FC = () => {
                             )}
 
                             {(activeCategory === 'all' || activeCategory === 'tech') && (
-                                <div className="group bg-white p-10 rounded-[2.5rem] border border-gray-200 hover:shadow-xl transition-all duration-500 flex flex-col justify-between aspect-square md:aspect-auto md:min-h-[400px]" onClick={() => setPage('rhomebook')}>
+                                <div className="group bg-white p-10 rounded-[1.75rem] border border-gray-200 hover:shadow-xl transition-all duration-500 flex flex-col justify-between aspect-square md:aspect-auto md:min-h-[400px]" onClick={() => setPage('rhomebook')}>
                                     <div>
-                                        <div className="w-12 h-12 bg-[#F5F5F7] rounded-2xl flex items-center justify-center mb-8">
+                                        <div className="w-12 h-12 bg-[#F5F5F7] rounded-xl flex items-center justify-center mb-8">
                                             <Layers size={24} strokeWidth={1.5} />
                                         </div>
                                         <h3 className="text-3xl font-display font-light mb-4">West Home Book</h3>
@@ -165,9 +165,9 @@ const CatalogsHub: React.FC = () => {
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {cat.files.map((file, fIdx) => (
-                                        <div key={fIdx} className="group flex items-center justify-between p-8 bg-white border border-gray-200 rounded-2xl hover:bg-[#1D1D1F] hover:text-white transition-all duration-500 cursor-pointer shadow-sm hover:shadow-lg">
+                                        <div key={fIdx} className="group flex items-center justify-between p-8 bg-white border border-gray-200 rounded-xl hover:bg-[#1D1D1F] hover:text-white transition-all duration-500 cursor-pointer shadow-sm hover:shadow-lg">
                                             <div className="flex items-center gap-6">
-                                                <div className="w-10 h-10 bg-[#F5F5F7] group-hover:bg-white/10 rounded-xl flex items-center justify-center transition-colors">
+                                                <div className="w-10 h-10 bg-[#F5F5F7] group-hover:bg-white/10 rounded-lg flex items-center justify-center transition-colors">
                                                     <FileText size={18} className="text-[#1D1D1F]/40 group-hover:text-white" />
                                                 </div>
                                                 <div>

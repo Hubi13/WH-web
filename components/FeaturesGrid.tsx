@@ -30,7 +30,7 @@ const FeaturesGrid: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
 
                     {/* 1. Large Feature Card - Structure */}
-                    <article className="col-span-1 md:col-span-2 row-span-1 md:row-span-2 relative group h-[400px] md:h-[600px] overflow-hidden bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-2xl reveal-on-scroll">
+                    <article className="col-span-1 md:col-span-2 row-span-1 md:row-span-2 relative group h-[400px] md:h-[600px] overflow-hidden bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-xl reveal-on-scroll">
                         <img
                             src="https://i.imgur.com/H4BsEqJ.jpeg"
                             alt="Mass Timber CLT Structure"
@@ -50,7 +50,7 @@ const FeaturesGrid: React.FC = () => {
                     </article>
 
                     {/* 2. Intelligence Card */}
-                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-2xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-100 min-h-[220px]">
+                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-100 min-h-[220px]">
                         <div className="flex justify-between items-start">
                             <Cpu size={20} className="text-white/40 group-hover:text-white transition-colors" />
                         </div>
@@ -64,7 +64,7 @@ const FeaturesGrid: React.FC = () => {
                     </article>
 
                     {/* 3. Silence Card */}
-                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-2xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-200 min-h-[220px]">
+                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-200 min-h-[220px]">
                         <div className="flex justify-between items-start">
                             <Waves size={20} className="text-white/40 group-hover:text-white transition-colors" />
                         </div>
@@ -78,7 +78,7 @@ const FeaturesGrid: React.FC = () => {
                     </article>
 
                     {/* 4. Power Card */}
-                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-2xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-100 min-h-[220px]">
+                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-100 min-h-[220px]">
                         <div className="flex justify-between items-start">
                             <Sun size={20} className="text-white/40 group-hover:text-white transition-colors" />
                         </div>
@@ -92,7 +92,7 @@ const FeaturesGrid: React.FC = () => {
                     </article>
 
                     {/* 5. Security Card */}
-                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-2xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-200 min-h-[220px]">
+                    <article className="col-span-1 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-xl p-8 md:p-10 flex flex-col justify-between group hover:bg-white/10 transition-colors reveal-on-scroll delay-200 min-h-[220px]">
                         <div className="flex justify-between items-start">
                             <Shield size={20} className="text-white/40 group-hover:text-white transition-colors" />
                         </div>
@@ -108,7 +108,7 @@ const FeaturesGrid: React.FC = () => {
                     {/* 6. Explore Link */}
                     <button
                         onClick={() => setPage('catalogs')}
-                        className="col-span-1 md:col-span-2 bg-white text-black rounded-2xl group cursor-pointer relative overflow-hidden flex items-center justify-between p-8 md:p-10 reveal-on-scroll delay-300 text-left w-full hover:bg-gray-100 transition-colors"
+                        className="col-span-1 md:col-span-2 bg-white text-black rounded-xl group cursor-pointer relative overflow-hidden flex items-center justify-between p-8 md:p-10 reveal-on-scroll delay-300 text-left w-full hover:bg-gray-100 transition-colors"
                     >
                         <div className="relative z-10">
                             <h3 className="text-xl md:text-2xl font-light mb-1 md:mb-2">Materiały</h3>

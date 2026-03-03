@@ -138,7 +138,7 @@ const CareersPage: React.FC = () => {
                         <button
                             key={item.id}
                             onClick={() => handleTabChange(item.id)}
-                            className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 ${
+                            className={`w-full flex items-center gap-4 p-4 rounded-lg text-left transition-all duration-300 ${
                                 activeTab === item.id 
                                 ? 'bg-[#1D1D1F] text-white shadow-lg' 
                                 : 'text-[#666] hover:bg-white hover:text-black hover:shadow-sm'
@@ -171,7 +171,7 @@ const CareersPage: React.FC = () => {
                                         <div 
                                             key={job.id} 
                                             onClick={() => setSelectedJob(job)}
-                                            className="group bg-white p-6 rounded-xl border border-gray-200 hover:border-black/20 hover:shadow-lg transition-all cursor-pointer flex flex-col md:flex-row justify-between md:items-center"
+                                            className="group bg-white p-6 rounded-lg border border-gray-200 hover:border-black/20 hover:shadow-lg transition-all cursor-pointer flex flex-col md:flex-row justify-between md:items-center"
                                         >
                                             <div>
                                                 <h3 className="text-xl font-medium text-[#1D1D1F]">{job.title}</h3>
@@ -198,7 +198,7 @@ const CareersPage: React.FC = () => {
                                     <ArrowLeft size={14} /> Back to Openings
                                 </button>
 
-                                <div className="bg-white p-8 md:p-12 rounded-2xl border border-gray-200 shadow-sm">
+                                <div className="bg-white p-8 md:p-12 rounded-xl border border-gray-200 shadow-sm">
                                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                                         <div>
                                             <h1 className="font-display text-3xl md:text-4xl font-light text-[#1D1D1F]">{selectedJob.title}</h1>
@@ -268,7 +268,7 @@ const CareersPage: React.FC = () => {
                             <p>
                                 Our HQ in Warsaw is located at Złota 44, designed by Daniel Libeskind. It serves as both our workspace and our laboratory for high-rise residential innovation.
                             </p>
-                            <div className="aspect-video w-full bg-[#111] rounded-2xl overflow-hidden relative mt-8">
+                            <div className="aspect-video w-full bg-[#111] rounded-xl overflow-hidden relative mt-8">
                                 <img src="https://i.imgur.com/fNQn8nP.jpeg" className="w-full h-full object-cover opacity-80" alt="Office Culture" />
                             </div>
                         </div>

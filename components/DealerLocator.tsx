@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { X, Search, Phone, Navigation, ArrowRight } from 'lucide-react';
 import { DEALERS } from '../constants';
 import { Dealer } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
-import { sanitizeString, debounce } from '../utils/security';
+import { sanitizeString } from '../utils/security';
 
 interface DealerLocatorProps {
   isOpen: boolean;
@@ -13,26 +13,18 @@ interface DealerLocatorProps {
 const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDealerId, setSelectedDealerId] = useState<string | null>(null);
-  const [filteredDealers, setFilteredDealers] = useState<Dealer[]>(DEALERS);
   
   const { t } = useLanguage();
-
-  const filterDealers = useCallback((query: string) => {
-    const cleanQuery = sanitizeString(query).toLowerCase();
-    const filtered = DEALERS.filter(d =>
+  const filteredDealers = useMemo(() => {
+    const cleanQuery = sanitizeString(searchQuery).toLowerCase();
+    if (!cleanQuery) return DEALERS;
+    return DEALERS.filter((d) =>
       d.city.toLowerCase().includes(cleanQuery) ||
       d.name.toLowerCase().includes(cleanQuery) ||
       d.zip.includes(cleanQuery) ||
       d.country.toLowerCase().includes(cleanQuery)
     );
-    setFilteredDealers(filtered);
-  }, []);
-
-  // Debounced filter to prevent excessive processing
-  const debouncedFilter = useCallback(
-    debounce((query: string) => filterDealers(query), 300),
-    [filterDealers]
-  );
+  }, [searchQuery]);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,7 +33,6 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = 'unset';
       const timer = setTimeout(() => {
         setSearchQuery('');
-        setFilteredDealers(DEALERS);
         setSelectedDealerId(null);
       }, 700);
       return () => clearTimeout(timer);
@@ -54,7 +45,6 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
     if (value.length > 100) return;
     
     setSearchQuery(value);
-    debouncedFilter(value);
   };
 
   const handleDealerClick = (id: string) => {
@@ -94,7 +84,7 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
           bg-[#050505]/85 backdrop-blur-2xl 
           border-l border-white/20 shadow-2xl 
           transform transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)
-          flex flex-col md:rounded-l-3xl
+          flex flex-col rounded-none
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
@@ -125,7 +115,7 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
                   id="dealer-search"
                   type="text"
                   placeholder={t.dealer.searchPlaceholder}
-                  className="w-full h-[50px] pl-10 pr-4 bg-white/5 border border-white/25 text-white placeholder-white/30 font-sans text-sm tracking-wide focus:outline-none focus:border-white transition-all rounded-xl"
+                  className="w-full h-[50px] pl-10 pr-4 bg-white/5 border border-white/25 text-white placeholder-white/30 font-sans text-sm tracking-wide focus:outline-none focus:border-white transition-all rounded-lg"
                   value={searchQuery}
                   onChange={handleSearchChange}
                   maxLength={100}
@@ -187,14 +177,14 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
                             <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-white/20">
                                <button 
                                   onClick={(e) => handleDirections(e, dealer)} 
-                                  className="flex-1 py-4 border border-white/30 text-white hover:bg-white hover:text-black hover:border-white transition-all text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 rounded-xl"
+                                  className="flex-1 py-4 border border-white/30 text-white hover:bg-white hover:text-black hover:border-white transition-all text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 rounded-lg"
                                   aria-label={`Get directions to ${dealer.name}`}
                                >
                                   <Navigation size={14} aria-hidden="true" /> {t.dealer.mapBtn}
                                </button>
                                <button 
                                   onClick={(e) => handlePhone(e, dealer.phone)} 
-                                  className="flex-1 py-4 border border-white/30 text-white hover:bg-white hover:text-black hover:border-white transition-all text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 rounded-xl"
+                                  className="flex-1 py-4 border border-white/30 text-white hover:bg-white hover:text-black hover:border-white transition-all text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 rounded-lg"
                                   aria-label={`Call ${dealer.name}`}
                                >
                                   <Phone size={14} aria-hidden="true" /> {t.dealer.callBtn}
@@ -212,7 +202,7 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
              )}
          </div>
 
-         <div className="p-8 md:px-12 border-t border-white/20 bg-black/20 text-right">
+         <div className="p-8 md:px-12 border-t border-white/20 bg-black/20 text-left">
              <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
                  {filteredDealers.length} {t.dealer.found}
              </span>
@@ -231,3 +221,4 @@ const DealerLocator: React.FC<DealerLocatorProps> = ({ isOpen, onClose }) => {
 };
 
 export default DealerLocator;
+

@@ -50,7 +50,7 @@ const MaterialLab: React.FC = () => {
 
         <div className="block lg:hidden space-y-5 mb-10">
           {materialList.map((mat) => (
-            <article key={mat.id} className="rounded-2xl border border-black/10 bg-white overflow-hidden">
+            <article key={mat.id} className="rounded-xl border border-black/10 bg-white overflow-hidden">
               <div className="relative aspect-[16/10]">
                 <img
                   src={TEXTURE_IMAGES[mat.id as keyof typeof TEXTURE_IMAGES]}
@@ -68,7 +68,7 @@ const MaterialLab: React.FC = () => {
                 <p className="text-[#5C5C62] text-sm leading-relaxed mb-4">{mat.desc}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {mat.specs?.map((spec: any, idx: number) => (
-                    <div key={idx} className="rounded-lg border border-black/10 bg-[#F8F8F8] px-3 py-2">
+                    <div key={idx} className="rounded-md border border-black/10 bg-[#F8F8F8] px-3 py-2">
                       <span className="block text-[9px] uppercase tracking-[0.15em] text-[#8A8A90]">{spec.label}</span>
                       <span className="block text-[11px] font-medium text-[#1D1D1F] mt-1">{spec.value}</span>
                     </div>
@@ -81,8 +81,8 @@ const MaterialLab: React.FC = () => {
 
         <div className="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           <div className="lg:col-span-8 relative group">
-            <div className="w-full aspect-[4/3] rounded-2xl p-1 bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl backdrop-blur-md overflow-hidden relative">
-              <div className="w-full h-full rounded-xl overflow-hidden relative bg-white">
+            <div className="w-full aspect-[4/3] rounded-xl p-1 bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl backdrop-blur-md overflow-hidden relative">
+              <div className="w-full h-full rounded-lg overflow-hidden relative bg-white">
                 <img
                   key={activeId}
                   src={TEXTURE_IMAGES[activeId as keyof typeof TEXTURE_IMAGES]}
@@ -100,7 +100,7 @@ const MaterialLab: React.FC = () => {
 
                     <div className="grid grid-cols-2 gap-2 md:gap-3 min-w-[200px]">
                       {activeMaterial.specs?.map((spec: any, idx: number) => (
-                        <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-2 rounded-lg">
+                        <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-2 rounded-md">
                           <span className="block text-[7px] font-bold uppercase tracking-widest text-white/50">{spec.label}</span>
                           <span className="block text-[10px] md:text-xs font-medium text-white">{spec.value}</span>
                         </div>
@@ -118,7 +118,7 @@ const MaterialLab: React.FC = () => {
                 key={mat.id}
                 onClick={() => setActiveId(mat.id)}
                 className={`
-                  relative cursor-pointer group rounded-2xl border-[4px] transition-all duration-500 overflow-hidden aspect-[16/5]
+                  relative cursor-pointer group rounded-xl border-[4px] transition-all duration-500 overflow-hidden aspect-[16/5]
                   ${activeId === mat.id
                     ? 'border-white shadow-2xl scale-[1.02] z-10'
                     : 'border-white/40 shadow-sm hover:shadow-xl hover:border-white hover:scale-[1.01]'}
@@ -147,3 +147,4 @@ const MaterialLab: React.FC = () => {
 };
 
 export default MaterialLab;
+

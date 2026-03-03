@@ -204,7 +204,7 @@ const CertificatesPage: React.FC = () => {
                         <button
                             key={item.id}
                             onClick={() => handleTabChange(item.id)}
-                            className={`w-full flex items-center gap-3.5 p-3.5 rounded-xl text-left transition-all duration-300 ${
+                            className={`w-full flex items-center gap-3.5 p-3.5 rounded-lg text-left transition-all duration-300 ${
                                 activeCategory === item.id && !selectedCert
                                 ? 'bg-[#1D1D1F] text-white shadow-lg' 
                                 : 'text-[#666] hover:bg-white hover:text-black hover:shadow-sm'
@@ -215,7 +215,7 @@ const CertificatesPage: React.FC = () => {
                         </button>
                     ))}
 
-                    <div className="mt-16 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hidden lg:block">
+                    <div className="mt-16 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hidden lg:block">
                         <ShieldCheck size={20} className="mb-4 text-[#1D1D1F]" />
                         <h4 className="text-[10px] font-bold uppercase tracking-widest mb-3 text-[#1D1D1F]">Status: Verified</h4>
                         <p className="text-[11px] text-[#666] leading-relaxed">
@@ -244,11 +244,11 @@ const CertificatesPage: React.FC = () => {
                                 <div 
                                     key={cert.id} 
                                     onClick={() => setSelectedCert(cert)}
-                                    className="group bg-white p-7 rounded-2xl border border-gray-200 hover:border-black/20 hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between h-[300px]"
+                                    className="group bg-white p-7 rounded-xl border border-gray-200 hover:border-black/20 hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between h-[300px]"
                                 >
                                     <div>
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="w-9 h-9 bg-[#F5F5F7] rounded-xl flex items-center justify-center text-[#1D1D1F] group-hover:bg-[#1D1D1F] group-hover:text-white transition-colors">
+                                            <div className="w-9 h-9 bg-[#F5F5F7] rounded-lg flex items-center justify-center text-[#1D1D1F] group-hover:bg-[#1D1D1F] group-hover:text-white transition-colors">
                                                 {cert.category === 'eco' ? <Leaf size={18} /> : 
                                                  cert.category === 'konstrukcja' ? <Home size={18} /> : 
                                                  cert.category === 'wnetrza' ? <Bath size={18} /> : <Zap size={18} />}
@@ -273,7 +273,7 @@ const CertificatesPage: React.FC = () => {
                 ) : (
                     // DETAIL VIEW - Mirroring Career deep dive
                     <div className="animate-fade-in-up">
-                        <div className="bg-white p-8 md:p-14 rounded-[2rem] border border-gray-200 shadow-xl max-w-5xl">
+                        <div className="bg-white p-8 md:p-14 rounded-[1.5rem] border border-gray-200 shadow-xl max-w-5xl">
                             <header className="mb-10 border-b border-gray-100 pb-10">
                                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
                                     <div>
@@ -284,26 +284,26 @@ const CertificatesPage: React.FC = () => {
                                             {selectedCert.title}
                                         </h1>
                                     </div>
-                                    <button className="flex items-center gap-2.5 px-7 py-3.5 bg-[#1D1D1F] text-white rounded-xl text-[11px] font-bold uppercase tracking-widest hover:bg-black transition-all shadow-lg">
+                                    <button className="flex items-center gap-2.5 px-7 py-3.5 bg-[#1D1D1F] text-white rounded-lg text-[11px] font-bold uppercase tracking-widest hover:bg-black transition-all shadow-lg">
                                         Pobierz PDF <Download size={14} />
                                     </button>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                    <div className="bg-[#F5F5F7] p-4 rounded-xl">
+                                    <div className="bg-[#F5F5F7] p-4 rounded-lg">
                                         <span className="block text-[8px] font-bold uppercase tracking-widest text-[#666] mb-1">Status</span>
                                         <span className="text-xs font-medium text-green-600 flex items-center gap-1.5">
                                             <CheckCircle2 size={12} /> Aktywny
                                         </span>
                                     </div>
-                                    <div className="bg-[#F5F5F7] p-4 rounded-xl">
+                                    <div className="bg-[#F5F5F7] p-4 rounded-lg">
                                         <span className="block text-[8px] font-bold uppercase tracking-widest text-[#666] mb-1">Rok Wydania</span>
                                         <span className="text-xs font-medium">{selectedCert.year}</span>
                                     </div>
-                                    <div className="bg-[#F5F5F7] p-4 rounded-xl">
+                                    <div className="bg-[#F5F5F7] p-4 rounded-lg">
                                         <span className="block text-[8px] font-bold uppercase tracking-widest text-[#666] mb-1">Ważność</span>
                                         <span className="text-xs font-medium">{selectedCert.expiry}</span>
                                     </div>
-                                    <div className="bg-[#F5F5F7] p-4 rounded-xl">
+                                    <div className="bg-[#F5F5F7] p-4 rounded-lg">
                                         <span className="block text-[8px] font-bold uppercase tracking-widest text-[#666] mb-1">Kod ID</span>
                                         <span className="text-xs font-mono opacity-40">CERT-{selectedCert.id.toUpperCase()}</span>
                                     </div>

@@ -13,7 +13,6 @@ import ProcessTimeline from './components/ProcessTimeline';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import CustomCursor from './components/ui/CustomCursor';
-import AcousticDemo from './components/AcousticDemo';
 import GlobalRoam from './components/GlobalRoam';
 import DealerPage from './components/DealerPage';
 import DealerLocator from './components/DealerLocator';
@@ -35,7 +34,6 @@ const MainContent = () => (
     <Philosophy />
     <ShowcaseSection />
     <ModelSelector />
-    <AcousticDemo />
     <GlobalRoam />
     <MaterialLab />
     <ProcessTimeline />

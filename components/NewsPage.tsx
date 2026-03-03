@@ -137,7 +137,7 @@ const NewsPage: React.FC = () => {
                         <button
                             key={item.id}
                             onClick={() => { setActiveCategory(sanitizeString(item.id)); setSelectedArticle(null); }}
-                            className={`w-full flex items-center gap-3.5 p-3.5 rounded-xl text-left transition-all duration-300 ${
+                            className={`w-full flex items-center gap-3.5 p-3.5 rounded-lg text-left transition-all duration-300 ${
                                 activeCategory === item.id && !selectedArticle
                                 ? 'bg-[#1D1D1F] text-white shadow-lg' 
                                 : 'text-[#666] hover:bg-white hover:text-black hover:shadow-sm'
@@ -148,7 +148,7 @@ const NewsPage: React.FC = () => {
                         </button>
                     ))}
 
-                    <div className="mt-16 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hidden lg:block">
+                    <div className="mt-16 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hidden lg:block">
                         <Calendar size={20} className="mb-4 text-[#1D1D1F]" />
                         <h4 className="text-[10px] font-bold uppercase tracking-widest mb-3 text-[#1D1D1F]">Newsletter</h4>
                         <p className="text-[11px] text-[#666] leading-relaxed mb-4">Otrzymuj najnowsze projekty i innowacje bezpośrednio na maila.</p>
@@ -159,14 +159,14 @@ const NewsPage: React.FC = () => {
                                   placeholder="Twój e-mail" 
                                   value={email}
                                   onChange={(e) => setEmail(e.target.value)}
-                                  className="w-full bg-[#F5F5F7] border-none rounded-lg p-3 text-[10px] focus:ring-1 focus:ring-black" 
+                                  className="w-full bg-[#F5F5F7] border-none rounded-md p-3 text-[10px] focus:ring-1 focus:ring-black" 
                                   required
                                   maxLength={254}
                                 />
                             </div>
                             <button 
                               type="submit" 
-                              className="w-full py-2.5 bg-black text-white rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#333] transition-colors"
+                              className="w-full py-2.5 bg-black text-white rounded-md text-[10px] font-bold uppercase tracking-widest hover:bg-[#333] transition-colors"
                             >
                               Zapisz się
                             </button>
@@ -198,7 +198,7 @@ const NewsPage: React.FC = () => {
                                 <article 
                                     key={article.id} 
                                     onClick={() => setSelectedArticle(article)}
-                                    className="group bg-white rounded-2xl border border-gray-200 hover:shadow-2xl transition-all cursor-pointer overflow-hidden flex flex-col md:flex-row h-auto md:h-[350px]"
+                                    className="group bg-white rounded-xl border border-gray-200 hover:shadow-2xl transition-all cursor-pointer overflow-hidden flex flex-col md:flex-row h-auto md:h-[350px]"
                                 >
                                     <div className="w-full md:w-2/5 h-[240px] md:h-full overflow-hidden">
                                         <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" />
@@ -228,7 +228,7 @@ const NewsPage: React.FC = () => {
                 ) : (
                     // ARTICLE DETAIL VIEW
                     <div className="animate-fade-in-up">
-                        <div className="bg-white rounded-[2.5rem] border border-gray-200 shadow-2xl overflow-hidden max-w-5xl">
+                        <div className="bg-white rounded-[1.75rem] border border-gray-200 shadow-2xl overflow-hidden max-w-5xl">
                             <div className="aspect-[21/9] w-full relative">
                                 <img src={selectedArticle.image} className="w-full h-full object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -288,3 +288,4 @@ const NewsPage: React.FC = () => {
 };
 
 export default NewsPage;
+

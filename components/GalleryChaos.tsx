@@ -63,8 +63,8 @@ const GalleryChaos: React.FC = () => {
           className="absolute top-16 md:top-12 left-0 md:left-24 w-[85%] md:w-[40%] z-10 will-change-transform"
           data-cursor-text="View Detail"
         >
-          <div className="p-1 rounded-xl bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md reveal-on-scroll">
-            <div className="aspect-[3/4] w-full h-full overflow-hidden lg:cursor-none rounded-lg relative bg-white shadow-inner">
+          <div className="p-1 rounded-lg bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md reveal-on-scroll">
+            <div className="aspect-[3/4] w-full h-full overflow-hidden lg:cursor-none rounded-md relative bg-white shadow-inner">
               <img
                 src="https://i.imgur.com/0FbPb8k.jpeg"
                 alt="Interior Detail"
@@ -81,8 +81,8 @@ const GalleryChaos: React.FC = () => {
           className="absolute bottom-8 md:bottom-32 right-0 md:right-32 w-[60%] md:w-[35%] z-20 will-change-transform"
           data-cursor-text="Inspect"
         >
-          <div className="p-1 rounded-xl bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md reveal-on-scroll delay-200">
-            <div className="aspect-square w-full h-full overflow-hidden lg:cursor-none rounded-lg relative bg-white shadow-inner">
+          <div className="p-1 rounded-lg bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md reveal-on-scroll delay-200">
+            <div className="aspect-square w-full h-full overflow-hidden lg:cursor-none rounded-md relative bg-white shadow-inner">
               <img
                 src="https://i.imgur.com/rp0K1YQ.jpeg"
                 alt="Material Detail"

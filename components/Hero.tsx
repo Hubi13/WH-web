@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Play, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { usePage } from '../contexts/PageContext';
 
@@ -73,25 +73,18 @@ const Hero: React.FC = () => {
           </p>
 
           <div className={`
-                  flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto px-6 sm:px-0
+                  flex w-full sm:w-auto px-6 sm:px-0
                   transition-all duration-1000 delay-500 transform
                   ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
               `}>
             <a
               href="/dealer"
               onClick={(e) => { e.preventDefault(); setPage('dealer'); }}
-              className="group h-12 md:h-14 px-8 md:px-10 bg-white text-black flex items-center justify-center gap-3 hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)] rounded-full cursor-pointer no-underline w-full sm:w-auto"
+              className="group h-12 md:h-14 px-8 md:px-10 border border-white/20 text-white bg-white/10 flex items-center justify-center gap-3 hover:bg-white/15 backdrop-blur-sm transition-colors rounded-full cursor-pointer no-underline w-full sm:w-auto"
             >
               <span className="text-[11px] md:text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap">{t.hero.configure}</span>
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
-
-            <button
-              className="group h-12 md:h-14 px-8 md:px-10 border border-white/20 text-white flex items-center justify-center gap-3 hover:bg-white/10 backdrop-blur-sm transition-colors rounded-full cursor-pointer w-full sm:w-auto"
-            >
-              <Play size={14} className="fill-white" />
-              <span className="text-[11px] md:text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap">{t.hero.watch}</span>
-            </button>
           </div>
         </div>
 

@@ -46,7 +46,7 @@ const CoreIdentity: React.FC = () => {
           {cards.map((item, idx) => (
             <div 
               key={idx} 
-              className={`group p-12 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-2xl hover:bg-white/10 transition-colors duration-500 reveal-on-scroll delay-${(idx + 1) * 100}`}
+              className={`group p-12 bg-white/5 backdrop-blur-[2px] border border-white/10 rounded-xl hover:bg-white/10 transition-colors duration-500 reveal-on-scroll delay-${(idx + 1) * 100}`}
             >
               <div className="mb-8 text-[#666] group-hover:text-white transition-colors transform group-hover:scale-110 duration-300 origin-left">
                 <item.icon size={32} strokeWidth={1} />

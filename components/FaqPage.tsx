@@ -159,7 +159,7 @@ const FaqPage: React.FC = () => {
                 return (
                     <div 
                         key={faq.id} 
-                        className={`bg-white transition-all duration-500 overflow-hidden rounded-2xl border border-black/5 ${isOpen ? 'shadow-lg ring-1 ring-black/5' : 'hover:border-black/10'}`}
+                        className={`bg-white transition-all duration-500 overflow-hidden rounded-xl border border-black/5 ${isOpen ? 'shadow-lg ring-1 ring-black/5' : 'hover:border-black/10'}`}
                     >
                         {/* Question Trigger */}
                         <button 
@@ -204,8 +204,8 @@ const FaqPage: React.FC = () => {
         </div>
 
         {/* Contact Tile */}
-        <div className="mt-40 p-14 bg-white rounded-[3rem] border border-black/5 text-center shadow-sm">
-            <div className="w-20 h-20 bg-[#F5F5F7] rounded-[2rem] flex items-center justify-center mx-auto mb-10">
+        <div className="mt-40 p-14 bg-white rounded-[2rem] border border-black/5 text-center shadow-sm">
+            <div className="w-20 h-20 bg-[#F5F5F7] rounded-[1.5rem] flex items-center justify-center mx-auto mb-10">
                 <MessageCircle size={36} className="text-black" strokeWidth={1.5} />
             </div>
             <h3 className="text-3xl font-light mb-4 tracking-tight">Nadal potrzebujesz wsparcia?</h3>

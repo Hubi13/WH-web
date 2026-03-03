@@ -28,23 +28,20 @@ const Footer: React.FC = () => {
     if (href.startsWith('http')) return; 
     e.preventDefault();
     setPage(page);
+    const hashIndex = href.indexOf('#');
+    if (hashIndex >= 0) {
+      const hash = href.substring(hashIndex);
+      setTimeout(() => {
+        window.location.hash = hash;
+      }, 450);
+    }
   };
 
   const footerColumns: FooterColumn[] = [
     {
-      title: 'COLLECTION',
-      links: [
-        { label: 'R-ONE', href: '/models/r-one', page: 'home' },
-        { label: 'R-SEQUENCE', href: '/models/r-sequence', page: 'home' },
-        { label: 'R-INFINITY', href: '/models/r-infinity', page: 'home' },
-      ]
-    },
-    {
       title: 'COMPANY',
       links: [
         { label: 'PHILOSOPHY', href: '/philosophy', page: 'philosophy' },
-        { label: 'CAREERS', href: '/careers', page: 'careers' },
-        { label: 'NEWS', href: '/news', page: 'news' },
         { label: 'FAQ', href: '/faq', page: 'faq' }
       ]
     },
@@ -68,7 +65,7 @@ const Footer: React.FC = () => {
     <footer id="footer" className="bg-[#050505] text-white pt-24 pb-12 w-full border-t border-white/10">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12">
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 pb-16 border-b border-white/20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16 pb-16 border-b border-white/20">
 
           <div className="col-span-2 md:col-span-3 lg:col-span-2 pr-8 mb-8 lg:mb-0">
             <div className="flex items-center gap-3 mb-6">

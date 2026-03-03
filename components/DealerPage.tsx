@@ -69,7 +69,7 @@ const DealerPage: React.FC = () => {
                     {filteredDealers.map((dealer, idx) => (
                         <div
                             key={dealer.id}
-                            className="group bg-white/5 backdrop-blur-[2px] border border-white/10 p-10 hover:bg-white/10 transition-all duration-500 cursor-pointer animate-fade-in-up rounded-2xl"
+                            className="group bg-white/5 backdrop-blur-[2px] border border-white/10 p-10 hover:bg-white/10 transition-all duration-500 cursor-pointer animate-fade-in-up rounded-xl"
                             style={{ animationDelay: `${idx * 100}ms` }}
                             onMouseEnter={() => setActiveDealerId(dealer.id)}
                             onMouseLeave={() => setActiveDealerId(null)}
@@ -109,7 +109,7 @@ const DealerPage: React.FC = () => {
 
                                     <a
                                         href={`mailto:${dealer.email}?subject=West%20Home%20Inquiry%20from%20Website&body=I%20am%20interested%20in%20configuring%20an%20West%20Home...`}
-                                        className="w-full mt-6 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors flex items-center justify-center gap-3 rounded-xl"
+                                        className="w-full mt-6 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors flex items-center justify-center gap-3 rounded-lg"
                                         onClick={(e) => e.stopPropagation()}
                                     >
                                         Contact Dealer <ArrowRight size={14} />

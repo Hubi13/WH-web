@@ -60,7 +60,7 @@ const TechDashboard: React.FC = () => {
                 </div>
 
                 {/* Device Container - Interactive Interface */}
-                <div className="flex flex-col lg:flex-row bg-[#050505] border border-white/30 ring-1 ring-white/10 min-h-[600px] shadow-2xl relative overflow-hidden reveal-on-scroll delay-100 rounded-[1.5rem] md:rounded-[2.5rem]">
+                <div className="flex flex-col lg:flex-row bg-[#050505] border border-white/30 ring-1 ring-white/10 min-h-[600px] shadow-2xl relative overflow-hidden reveal-on-scroll delay-100 rounded-[1.125rem] md:rounded-[1.75rem]">
 
                     {/* Left Sidebar / Nav */}
                     <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-white/20 flex flex-col bg-[#080808]">
@@ -74,7 +74,7 @@ const TechDashboard: React.FC = () => {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`w-full text-left p-4 md:p-6 rounded-xl group transition-all duration-300 relative overflow-hidden
+                                    className={`w-full text-left p-4 md:p-6 rounded-lg group transition-all duration-300 relative overflow-hidden
                                 ${activeTab === tab.id ? 'bg-white/10' : 'hover:bg-white/[0.05]'}
                             `}
                                 >
@@ -97,7 +97,7 @@ const TechDashboard: React.FC = () => {
                         </div>
 
                         <div className="p-6 md:p-8 mt-auto">
-                            <button className="w-full py-4 border border-white/30 hover:bg-white hover:text-black transition-all text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 group rounded-xl">
+                            <button className="w-full py-4 border border-white/30 hover:bg-white hover:text-black transition-all text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 group rounded-lg">
                                 <Smartphone size={16} className="group-hover:scale-110 transition-transform" />
                                 <span className="hidden sm:inline">Remote Access</span>
                                 <span className="sm:hidden">Remote</span>
@@ -150,7 +150,7 @@ const TechDashboard: React.FC = () => {
                             {activeTab === 'energy' && (
                                 <div key="energy" className="animate-fade-in-up w-full">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-                                        <div className="p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-[2px] hover:bg-white/10 hover:border-white/20 transition-all group md:cursor-crosshair rounded-2xl shadow-lg">
+                                        <div className="p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-[2px] hover:bg-white/10 hover:border-white/20 transition-all group md:cursor-crosshair rounded-xl shadow-lg">
                                             <div className="flex justify-between mb-6 md:mb-8">
                                                 <Sun className="text-yellow-500" />
                                                 <span className="text-yellow-500 font-mono text-xs tabular-nums">+{energyUsage} kW</span>
@@ -161,7 +161,7 @@ const TechDashboard: React.FC = () => {
                                             </div>
                                         </div>
 
-                                        <div className="p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-[2px] hover:bg-white/10 hover:border-white/20 transition-all group md:cursor-crosshair rounded-2xl shadow-lg">
+                                        <div className="p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-[2px] hover:bg-white/10 hover:border-white/20 transition-all group md:cursor-crosshair rounded-xl shadow-lg">
                                             <div className="flex justify-between mb-6 md:mb-8">
                                                 <Battery className="text-green-500" />
                                                 <span className="text-green-500 font-mono text-xs tabular-nums">{batteryLevel}%</span>
@@ -192,7 +192,7 @@ const TechDashboard: React.FC = () => {
                                             { name: t.tech.security.garage, status: t.tech.security.closed },
                                             { name: t.tech.security.perimeter, status: t.tech.security.armed }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-center justify-between p-4 md:p-6 border border-white/10 bg-white/5 backdrop-blur-[2px] hover:bg-white/10 transition-colors rounded-xl md:rounded-2xl">
+                                            <div key={i} className="flex items-center justify-between p-4 md:p-6 border border-white/10 bg-white/5 backdrop-blur-[2px] hover:bg-white/10 transition-colors rounded-lg md:rounded-xl">
                                                 <div className="flex items-center gap-4">
                                                     <Lock size={16} className="text-[#666]" />
                                                     <span className="text-xs md:text-sm uppercase tracking-widest">{item.name}</span>

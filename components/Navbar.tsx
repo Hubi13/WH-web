@@ -16,8 +16,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
   const { setPage } = usePage();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      setScrolled((prev) => (prev ? y > 16 : y > 24));
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -46,20 +51,18 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
   };
 
   const navLinks = [
-    { name: t.nav.manifesto, page: 'philosophy', href: '/philosophy' }, // Linked to full page
-    { name: t.nav.fleet, page: 'home', href: '/#models' }, // Section on Home
-    { name: t.nav.systems, page: 'home', href: '/#technology' }, // Section on Home
-    { name: t.nav.lifecycle, page: 'home', href: '/#process' }, // Section on Home
-    { name: t.identity.badge, page: 'philosophy', href: '/philosophy' }, // Linked to full page (Identity is covered there)
-    { name: t.materials.badge, page: 'home', href: '/#materials' }, // Section on Home
+    { name: t.nav.philosophy, page: 'philosophy', href: '/philosophy' },
+    { name: t.nav.models, page: 'home', href: '/#models' },
+    { name: 'Deployment', page: 'home', href: '/#global-capability' },
+    { name: t.materials.badge, page: 'home', href: '/#materials' },
   ];
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled
-          ? 'bg-black/30 backdrop-blur-xl border-b border-white/20 py-4 shadow-lg'
-          : 'bg-transparent py-6 md:py-8'
+          ? 'bg-black/30 backdrop-blur-xl shadow-lg py-5 md:py-6'
+          : 'bg-transparent py-5 md:py-6'
           }`}
         aria-label="Main Navigation"
       >
@@ -181,24 +184,6 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
                 </div>
               ))}
 
-              {/* Route to /test (SPA page) */}
-              <div
-                className={`group transform transition-all duration-700 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
-                  }`}
-                style={{ transitionDelay: `${100 + (navLinks.length * 50)}ms` }}
-              >
-                <a
-                  href="/test"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setMenuOpen(false);
-                    setPage('test');
-                  }}
-                  className="text-xl sm:text-2xl md:text-3xl text-white hover:text-gray-300 transition-colors font-light text-left uppercase tracking-wide block"
-                >
-                  System Status
-                </a>
-              </div>
             </nav>
 
             <div className={`mt-8 md:mt-16 pt-8 border-t border-white/20 w-full transform transition-all duration-700 delay-500 ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>

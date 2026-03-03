@@ -49,7 +49,7 @@ const Philosophy: React.FC = () => {
                   <span className="text-[#86868B] font-light">{t.philosophy.titleLine2}</span>
                </h2>
                {/* Greyish Black Accent Line */}
-               <div className="w-16 h-[2px] bg-[#1D1D1F] mb-8 opacity-80 rounded-full"></div>
+               <div className="w-16 h-[2px] bg-[#1D1D1F] mb-8 opacity-80 rounded-sm"></div>
             </div>
 
             {/* Content Column - Right List */}
@@ -64,7 +64,7 @@ const Philosophy: React.FC = () => {
                     key={idx} 
                     ref={(el) => { itemsRef.current[idx] = el; }}
                     className={`
-                        group relative rounded-[2.5rem] p-10 md:p-12
+                        group relative rounded-sm p-10 md:p-12
                         bg-white/40 backdrop-blur-[2px] border border-white/20
                         transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
                         ${activeIdx === idx 
