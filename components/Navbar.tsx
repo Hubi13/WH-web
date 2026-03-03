@@ -97,13 +97,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
                 aria-label="West Home Systems Homepage"
               >
                 <img
-                  src="https://i.imgur.com/VSe7Yqm.png"
+                  src="https://i.imgur.com/COhpgL4.png"
                   alt="West Home Logo"
-                  className={`h-6 md:h-10 w-auto object-contain transition-all duration-300 ${
-                    theme === 'light'
-                      ? 'brightness-0'
-                      : 'invert brightness-150 contrast-125 drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)]'
-                  }`}
+                  className="h-6 md:h-10 w-auto object-contain"
                 />
               </a>
             </div>
