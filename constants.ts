@@ -160,7 +160,7 @@ export const MATERIAL_ELEMENTS: MaterialElement[] = [
 export const DEALERS: Dealer[] = [
   {
     id: 'd-warsaw',
-    name: 'R-Home Warsaw',
+    name: 'West Home Warsaw',
     address: 'Elektrownia Powiśle',
     city: 'Warsaw',
     zip: '00-375',
@@ -174,7 +174,7 @@ export const DEALERS: Dealer[] = [
   },
   {
     id: 'd-krakow',
-    name: 'R-Home Kraków',
+    name: 'West Home Kraków',
     address: 'Pawia 5',
     city: 'Kraków',
     zip: '31-154',

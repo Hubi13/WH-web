@@ -27,7 +27,7 @@ const CTA: React.FC = () => {
       <div className="absolute inset-0 z-0 opacity-50">
          <img 
             src="https://i.imgur.com/iWyQPX1.jpeg" 
-            alt="R-Home Atmosphere" 
+            alt="West Home Atmosphere" 
             className={`w-full h-full object-cover transition-transform duration-[3s] cubic-bezier(0.25, 1, 0.5, 1) ${isVisible ? 'scale-100' : 'scale-110'}`}
          />
       </div>

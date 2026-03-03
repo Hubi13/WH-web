@@ -105,14 +105,14 @@ const translations = {
     },
     acousticDemo: {
       title: "Sonic Isolation",
-      desc: "Experience the difference of our decoupled wall systems. Toggle to hear the R-Home sanctuary standard.",
+      desc: "Experience the difference of our decoupled wall systems. Toggle to hear the West Home sanctuary standard.",
       outside: "Urban Chaos (80dB)",
-      inside: "R-Home Sanctuary (35dB)"
+      inside: "West Home Sanctuary (35dB)"
     },
     globalRoam: {
       badge: "Deployment",
       title: "Global Capability.",
-      desc: "Designed to be deployed anywhere. From Alpine peaks to coastal cliffs, R-Home adapts to the environment.",
+      desc: "Designed to be deployed anywhere. From Alpine peaks to coastal cliffs, West Home adapts to the environment.",
       locations: [
         { title: "Alpine", desc: "Thermal retention in extreme cold." },
         { title: "Coastal", desc: "Corrosion resistance and wind load stability." },
@@ -239,7 +239,7 @@ const translations = {
       technology: 'Technology',
       careers: 'Careers',
       press: 'Press',
-      rights: '© 2025 R-Home Systems.',
+      rights: '© 2025 West Home Systems.',
       privacy: 'Privacy',
       terms: 'Terms',
       cookies: 'Cookies',
@@ -353,14 +353,14 @@ const translations = {
     },
     acousticDemo: {
       title: "Izolacja Dźwięku",
-      desc: "Doświadcz różnicy naszych odsprzęglonych systemów ściennych. Przełącz, aby usłyszeć standard ciszy R-Home.",
+      desc: "Doświadcz różnicy naszych odsprzęglonych systemów ściennych. Przełącz, aby usłyszeć standard ciszy West Home.",
       outside: "Miejski Chaos (80dB)",
-      inside: "Sanktuarium R-Home (35dB)"
+      inside: "Sanktuarium West Home (35dB)"
     },
     globalRoam: {
       badge: "Wdrożenie",
       title: "Globalna Zdolność.",
-      desc: "Zaprojektowane do wdrożenia wszędzie. Od alpejskich szczytów po wybrzeża, R-Home adaptuje się do otoczenia.",
+      desc: "Zaprojektowane do wdrożenia wszędzie. Od alpejskich szczytów po wybrzeża, West Home adaptuje się do otoczenia.",
       locations: [
         { title: "Alpy", desc: "Retencja ciepła w ekstremalnym zimnie." },
         { title: "Wybrzeże", desc: "Odporność na korozję i obciążenie wiatrem." },
@@ -487,7 +487,7 @@ const translations = {
       technology: 'Technologia',
       careers: 'Kariera',
       press: 'Prasa',
-      rights: '© 2025 R-Home Systems.',
+      rights: '© 2025 West Home Systems.',
       privacy: 'Prywatność',
       terms: 'Regulamin',
       cookies: 'Cookies',
@@ -603,7 +603,7 @@ const translations = {
       title: "Aislamiento Sónico",
       desc: "Experimenta la diferencia de nuestros sistemas de paredes desacopladas.",
       outside: "Caos Urbano (80dB)",
-      inside: "Santuario R-Home (35dB)"
+      inside: "Santuario West Home (35dB)"
     },
     globalRoam: {
       badge: "Despliegue",
@@ -735,7 +735,7 @@ const translations = {
       technology: 'Tecnología',
       careers: 'Carreras',
       press: 'Prensa',
-      rights: '© 2025 R-Home Systems.',
+      rights: '© 2025 West Home Systems.',
       privacy: 'Privacidad',
       terms: 'Términos',
       cookies: 'Cookies',

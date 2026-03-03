@@ -58,7 +58,7 @@ const PhilosophyPage: React.FC = () => {
                                         We believe that in an increasingly chaotic world, the ultimate luxury is silence. Not just the absence of sound, but the absence of noise—visual, thermal, and cognitive.
                                     </p>
                                     <p>
-                                        R-Home was founded on a simple premise: apply the rigorous engineering standards of the automotive industry to the archaic world of construction. We don't build houses; we manufacture precision living environments.
+                                        West Home was founded on a simple premise: apply the rigorous engineering standards of the automotive industry to the archaic world of construction. We don't build houses; we manufacture precision living environments.
                                     </p>
                                     <blockquote className="border-l-2 border-black pl-6 py-2 my-8 text-xl italic text-[#1D1D1F]">
                                         "A home should not be a static box, but a high-performance machine for living."
@@ -75,7 +75,7 @@ const PhilosophyPage: React.FC = () => {
                                         <span className="block text-4xl font-light mb-4 text-[#1D1D1F]">01</span>
                                         <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Radical Precision</h3>
                                         <p className="text-[#666] text-sm leading-relaxed">
-                                            We reject the "acceptable tolerances" of traditional construction. Every R-Home component is machined to within 1mm.
+                                            We reject the "acceptable tolerances" of traditional construction. Every West Home component is machined to within 1mm.
                                         </p>
                                     </div>
                                     <div className="bg-white p-8 rounded-2xl shadow-sm">
@@ -101,12 +101,12 @@ const PhilosophyPage: React.FC = () => {
                                 <h1 className="font-display text-4xl md:text-5xl font-light mb-8">Future Vision 2030</h1>
                                 <div className="text-[#444] space-y-6 leading-relaxed font-light">
                                     <p>
-                                        The R-Sequence is just the beginning. We are developing the <strong className="font-medium">R-Home System</strong>, a decentralized grid of autonomous homes that share energy and data to optimize community resilience.
+                                        The R-Sequence is just the beginning. We are developing the <strong className="font-medium">West Home System</strong>, a decentralized grid of autonomous homes that share energy and data to optimize community resilience.
                                     </p>
                                     <div className="aspect-video w-full bg-black rounded-2xl overflow-hidden relative mt-8">
                                         <img src="https://i.imgur.com/iWyQPX1.jpeg" className="w-full h-full object-cover opacity-80" alt="Future Vision" />
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-white text-xs font-bold uppercase tracking-[0.3em] border border-white/30 px-6 py-3 rounded-full backdrop-blur-md">R-Home System</span>
+                                            <span className="text-white text-xs font-bold uppercase tracking-[0.3em] border border-white/30 px-6 py-3 rounded-full backdrop-blur-md">West Home System</span>
                                         </div>
                                     </div>
                                 </div>

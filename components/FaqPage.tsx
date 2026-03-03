@@ -21,7 +21,7 @@ const FaqPage: React.FC = () => {
   const faqs: FaqItem[] = [
     {
       id: 'clt-life',
-      question: "Jaka jest żywotność konstrukcji CLT w domach R-Home?",
+      question: "Jaka jest żywotność konstrukcji CLT w domach West Home?",
       answer: "Konstrukcje z drewna klejonego krzyżowo (CLT) są projektowane na minimum 100 lat eksploatacji. Wykorzystujemy najwyższej jakości świerk skandynawski, poddawany precyzyjnej obróbce termicznej i mechanicznej.",
       details: [
         "Naturalna odporność na wilgoć dzięki precyzyjnemu suszeniu komorowemu.",
@@ -43,8 +43,8 @@ const FaqPage: React.FC = () => {
     },
     {
       id: 'permits',
-      question: "Czy budowa domu R-Home wymaga pozwolenia na budowę?",
-      answer: "W większości przypadków tak, domy R-Home są pełnoprawnymi budynkami mieszkalnymi i wymagają standardowych formalności prawnych.",
+      question: "Czy budowa domu West Home wymaga pozwolenia na budowę?",
+      answer: "W większości przypadków tak, domy West Home są pełnoprawnymi budynkami mieszkalnymi i wymagają standardowych formalności prawnych.",
       details: [
         "Dostarczamy pełną dokumentację projektową niezbędną do uzyskania pozwolenia.",
         "Nasze projekty są zgodne z aktualnymi warunkami technicznymi (WT2021).",
@@ -54,8 +54,8 @@ const FaqPage: React.FC = () => {
     },
     {
       id: 'modular-move',
-      question: "Czy dom R-Home można przenieść w inne miejsce?",
-      answer: "Tak, system modularny R-Home pozwala na demontaż i ponowny montaż modułów na nowym fundamencie. To unikalna cecha naszej inżynierii, pozwalająca budynkowi podążać za właścicielem.",
+      question: "Czy dom West Home można przenieść w inne miejsce?",
+      answer: "Tak, system modularny West Home pozwala na demontaż i ponowny montaż modułów na nowym fundamencie. To unikalna cecha naszej inżynierii, pozwalająca budynkowi podążać za właścicielem.",
       details: [
         "Unikalne złącza systemowe R-Connect zaprojektowane do wielokrotnego użytku.",
         "Transport standardowymi platformami niskopodwoziowymi.",
@@ -65,7 +65,7 @@ const FaqPage: React.FC = () => {
     },
     {
       id: 'foundations',
-      question: "Jakiego rodzaju fundamentu wymagają domy R-Home?",
+      question: "Jakiego rodzaju fundamentu wymagają domy West Home?",
       answer: "Najbardziej rekomendowanym rozwiązaniem jest płyta fundamentowa, która zapewnia idealną stabilność i izolację termiczną.",
       details: [
         "Możliwość posadowienia na ławach fundamentowych lub palach śrubowych w trudnym terenie.",
@@ -77,7 +77,7 @@ const FaqPage: React.FC = () => {
     {
       id: 'interior-finish',
       question: "W jakim stanie wykończenia dostarczane są domy?",
-      answer: "Standardem R-Home jest stan deweloperski premium, z możliwością pełnego wykończenia pod klucz w fabryce.",
+      answer: "Standardem West Home jest stan deweloperski premium, z możliwością pełnego wykończenia pod klucz w fabryce.",
       details: [
         "Instalacje (elektryczna, wod-kan, HVAC) są całkowicie ukryte w strukturze ścian.",
         "W opcji 'Turn-key' montujemy łazienki, kuchnie oraz oświetlenie przed transportem.",
@@ -87,7 +87,7 @@ const FaqPage: React.FC = () => {
     },
     {
       id: 'energy-efficiency',
-      question: "Jak dom R-Home radzi sobie z ekstremalnymi mrozami?",
+      question: "Jak dom West Home radzi sobie z ekstremalnymi mrozami?",
       answer: "Dzięki zastosowaniu konstrukcji CLT oraz izolacji o wysokiej gęstości, nasze domy posiadają ogromną bezwładność cieplną, utrzymując stabilną temperaturę nawet przy -30°C.",
       details: [
         "Brak mostków termicznych dzięki precyzyjnemu pasowaniu modułów.",
@@ -98,7 +98,7 @@ const FaqPage: React.FC = () => {
     },
     {
       id: 'acoustics-standard',
-      question: "Jaki poziom wyciszenia oferują ściany w systemie R-Home?",
+      question: "Jaki poziom wyciszenia oferują ściany w systemie West Home?",
       answer: "Stosujemy odsprzęglone systemy warstwowe, które redukują hałas zewnętrzny o średnio 45-50 dB, tworząc wewnątrz prawdziwe 'sanktuarium ciszy'.",
       details: [
         "Zastosowanie elastycznych łączników wibroakustycznych.",
@@ -148,7 +148,7 @@ const FaqPage: React.FC = () => {
                 Często zadawane pytania
             </h1>
             <p className="text-[#86868B] max-w-2xl mx-auto text-lg md:text-xl font-normal leading-relaxed">
-                Wszystko, co musisz wiedzieć o technologii, procesie i Twoim nowym domu R-Home.
+                Wszystko, co musisz wiedzieć o technologii, procesie i Twoim nowym domu West Home.
             </p>
         </header>
         
@@ -216,7 +216,7 @@ const FaqPage: React.FC = () => {
         </div>
 
         <footer className="mt-40 pt-12 border-t border-black/5 flex justify-center opacity-30">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#1D1D1F]">R-Home Systems Engineering</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#1D1D1F]">West Home Systems Engineering</span>
         </footer>
       </div>
     </div>

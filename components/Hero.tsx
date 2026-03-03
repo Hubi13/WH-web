@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
         >
           <img
             src="https://i.imgur.com/iWyQPX1.jpeg"
-            alt="R-Home Infinity Architecture"
+            alt="West Home Infinity Architecture"
             className="w-full h-full object-cover opacity-80"
             fetchPriority="high"
             loading="eager"

@@ -53,7 +53,7 @@ const CareersPage: React.FC = () => {
       title: 'Computational Designer', 
       loc: 'Remote / Hybrid', 
       type: 'Full-Time',
-      description: 'Develop parametric tools to automate the customization of R-Home units. You will build the logic that allows clients to configure complex architectural systems in real-time, translating user inputs into fabrication-ready data.',
+      description: 'Develop parametric tools to automate the customization of West Home units. You will build the logic that allows clients to configure complex architectural systems in real-time, translating user inputs into fabrication-ready data.',
       responsibilities: [
           'Create robust Grasshopper definitions for automated geometry generation.',
           'Develop C# / Python scripts to interface with our web configurator.',
@@ -124,7 +124,7 @@ const CareersPage: React.FC = () => {
             >
                 <ArrowLeft size={14} /> Back to Home
             </button>
-            <span className="text-sm font-medium">Careers at R-Home</span>
+            <span className="text-sm font-medium">Careers at West Home</span>
         </div>
       </div>
 
@@ -263,7 +263,7 @@ const CareersPage: React.FC = () => {
                         <h1 className="font-display text-4xl md:text-5xl font-light mb-8">Engineering Culture</h1>
                         <div className="text-[#444] space-y-6 leading-relaxed font-light text-lg">
                             <p>
-                                R-Home operates more like a tech startup than an architecture firm. We value iteration, prototyping, and first-principles thinking over tradition.
+                                West Home operates more like a tech startup than an architecture firm. We value iteration, prototyping, and first-principles thinking over tradition.
                             </p>
                             <p>
                                 Our HQ in Warsaw is located at Złota 44, designed by Daniel Libeskind. It serves as both our workspace and our laboratory for high-rise residential innovation.

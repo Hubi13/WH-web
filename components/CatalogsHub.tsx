@@ -60,7 +60,7 @@ const CatalogsHub: React.FC = () => {
             >
                 <ArrowLeft size={14} /> Powrót
             </button>
-            <span className="text-sm font-medium tracking-tight">R-Home Book — Library</span>
+            <span className="text-sm font-medium tracking-tight">West Home Book — Library</span>
         </div>
       </div>
 
@@ -108,7 +108,7 @@ const CatalogsHub: React.FC = () => {
                         Katalogi <span className="text-[#1D1D1F]/30 italic font-serif">Firmowe.</span>
                     </h1>
                     <p className="text-[#666] text-xl font-light max-w-2xl leading-relaxed">
-                        Centrum dokumentacji R-Home Systems. Pobierz specyfikacje techniczne, broszury modeli oraz standardy wykończenia.
+                        Centrum dokumentacji West Home Systems. Pobierz specyfikacje techniczne, broszury modeli oraz standardy wykończenia.
                     </p>
                 </header>
 
@@ -122,7 +122,7 @@ const CatalogsHub: React.FC = () => {
                                         <div className="w-12 h-12 bg-[#F5F5F7] rounded-2xl flex items-center justify-center mb-8">
                                             <BookOpen size={24} strokeWidth={1.5} />
                                         </div>
-                                        <h3 className="text-3xl font-display font-light mb-4">Katalog R-Home</h3>
+                                        <h3 className="text-3xl font-display font-light mb-4">Katalog West Home</h3>
                                         <p className="text-[#666] text-sm leading-relaxed max-w-xs">Poznaj naszą filozofię, standardy projektowe i podejście do architektury modułowej.</p>
                                     </div>
                                     <button className="flex items-center gap-3 mt-8 text-[10px] font-bold uppercase tracking-widest border-b border-black/10 group-hover:border-black transition-all w-max pb-2">
@@ -137,7 +137,7 @@ const CatalogsHub: React.FC = () => {
                                         <div className="w-12 h-12 bg-[#F5F5F7] rounded-2xl flex items-center justify-center mb-8">
                                             <Layers size={24} strokeWidth={1.5} />
                                         </div>
-                                        <h3 className="text-3xl font-display font-light mb-4">R-Home Book</h3>
+                                        <h3 className="text-3xl font-display font-light mb-4">West Home Book</h3>
                                         <p className="text-[#666] text-sm leading-relaxed max-w-xs">Kompletna dokumentacja techniczna, detale konstrukcyjne i systemy R-OS.</p>
                                     </div>
                                     <button className="flex items-center gap-3 mt-8 text-[10px] font-bold uppercase tracking-widest border-b border-black/10 group-hover:border-black transition-all w-max pb-2">
@@ -187,7 +187,7 @@ const CatalogsHub: React.FC = () => {
                 {/* Footer Section */}
                 <footer className="mt-40 pt-16 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-8">
                     <p className="text-[9px] uppercase tracking-[0.3em] text-[#1D1D1F]/20">
-                        © R-Home Systems 2025 • Wszystkie materiały są chronione prawem autorskim
+                        © West Home Systems 2025 • Wszystkie materiały są chronione prawem autorskim
                     </p>
                     <div className="flex gap-8">
                         <span className="text-[9px] font-bold uppercase tracking-widest text-[#1D1D1F]/40">POLSKA / EU</span>

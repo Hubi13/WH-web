@@ -44,7 +44,7 @@ const DealerPage: React.FC = () => {
                             {t.dealer.title}
                         </h1>
                         <p className="text-[#888] max-w-xl text-lg font-light">
-                            To maintain the highest standards of assembly and delivery, R-Home configurations are finalized exclusively through our authorized partners.
+                            To maintain the highest standards of assembly and delivery, West Home configurations are finalized exclusively through our authorized partners.
                         </p>
                     </div>
 
@@ -108,7 +108,7 @@ const DealerPage: React.FC = () => {
                                     </div>
 
                                     <a
-                                        href={`mailto:${dealer.email}?subject=R-Home%20Inquiry%20from%20Website&body=I%20am%20interested%20in%20configuring%20an%20R-Home...`}
+                                        href={`mailto:${dealer.email}?subject=West%20Home%20Inquiry%20from%20Website&body=I%20am%20interested%20in%20configuring%20an%20West%20Home...`}
                                         className="w-full mt-6 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors flex items-center justify-center gap-3 rounded-xl"
                                         onClick={(e) => e.stopPropagation()}
                                     >

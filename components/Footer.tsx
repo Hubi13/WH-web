@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
           <div className="col-span-2 md:col-span-3 lg:col-span-2 pr-8 mb-8 lg:mb-0">
             <div className="flex items-center gap-3 mb-6">
                <span className="font-display text-2xl font-bold uppercase tracking-[0.15em] text-white">
-                  R-HOME
+                  West Home
                </span>
             </div>
             <p className="text-white/30 text-[10px] uppercase tracking-widest leading-relaxed font-light font-sans max-w-[220px]">

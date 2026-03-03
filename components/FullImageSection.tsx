@@ -51,7 +51,7 @@ const FullImageSection: React.FC = () => {
       >
         <img 
             src="https://i.imgur.com/ay5UUWQ.jpeg" 
-            alt="R-Home Interior" 
+            alt="West Home Interior" 
             className="w-full h-full object-cover"
         />
       </div>

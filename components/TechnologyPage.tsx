@@ -65,7 +65,7 @@ const TechnologyPage: React.FC = () => {
                         <h1 className="font-display text-5xl md:text-6xl font-light mb-8">R-OS Neural Core</h1>
                         <div className="text-[#888] space-y-6 leading-relaxed font-light">
                             <p>
-                                R-OS is the central nervous system of every R-Home. Unlike fragmented smart home devices, R-OS is a unified layer that manages climate, energy, and security with predictive AI.
+                                R-OS is the central nervous system of every West Home. Unlike fragmented smart home devices, R-OS is a unified layer that manages climate, energy, and security with predictive AI.
                             </p>
                             <div className="p-8 border border-white/10 rounded-2xl bg-[#111] mt-8">
                                 <div className="flex justify-between items-center mb-8">
@@ -133,7 +133,7 @@ const TechnologyPage: React.FC = () => {
                         <h1 className="font-display text-4xl md:text-5xl font-light mb-8">Automated Assembly</h1>
                         <div className="text-[#888] space-y-6 leading-relaxed font-light">
                             <p>
-                                Traditional construction is plagued by weather delays and human error. R-Home modules are born in a clean-room environment.
+                                Traditional construction is plagued by weather delays and human error. West Home modules are born in a clean-room environment.
                             </p>
                             <ul className="space-y-4 mt-6">
                                 <li className="flex items-center gap-4 text-sm">

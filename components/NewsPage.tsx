@@ -63,7 +63,7 @@ const NewsPage: React.FC = () => {
     {
       id: 'clt-future',
       category: 'innovation',
-      title: "R-Home integruje nową generację paneli CLT z izolacją próżniową",
+      title: "West Home integruje nową generację paneli CLT z izolacją próżniową",
       author: "Marek Kowalski",
       date: "12 Luty 2025",
       excerpt: "Nasz zespół badawczy we współpracy z ETH Zurich opracował system ścian o grubości zaledwie 18cm, które osiągają parametry izolacyjności standardu pasywnego.",
@@ -83,7 +83,7 @@ const NewsPage: React.FC = () => {
       excerpt: "Relacja z montażu modelu R-Sequence na wysokości 2100 m n.p.m. Zobacz jak poradziliśmy sobie z logistyką helikopterową.",
       image: "https://i.imgur.com/dGFCeEU.jpeg",
       content: [
-        "Projekt 'Summit House' był jednym z najtrudniejszych wyzwań w historii R-Home. Moduły musiały zostać zaprojektowane tak, aby wytrzymać obciążenie śniegiem przekraczające 800 kg/m².",
+        "Projekt 'Summit House' był jednym z najtrudniejszych wyzwań w historii West Home. Moduły musiały zostać zaprojektowane tak, aby wytrzymać obciążenie śniegiem przekraczające 800 kg/m².",
         "Montaż trwał zaledwie 3 dni, pomimo ekstremalnych warunków pogodowych.",
         "Budynek jest w pełni autonomiczny, korzystając z paneli PVT zintegrowanych z elewacją oraz systemów odzysku wody."
       ]
@@ -98,7 +98,7 @@ const NewsPage: React.FC = () => {
       image: "https://i.imgur.com/ay5UUWQ.jpeg",
       content: [
         "Współczesny dom powinien być filtrem dla przebodźcowanego świata. Minimalizm to nie tylko estetyka, to higiena umysłu.",
-        "Analizujemy jak ukryta technologia w domach R-Home redukuje poziom stresu u mieszkańców.",
+        "Analizujemy jak ukryta technologia w domach West Home redukuje poziom stresu u mieszkańców.",
         "Systemy cyrkadialnego oświetlenia to klucz do lepszego snu i regeneracji w domowym zaciszu."
       ]
     }
@@ -189,7 +189,7 @@ const NewsPage: React.FC = () => {
                         <header className="mb-12">
                             <h1 className="font-display text-4xl md:text-5xl font-light mb-4 tracking-tight">Aktualności</h1>
                             <p className="text-[#666] max-w-2xl text-base font-light leading-relaxed">
-                                Śledź postępy w naszych badaniach nad architekturą modułową i zobacz najnowsze realizacje R-Home.
+                                Śledź postępy w naszych badaniach nad architekturą modułową i zobacz najnowsze realizacje West Home.
                             </p>
                         </header>
                         

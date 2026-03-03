@@ -91,13 +91,19 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
                 href="/"
                 onClick={(e) => { e.preventDefault(); setPage('home'); }}
                 className="group flex flex-col items-center gap-1 opacity-90 hover:opacity-100 transition-opacity"
-                aria-label="R-Home Systems Homepage"
+                aria-label="West Home Systems Homepage"
               >
-                <img
-                  src="https://imgur.com/6o7WC9J.png"
-                  alt="R-Home Logo"
-                  className={`h-6 md:h-10 w-auto object-contain brightness-0 ${theme === 'light' ? '' : 'invert'}`}
-                />
+                <span
+                  className={`inline-flex items-center justify-center rounded-sm transition-colors ${
+                    theme === 'light' ? '' : 'bg-white/95 px-2 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.2)]'
+                  }`}
+                >
+                  <img
+                    src="/west-home-logo.svg"
+                    alt="West Home Logo"
+                    className="h-6 md:h-10 w-auto object-contain brightness-0"
+                  />
+                </span>
               </a>
             </div>
 

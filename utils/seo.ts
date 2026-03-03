@@ -13,42 +13,42 @@ const DEFAULT_OG_IMAGE = 'https://i.imgur.com/iWyQPX1.jpeg';
 
 export const SEO_CONFIG: Record<PageKey, SeoConfig> = {
   home: {
-    title: "R-Home | Bespoke Modular Homes & Net-Zero Architecture",
-    description: "R-Home Systems: Automotive-grade modular homes combining minimalist design, net-zero technology, and Swiss-precision engineering.",
+    title: "West Home | Bespoke Modular Homes & Net-Zero Architecture",
+    description: "West Home Systems: Automotive-grade modular homes combining minimalist design, net-zero technology, and Swiss-precision engineering.",
     path: "/"
   },
   catalogs: {
-    title: "Katalogi i Specyfikacje | R-Home Systems",
-    description: "Pobierz oficjalne katalogi modeli R-ONE, R-SEQUENCE, R-INFINITY oraz pełną dokumentację techniczną R-Home Book.",
+    title: "Katalogi i Specyfikacje | West Home Systems",
+    description: "Pobierz oficjalne katalogi modeli R-ONE, R-SEQUENCE, R-INFINITY oraz pełną dokumentację techniczną West Home Book.",
     path: "/catalogs"
   },
   certificates: {
-    title: "Certyfikaty i Standardy | R-Home Systems",
-    description: "Oficjalne certyfikaty jakości, ekologii i bezpieczeństwa konstrukcji R-Home.",
+    title: "Certyfikaty i Standardy | West Home Systems",
+    description: "Oficjalne certyfikaty jakości, ekologii i bezpieczeństwa konstrukcji West Home.",
     path: "/certificates"
   },
   faq: {
-    title: "FAQ | Często Zadawane Pytania | R-Home Systems",
-    description: "Centrum wiedzy R-Home. Odpowiedzi na pytania o technologię CLT, proces budowy i koszty.",
+    title: "FAQ | Często Zadawane Pytania | West Home Systems",
+    description: "Centrum wiedzy West Home. Odpowiedzi na pytania o technologię CLT, proces budowy i koszty.",
     path: "/faq"
   },
   news: {
-    title: "News & Journal | R-Home Systems",
+    title: "News & Journal | West Home Systems",
     description: "Aktualności ze świata architektury modułowej, innowacje technologiczne i relacje z realizacji.",
     path: "/news"
   },
   rhomebook: {
-    title: "R-Home Book | Technical Specification",
-    description: "Katalog techniczny R-Home Systems. Szczegółowe rozwiązania konstrukcyjne i parametry.",
+    title: "West Home Book | Technical Specification",
+    description: "Katalog techniczny West Home Systems. Szczegółowe rozwiązania konstrukcyjne i parametry.",
     path: "/rhomebook"
   },
   dealer: {
-    title: "Find a Dealer | R-Home Systems",
-    description: "Locate an authorized R-Home partner.",
+    title: "Find a Dealer | West Home Systems",
+    description: "Locate an authorized West Home partner.",
     path: "/dealer"
   },
   catalogue: {
-    title: "Digital Catalogue 2025 | R-Home Systems",
+    title: "Digital Catalogue 2025 | West Home Systems",
     description: "Explore the 2025 Collection technical specifications.",
     path: "/catalogue"
   },
@@ -63,7 +63,7 @@ export const SEO_CONFIG: Record<PageKey, SeoConfig> = {
     path: "/careers"
   },
   legal: {
-    title: "Legal & Privacy | R-Home Systems",
+    title: "Legal & Privacy | West Home Systems",
     description: "Terms of Service and Privacy Policy.",
     path: "/legal"
   },
@@ -74,7 +74,7 @@ export const SEO_CONFIG: Record<PageKey, SeoConfig> = {
     noIndex: true
   },
   test: {
-    title: "System Diagnostics | R-Home Systems",
+    title: "System Diagnostics | West Home Systems",
     description: "System integrity check.",
     path: "/test"
   }

@@ -46,7 +46,7 @@ const CertificatesPage: React.FC = () => {
       desc: "Europejska Ocena Techniczna dla konstrukcji z drewna klejonego krzyżowo.",
       year: "2024",
       expiry: "Permanent",
-      fullDetails: "Kluczowy dokument potwierdzający nośność i sztywność paneli CLT produkowanych w standardzie R-Home. Obejmuje badania odporności ogniowej oraz stabilności wymiarowej w różnych warunkach klimatycznych.",
+      fullDetails: "Kluczowy dokument potwierdzający nośność i sztywność paneli CLT produkowanych w standardzie West Home. Obejmuje badania odporności ogniowej oraz stabilności wymiarowej w różnych warunkach klimatycznych.",
       standards: [
         "Nośność i stateczność (Eurokod 5)",
         "Klasa odporności ogniowej REI 60/90",
@@ -64,10 +64,10 @@ const CertificatesPage: React.FC = () => {
       category: 'wnetrza',
       title: "Modular Bath Cert",
       issuer: "Sanitary Engineering Inst.",
-      desc: "Certyfikat szczelności i higieny modułów łazienkowych R-Home.",
+      desc: "Certyfikat szczelności i higieny modułów łazienkowych West Home.",
       year: "2025",
       expiry: "2028",
-      fullDetails: "Systemy łazienkowe R-Home przechodzą rygorystyczne testy ciśnieniowe oraz weryfikację hydroizolacyjną. Certyfikat potwierdza brak ryzyka przecieków w strukturze modułowej.",
+      fullDetails: "Systemy łazienkowe West Home przechodzą rygorystyczne testy ciśnieniowe oraz weryfikację hydroizolacyjną. Certyfikat potwierdza brak ryzyka przecieków w strukturze modułowej.",
       standards: [
         "Pełna hydroizolacja powłokowa",
         "Testy szczelności instalacji 10 bar",
@@ -109,7 +109,7 @@ const CertificatesPage: React.FC = () => {
       desc: "Certyfikacja dla przegród o współczynniku U < 0.12 W/m²K.",
       year: "2025",
       expiry: "Permanent",
-      fullDetails: "Standard Domu Pasywnego gwarantuje minimalne zapotrzebowanie na energię przy najwyższym komforcie cieplnym. R-Home spełnia te wymogi w standardzie fabrycznym.",
+      fullDetails: "Standard Domu Pasywnego gwarantuje minimalne zapotrzebowanie na energię przy najwyższym komforcie cieplnym. West Home spełnia te wymogi w standardzie fabrycznym.",
       standards: [
         "Współczynnik U ściany < 0.12 W/m²K",
         "Szczelność powietrzna n50 < 0.6/h",
@@ -130,7 +130,7 @@ const CertificatesPage: React.FC = () => {
       desc: "Gwarancja pochodzenia drewna z certyfikowanych lasów.",
       year: "2025",
       expiry: "2026",
-      fullDetails: "Każdy metr sześcienny drewna w R-Home jest identyfikowalny. Wspieramy zrównoważoną gospodarkę leśną i ochronę bioróżnorodności.",
+      fullDetails: "Każdy metr sześcienny drewna w West Home jest identyfikowalny. Wspieramy zrównoważoną gospodarkę leśną i ochronę bioróżnorodności.",
       standards: [
         "Łańcuch dostaw CoC",
         "Ochrona gatunków chronionych",
@@ -235,7 +235,7 @@ const CertificatesPage: React.FC = () => {
                             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#666] block mb-4">Ratio et Veritas</span>
                             <h1 className="font-display text-4xl md:text-5xl font-light mb-4 tracking-tight">Standardy Jakości</h1>
                             <p className="text-[#666] max-w-2xl text-base font-light leading-relaxed">
-                                Każdy komponent R-Home posiada paszport techniczny potwierdzający najwyższe standardy inżynierii i ekologii.
+                                Każdy komponent West Home posiada paszport techniczny potwierdzający najwyższe standardy inżynierii i ekologii.
                             </p>
                         </header>
                         

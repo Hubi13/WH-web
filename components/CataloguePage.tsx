@@ -25,7 +25,7 @@ const catalogueTranslations = {
     rInfSpread: { model: "R-INFINITY", spec: "Gradus Automotiva", desc: "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.", stats: ["300m²+ Area", "Net Zero", "Bespoke"] },
     blueprint: { title: "Sequentia Adventus", desc: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?", specs: [{ label: "Pondus", val: "250kg" }, { label: "Sera", val: "Biometric" }, { label: "Limen", val: "Zero-Step" }] },
     featThresh: { title: "Limen", desc: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur." },
-    back: { title: "R-HOME", subtitle: "Ad Aeternitatem." },
+    back: { title: "West Home", subtitle: "Ad Aeternitatem." },
     ui: { download: "Download PDF", generating: "Generating...", close: "Close", edition: "Edition" }
   },
   PL: {
@@ -42,7 +42,7 @@ const catalogueTranslations = {
     rInfSpread: { model: "R-INFINITY", spec: "Gradus Automotiva", desc: "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.", stats: ["300m²+ Area", "Net Zero", "Bespoke"] },
     blueprint: { title: "Sequentia Adventus", desc: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?", specs: [{ label: "Pondus", val: "250kg" }, { label: "Sera", val: "Biometric" }, { label: "Limen", val: "Zero-Step" }] },
     featThresh: { title: "Limen", desc: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur." },
-    back: { title: "R-HOME", subtitle: "Ad Aeternitatem." },
+    back: { title: "West Home", subtitle: "Ad Aeternitatem." },
     ui: { download: "Pobierz PDF", generating: "Generowanie...", close: "Zamknij", edition: "Edycja" }
   },
   ES: {
@@ -59,7 +59,7 @@ const catalogueTranslations = {
     rInfSpread: { model: "R-INFINITY", spec: "Gradus Automotiva", desc: "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.", stats: ["300m²+ Area", "Net Zero", "Bespoke"] },
     blueprint: { title: "Sequentia Adventus", desc: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?", specs: [{ label: "Pondus", val: "250kg" }, { label: "Sera", val: "Biometric" }, { label: "Limen", val: "Zero-Step" }] },
     featThresh: { title: "Limen", desc: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur." },
-    back: { title: "R-HOME", subtitle: "Ad Aeternitatem." },
+    back: { title: "West Home", subtitle: "Ad Aeternitatem." },
     ui: { download: "Descargar PDF", generating: "Generando...", close: "Cerrar", edition: "Edición" }
   }
 };
@@ -127,7 +127,7 @@ const CataloguePage: React.FC = () => {
             pdf.addImage(imgData, 'JPEG', 0, 0, 1920, 1080);
         }
 
-        pdf.save('R-Home_Collection_2025.pdf');
+        pdf.save('West Home_Collection_2025.pdf');
     } catch (error) {
         console.error("PDF Generation failed", error);
         alert("Could not generate PDF. Please check your connection.");
@@ -259,7 +259,7 @@ const CataloguePage: React.FC = () => {
         {/* Navigation Controls */}
         <div className="absolute top-0 left-0 w-full p-4 md:p-8 lg:p-12 flex justify-between items-start z-50 mix-blend-difference pointer-events-none">
             <div className="flex flex-col">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em]">R-Home Systems</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em]">West Home Systems</span>
                 <span className="text-[10px] font-mono opacity-60">CATALOGUE v2025.4</span>
             </div>
             <div className="flex gap-4 pointer-events-auto">
@@ -327,7 +327,7 @@ const CataloguePage: React.FC = () => {
                                     <div className="flex flex-wrap items-center gap-4 text-white/50 text-xs font-mono uppercase tracking-widest border-t border-white/30 pt-6 w-full max-w-xl">
                                         <span>{(page as any).meta}</span>
                                         <span className="hidden sm:inline">•</span>
-                                        <span>R-Home Systems</span>
+                                        <span>West Home Systems</span>
                                     </div>
                                 )}
                             </div>

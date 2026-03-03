@@ -48,7 +48,7 @@ const TechnicalCatalogPage: React.FC = () => {
   const pages = [
     {
       type: 'cover',
-      title: 'R-HOME',
+      title: 'West Home',
       subtitle: 'BOOK',
       meta: 'COLLECTIO MMXXV — TECHNICAL MONOGRAPH',
       edition: 'EDITIO PRIMA',
@@ -60,7 +60,7 @@ const TechnicalCatalogPage: React.FC = () => {
       chapter: 'I',
       label: 'PHILOSOPHIA',
       title: 'Architektura Ciszy.',
-      text: 'W świecie zdefiniowanym przez hałas, my wybieramy redukcję. R-Home to nie tylko dom, to precyzyjny instrument odcinający mieszkańców od zewnętrznego chaosu, tworząc przestrzeń dla myśli i spokoju.'
+      text: 'W świecie zdefiniowanym przez hałas, my wybieramy redukcję. West Home to nie tylko dom, to precyzyjny instrument odcinający mieszkańców od zewnętrznego chaosu, tworząc przestrzeń dla myśli i spokoju.'
     },
     {
       type: 'tech',
@@ -113,7 +113,7 @@ const TechnicalCatalogPage: React.FC = () => {
     },
     {
       type: 'epilogue',
-      title: 'R-HOME SYSTEMS',
+      title: 'West Home SYSTEMS',
       contact: 'contact@r-home.systems',
       address: 'Złota 44, 00-120 Warszawa',
       web: 'www.r-home.systems'
@@ -176,7 +176,7 @@ const TechnicalCatalogPage: React.FC = () => {
                     <div className="h-4 w-[0.5px] bg-[#1D1D1B]/10"></div>
                     <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] md:tracking-[0.6em] text-[#1D1D1B]/60">{page.label}</span>
                   </div>
-                  <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-[#1D1D1B]/30 italic font-serif">R-Home Monograph</span>
+                  <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-[#1D1D1B]/30 italic font-serif">West Home Monograph</span>
                 </header>
               )}
 
@@ -185,7 +185,7 @@ const TechnicalCatalogPage: React.FC = () => {
                 <div className="h-full flex flex-col justify-between">
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col">
-                      <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase">R-Home</span>
+                      <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase">West Home</span>
                       <span className="text-[7px] md:text-[8px] font-medium tracking-[0.3em] md:tracking-[0.4em] uppercase text-[#1D1D1B]/30 mt-2">Systems Engineering</span>
                     </div>
                     <div className="text-right">
@@ -307,7 +307,7 @@ const TechnicalCatalogPage: React.FC = () => {
 
               {page.type === 'epilogue' && (
                 <div className="h-full flex flex-col items-center justify-center text-center">
-                  <img src="https://imgur.com/6o7WC9J.png" alt="Logo" className="h-10 md:h-16 grayscale opacity-20 mb-12 md:mb-24" />
+                  <img src="/west-home-logo.svg" alt="Logo" className="h-10 md:h-16 w-auto object-contain brightness-0 opacity-20 mb-12 md:mb-24" />
                   <h2 className="text-3xl md:text-6xl font-serif font-light mb-8 md:mb-14 tracking-tighter">{page.title}</h2>
                   <div className="w-12 md:w-16 h-[1px] bg-[#1D1D1B]/20 mb-10 md:mb-14"></div>
                   <div className="space-y-4 md:space-y-6 mb-16 md:mb-24">

@@ -79,7 +79,7 @@ const LegalPage: React.FC = () => {
                         </header>
                         <div className="text-[#888] space-y-6 leading-relaxed font-light">
                             <p>
-                                At R-Home Systems, we prioritize the sanctity of your data as much as the silence of your home. This Privacy Policy outlines how we collect, use, and protect your personal information when you interact with our digital platforms and bespoke configuration services.
+                                At West Home Systems, we prioritize the sanctity of your data as much as the silence of your home. This Privacy Policy outlines how we collect, use, and protect your personal information when you interact with our digital platforms and bespoke configuration services.
                             </p>
                             
                             <section>
@@ -104,7 +104,7 @@ const LegalPage: React.FC = () => {
                             <section>
                                 <h3 className="text-white text-lg font-medium pt-4">3. Data Sovereignty</h3>
                                 <p>
-                                    We do not sell your data. Your architectural profile is used exclusively for the fabrication and deployment of your R-Home unit.
+                                    We do not sell your data. Your architectural profile is used exclusively for the fabrication and deployment of your West Home unit.
                                 </p>
                             </section>
                         </div>
@@ -122,20 +122,20 @@ const LegalPage: React.FC = () => {
                         </header>
                         <div className="text-[#888] space-y-6 leading-relaxed font-light">
                             <p>
-                                These Terms of Service govern your access to and use of the R-Home Systems website, configurator, and related services. By accessing our platform, you agree to be bound by these terms.
+                                These Terms of Service govern your access to and use of the West Home Systems website, configurator, and related services. By accessing our platform, you agree to be bound by these terms.
                             </p>
                             
                             <section>
                                 <h3 className="text-white text-lg font-medium pt-4">1. Configuration Accuracy</h3>
                                 <p>
-                                    The R-Home Configurator provides a digital approximation of our physical modules. While we strive for "Digital Twin" accuracy, final dimensions, materials, and specifications are subject to the Engineering Verification phase.
+                                    The West Home Configurator provides a digital approximation of our physical modules. While we strive for "Digital Twin" accuracy, final dimensions, materials, and specifications are subject to the Engineering Verification phase.
                                 </p>
                             </section>
 
                             <section>
                                 <h3 className="text-white text-lg font-medium pt-4">2. Intellectual Property</h3>
                                 <p>
-                                    All designs, schematics, and software architecture related to R-Home (including R-OS) are the exclusive intellectual property of R-Home Systems. Unauthorized reproduction of our modular connector systems is strictly prohibited.
+                                    All designs, schematics, and software architecture related to West Home (including R-OS) are the exclusive intellectual property of West Home Systems. Unauthorized reproduction of our modular connector systems is strictly prohibited.
                                 </p>
                             </section>
 
@@ -157,7 +157,7 @@ const LegalPage: React.FC = () => {
                         </header>
                         <div className="text-[#888] space-y-6 leading-relaxed font-light">
                             <p>
-                                R-Home Systems uses cookies to enhance the functionality of our 3D configuration tools and to analyze traffic performance.
+                                West Home Systems uses cookies to enhance the functionality of our 3D configuration tools and to analyze traffic performance.
                             </p>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
@@ -186,7 +186,7 @@ const LegalPage: React.FC = () => {
                         </header>
                         <div className="text-[#888] space-y-6 leading-relaxed font-light">
                             <p>
-                                In accordance with EU Directive 2010/31/EU on the energy performance of buildings, R-Home modules are rated based on their primary energy consumption.
+                                In accordance with EU Directive 2010/31/EU on the energy performance of buildings, West Home modules are rated based on their primary energy consumption.
                             </p>
                             
                             <div className="flex flex-col md:flex-row gap-8 items-start pt-8 pb-8">
@@ -200,7 +200,7 @@ const LegalPage: React.FC = () => {
                                         <div className="bg-[#00a651] w-[30%] px-2 py-0.5">A+++</div>
                                         <div className="bg-[#4cb848] w-[40%] px-2 py-0.5 flex justify-between items-center shadow-lg transform scale-105 origin-left relative z-10">
                                             A++ 
-                                            <span className="text-black bg-white/90 px-1 ml-2 text-[8px] rounded uppercase tracking-wider">R-Home Standard</span>
+                                            <span className="text-black bg-white/90 px-1 ml-2 text-[8px] rounded uppercase tracking-wider">West Home Standard</span>
                                         </div>
                                         <div className="bg-[#bfd730] w-[50%] px-2 py-0.5 opacity-30">A+</div>
                                         <div className="bg-[#fff200] w-[60%] px-2 py-0.5 opacity-30">A</div>
@@ -217,7 +217,7 @@ const LegalPage: React.FC = () => {
                                 <div>
                                     <h3 className="text-white text-xl font-light mb-4">A++ Certified Performance</h3>
                                     <p className="mb-4">
-                                        All R-Home "Prime" and "Zenith" configurations achieve an A++ Energy Performance Certificate (EPC) rating standard.
+                                        All West Home "Prime" and "Zenith" configurations achieve an A++ Energy Performance Certificate (EPC) rating standard.
                                     </p>
                                     <ul className="space-y-2 text-sm">
                                         <li className="flex items-center gap-2"><Zap size={14} className="text-yellow-500"/> Thermal Transmittance (U-Value): 0.12 W/m²K</li>
