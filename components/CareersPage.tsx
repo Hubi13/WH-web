@@ -248,8 +248,8 @@ const CareersPage: React.FC = () => {
                                          <p className="text-xs text-[#888] mb-4">
                                             Please send your CV and portfolio (max 10MB) to
                                          </p>
-                                         <a href="mailto:careers@r-home.systems" className="text-lg font-medium text-[#1D1D1F] hover:underline">
-                                            careers@r-home.systems
+                                         <a href="mailto:careers@west-home.eu" className="text-lg font-medium text-[#1D1D1F] hover:underline">
+                                            careers@west-home.eu
                                          </a>
                                     </div>
                                 </div>

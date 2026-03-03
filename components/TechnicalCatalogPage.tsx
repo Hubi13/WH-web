@@ -114,7 +114,7 @@ const TechnicalCatalogPage: React.FC = () => {
     {
       type: 'epilogue',
       title: 'West Home SYSTEMS',
-      contact: 'contact@r-home.systems',
+      contact: 'contact@west-home.eu',
       address: 'Złota 44, 00-120 Warszawa',
       web: 'www.r-home.systems'
     }

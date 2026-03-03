@@ -94,7 +94,7 @@ const CatalogsHub: React.FC = () => {
                     <div className="mt-12 p-8 bg-white rounded-xl border border-gray-200 shadow-sm">
                         <h4 className="text-[10px] font-bold uppercase tracking-widest mb-4 text-[#1D1D1F]">Potrzebujesz pomocy?</h4>
                         <p className="text-xs text-[#666] leading-relaxed mb-6">Jeśli nie znalazłeś szukanego dokumentu, skontaktuj się z naszym działem technicznym.</p>
-                        <a href="mailto:support@r-home.systems" className="text-xs font-bold border-b border-black pb-1 hover:opacity-60 transition-opacity">support@r-home.systems</a>
+                        <a href="mailto:support@west-home.eu" className="text-xs font-bold border-b border-black pb-1 hover:opacity-60 transition-opacity">support@west-home.eu</a>
                     </div>
                 </div>
             </aside>

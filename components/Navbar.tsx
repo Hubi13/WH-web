@@ -102,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
                   }`}
                 >
                   <img
-                    src="/west-home-logo.svg"
+                    src="https://i.imgur.com/VSe7Yqm.png"
                     alt="West Home Logo"
                     className="h-6 md:h-10 w-auto object-contain brightness-0"
                   />

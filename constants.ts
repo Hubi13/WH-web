@@ -161,29 +161,79 @@ export const DEALERS: Dealer[] = [
   {
     id: 'd-warsaw',
     name: 'West Home Warsaw',
-    address: 'Elektrownia Powiśle',
+    address: 'Elektrownia Powisle',
     city: 'Warsaw',
     zip: '00-375',
     country: 'Poland',
     phone: '+48 22 9876543',
-    email: 'warsaw@r-home.systems',
+    email: 'warsaw@west-home.eu',
     openingHours: 'Mon-Sat: 10:00 - 20:00',
-    // Adjusted for Europe Map (LAEA Projection approx)
-    coordinates: { x: 56.5, y: 48.0 }, 
+    coordinates: { x: 56.5, y: 48.0 },
     badgeLabel: 'Dealer - HQ'
   },
   {
     id: 'd-krakow',
-    name: 'West Home Kraków',
+    name: 'West Home Krakow',
     address: 'Pawia 5',
-    city: 'Kraków',
+    city: 'Krakow',
     zip: '31-154',
     country: 'Poland',
     phone: '+48 12 3456789',
-    email: 'krakow@r-home.systems',
+    email: 'krakow@west-home.eu',
     openingHours: 'Mon-Fri: 09:00 - 18:00',
-    // Adjusted for Europe Map (LAEA Projection approx)
     coordinates: { x: 55.5, y: 52.0 },
     badgeLabel: 'Dealer'
+  },
+  {
+    id: 'd-berlin',
+    name: 'West Home Berlin',
+    address: 'Kurfurstendamm 21',
+    city: 'Berlin',
+    zip: '10719',
+    country: 'Germany',
+    phone: '+49 30 20004567',
+    email: 'berlin@west-home.eu',
+    openingHours: 'Mon-Fri: 10:00 - 19:00',
+    coordinates: { x: 53.8, y: 44.8 },
+    badgeLabel: 'Dealer - EU Hub'
+  },
+  {
+    id: 'd-oslo',
+    name: 'West Home Oslo',
+    address: 'Dronning Eufemias gate 8',
+    city: 'Oslo',
+    zip: '0191',
+    country: 'Norway',
+    phone: '+47 22 560123',
+    email: 'oslo@west-home.eu',
+    openingHours: 'Mon-Fri: 09:00 - 17:00',
+    coordinates: { x: 56.7, y: 38.8 },
+    badgeLabel: 'International Dealer'
+  },
+  {
+    id: 'd-valencia',
+    name: 'West Home Valencia',
+    address: 'Carrer de Colon 35',
+    city: 'Valencia',
+    zip: '46004',
+    country: 'Spain',
+    phone: '+34 96 3412255',
+    email: 'valencia@west-home.eu',
+    openingHours: 'Mon-Sat: 10:00 - 19:00',
+    coordinates: { x: 49.0, y: 56.3 },
+    badgeLabel: 'International Dealer'
+  },
+  {
+    id: 'd-dubai',
+    name: 'West Home Dubai',
+    address: 'Sheikh Zayed Road, Business Bay',
+    city: 'Dubai',
+    zip: '00000',
+    country: 'UAE',
+    phone: '+971 4 5301200',
+    email: 'dubai@west-home.eu',
+    openingHours: 'Sun-Thu: 09:00 - 18:00',
+    coordinates: { x: 65.0, y: 60.0 },
+    badgeLabel: 'International Dealer'
   }
 ];
