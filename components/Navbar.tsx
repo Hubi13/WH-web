@@ -96,17 +96,15 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenDealer, theme = 'dark' }) => {
                 className="group flex flex-col items-center gap-1 opacity-90 hover:opacity-100 transition-opacity"
                 aria-label="West Home Systems Homepage"
               >
-                <span
-                  className={`inline-flex items-center justify-center rounded-sm transition-colors ${
-                    theme === 'light' ? '' : 'bg-white/95 px-2 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.2)]'
+                <img
+                  src="https://i.imgur.com/VSe7Yqm.png"
+                  alt="West Home Logo"
+                  className={`h-6 md:h-10 w-auto object-contain transition-all duration-300 ${
+                    theme === 'light'
+                      ? 'brightness-0'
+                      : 'invert brightness-150 contrast-125 drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)]'
                   }`}
-                >
-                  <img
-                    src="https://i.imgur.com/VSe7Yqm.png"
-                    alt="West Home Logo"
-                    className="h-6 md:h-10 w-auto object-contain brightness-0"
-                  />
-                </span>
+                />
               </a>
             </div>
 
