@@ -148,7 +148,7 @@ const ShowcaseSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-full md:w-1/3 md:-ml-32 mt-8 md:mt-0 relative z-20 p-6 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] reveal-on-scroll rounded-lg bg-white/80 backdrop-blur-xl border border-white/50">
+              <div className="w-full md:w-1/3 md:-ml-32 mt-8 md:mt-0 relative z-20 p-6 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] reveal-on-scroll rounded-none bg-white/80 backdrop-blur-xl border border-white/50">
                 <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-[#86868B] mb-6">02 - {t.hero.precision}</span>
                 <h2 className="font-display text-[clamp(1.6rem,5vw,3.5rem)] text-[#1D1D1F] mb-6 leading-tight font-light">
                   {t.story.chapter2.title}
@@ -243,7 +243,7 @@ const ShowcaseSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-1/3 md:-ml-32 mt-8 md:mt-0 relative z-20 p-6 md:p-16 rounded-lg border border-white/55 bg-white/80 backdrop-blur-xl shadow-[0_24px_50px_-16px_rgba(0,0,0,0.2)] reveal-on-scroll">
+            <div className="w-full md:w-1/3 md:-ml-32 mt-8 md:mt-0 relative z-20 p-6 md:p-16 rounded-none border border-white/55 bg-white/80 backdrop-blur-xl shadow-[0_24px_50px_-16px_rgba(0,0,0,0.2)] reveal-on-scroll">
               <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-[#86868B] mb-6">02 - {t.hero.precision}</span>
               <h2 className="font-display text-[clamp(1.6rem,5vw,3.5rem)] text-[#1D1D1F] mb-6 leading-tight font-light">{t.story.chapter2.title}</h2>
               <p className="text-[#6E6E73] leading-relaxed font-light text-lg">{t.story.chapter2.text}</p>
