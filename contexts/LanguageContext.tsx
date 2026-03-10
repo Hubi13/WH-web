@@ -266,226 +266,226 @@ const translations = {
       models: 'Modele',
       technology: 'Technologia',
       process: 'Proces',
-      findDealer: 'ZnajdĹş Dealera',
+      findDealer: 'Znajdź dealera',
       menu: 'Menu',
       close: 'Zamknij',
       navigation: 'Nawigacja',
       headquarters: 'Siedziba',
-      social: 'SpoĹ‚ecznoĹ›Ä‡',
+      social: 'Społeczność',
       manifesto: 'Manifest',
       fleet: 'Kolekcja',
       systems: 'Systemy',
-      lifecycle: 'Cykl Ĺ»ycia'
+      lifecycle: 'Cykl Życia'
     },
     hero: {
-      status: 'Bespoke Architecture',
+      status: 'Architektura Bespoke',
       titleLine1: 'Automotive',
       titleLine2: 'Architecture.',
-      subtitle: 'ModuĹ‚owe domy klasy automotive Ĺ‚Ä…czÄ…ce minimalistyczny design, technologiÄ™ net-zero i szwajcarskÄ… precyzjÄ™.',
+      subtitle: 'Modułowe domy klasy automotive łączące minimalistyczny design, technologię net-zero i szwajcarską precyzję.',
       configure: 'Konfiguruj',
-      watch: 'Zobacz Film',
+      watch: 'Zobacz film',
       precision: 'Precyzja',
-      precisionVal: 'Tolerancja Â±1mm',
+      precisionVal: 'Tolerancja ±1mm',
       acoustics: 'Akustyka',
       acousticsVal: 'Studio Grade ISO',
       thermal: 'Termika',
       thermalVal: 'Certyfikat Passive'
     },
     stats: {
-      energy: 'Klasa Energetyczna',
-      acoustic: 'Redukcja Akustyczna',
-      production: 'Czas Produkcji',
-      warranty: 'Gwarancja Konstrukcji',
+      energy: 'Klasa energetyczna',
+      acoustic: 'Redukcja akustyczna',
+      production: 'Czas produkcji',
+      warranty: 'Gwarancja konstrukcji',
       weeks: 'tyg',
       years: 'lat'
     },
     philosophy: {
-      badge: 'Nasza Filozofia',
-      titleLine1: 'InĹĽynieria',
+      badge: 'Nasza filozofia',
+      titleLine1: 'Inżynieria',
       titleLine2: 'Ciszy.',
-      desc: 'Oddzielamy przestrzeĹ„ ĹĽyciowÄ… od chaosu Ĺ›wiata zewnÄ™trznego, tworzÄ…c hermetycznÄ… barierÄ™ spokoju dziÄ™ki zaawansowanym materiaĹ‚om.',
+      desc: 'Oddzielamy przestrzeń życiową od chaosu świata zewnętrznego, tworząc hermetyczną barierę spokoju dzięki zaawansowanym materiałom.',
       col1Title: 'Precyzja',
-      col1Desc: 'Automatyzacja produkcji pozwala na tolerancje niemoĹĽliwe w tradycyjnym budownictwie (Â±1mm).',
-      col2Title: 'TrwaĹ‚oĹ›Ä‡',
-      col2Desc: 'Struktury monocoque inspirowane lotnictwem zapewniajÄ… dĹ‚ugowiecznoĹ›Ä‡ i odpornoĹ›Ä‡ sejsmicznÄ….',
+      col1Desc: 'Automatyzacja produkcji pozwala na tolerancje niemożliwe w tradycyjnym budownictwie (±1mm).',
+      col2Title: 'Trwałość',
+      col2Desc: 'Struktury monocoque inspirowane lotnictwem zapewniają długowieczność i odporność sejsmiczną.',
       col3Title: 'Inteligencja',
-      col3Desc: 'Zintegrowane sieci neuronowe zarzÄ…dzajÄ… klimatem, energiÄ… i bezpieczeĹ„stwem.'
+      col3Desc: 'Zintegrowane sieci neuronowe zarządzają klimatem, energią i bezpieczeństwem.'
     },
     story: {
       chapter1: {
-        title: "Architektura Ciszy",
-        text: "Prawdziwy luksus to brak haĹ‚asu. Nasze Ĺ›ciany nie tylko blokujÄ… dĹşwiÄ™k, ale go absorbujÄ…."
+        title: 'Architektura ciszy',
+        text: 'Prawdziwy luksus to brak hałasu. Nasze ściany nie tylko blokują dźwięk, ale go absorbują.'
       },
       chapter2: {
-        title: "Radykalna PrzejrzystoĹ›Ä‡",
-        text: "SzkĹ‚o od podĹ‚ogi do sufitu, ktĂłre izoluje jak lita Ĺ›ciana. Zacieramy granicÄ™ miÄ™dzy sanktuarium a naturÄ…."
+        title: 'Radykalna przejrzystość',
+        text: 'Szkło od podłogi do sufitu, które izoluje jak lita ściana. Zacieramy granicę między sanktuarium a naturą.'
       },
       chapter3: {
-        title: "Kontrola Atmosfery",
-        text: "Szpitalna filtracja powietrza i oĹ›wietlenie cyrkadialne adaptujÄ…ce siÄ™ do Twojej biologii."
+        title: 'Kontrola atmosfery',
+        text: 'Szpitalna filtracja powietrza i oświetlenie cyrkadialne adaptujące się do Twojej biologii.'
       }
     },
     models: {
       badge: 'Kolekcja 2025',
       title: 'Flota',
-      titleBold: 'ModuĹ‚owa.',
-      available: 'DostÄ™pne 2025',
+      titleBold: 'Modułowa.',
+      available: 'Dostępne 2025',
       configure: 'Konfiguruj',
       area: 'Powierzchnia',
-      efficiency: 'WydajnoĹ›Ä‡',
+      efficiency: 'Wydajność',
       acoustics: 'Akustyka',
       mobileClass: 'Klasa',
       mobileSilence: 'Cisza',
       details: {
         CORE: {
-          tagline: "Esencja Luksusu",
-          highlight: "Czysta Forma.",
-          features: ["RdzeĹ„ Smart-Ready", "PĹ‚aszcz Termiczny A++", "WykoĹ„czenie Sosnowe"]
+          tagline: 'Esencja luksusu',
+          highlight: 'Czysta forma.',
+          features: ['Rdzeń Smart-Ready', 'Płaszcz termiczny A++', 'Wykończenie sosnowe']
         },
         PRIME: {
-          tagline: "WyĹĽszy Standard",
-          highlight: "Systemy Zaawansowane.",
-          features: ["Integracja R-OS", "Opcje Kamiennego Forniru", "WygĹ‚uszenie Studio"]
+          tagline: 'Wyższy standard',
+          highlight: 'Systemy zaawansowane.',
+          features: ['Integracja R-OS', 'Opcje kamiennego forniru', 'Wygłuszenie studio']
         },
         ZENITH: {
-          tagline: "Absolutne Bespoke",
-          highlight: "Bez KompromisĂłw.",
-          features: ["PeĹ‚na Autonomia", "Rama Monocoque", "MateriaĹ‚y Bespoke"]
+          tagline: 'Absolutne Bespoke',
+          highlight: 'Bez kompromisów.',
+          features: ['Pełna autonomia', 'Rama monocoque', 'Materiały bespoke']
         }
       }
     },
     acousticDemo: {
-      title: "Izolacja DĹşwiÄ™ku",
-      desc: "DoĹ›wiadcz rĂłĹĽnicy naszych odsprzÄ™glonych systemĂłw Ĺ›ciennych. PrzeĹ‚Ä…cz, aby usĹ‚yszeÄ‡ standard ciszy West Home.",
-      outside: "Miejski Chaos (80dB)",
-      inside: "Sanktuarium West Home (35dB)"
+      title: 'Izolacja dźwięku',
+      desc: 'Doświadcz różnicy naszych odsprzęglonych systemów ściennych. Przełącz, aby usłyszeć standard ciszy West Home.',
+      outside: 'Miejski chaos (80dB)',
+      inside: 'Sanktuarium West Home (35dB)'
     },
     globalRoam: {
-      badge: "WdroĹĽenie",
-      title: "Globalna ZdolnoĹ›Ä‡.",
-      desc: "Zaprojektowane do wdroĹĽenia wszÄ™dzie. Od alpejskich szczytĂłw po wybrzeĹĽa, West Home adaptuje siÄ™ do otoczenia.",
+      badge: 'Wdrożenie',
+      title: 'Globalna zdolność.',
+      desc: 'Zaprojektowane do wdrożenia wszędzie. Od alpejskich szczytów po wybrzeża, West Home adaptuje się do otoczenia.',
       locations: [
-        { title: "Alpy", desc: "Retencja ciepĹ‚a w ekstremalnym zimnie." },
-        { title: "WybrzeĹĽe", desc: "OdpornoĹ›Ä‡ na korozjÄ™ i obciÄ…ĹĽenie wiatrem." },
-        { title: "Las", desc: "PĹ‚ynna integracja z organicznÄ… topografiÄ…." }
+        { title: 'Alpy', desc: 'Retencja ciepła w ekstremalnym zimnie.' },
+        { title: 'Wybrzeże', desc: 'Odporność na korozję i obciążenie wiatrem.' },
+        { title: 'Las', desc: 'Płynna integracja z organiczną topografią.' }
       ],
-      coverageTitle: "Regiony Budowy",
-      coverageDesc: "Nasz system inĹĽynieryjny umoĹĽliwia budowÄ™ domĂłw West Home na przygotowanych dziaĹ‚kach w gĹ‚Ăłwnych regionach Ĺ›wiata.",
-      regions: ["Ameryka PĂłĹ‚nocna", "Europa", "Bliski WschĂłd", "Azja i Pacyfik"]
+      coverageTitle: 'Regiony budowy',
+      coverageDesc: 'Nasz system inżynieryjny umożliwia budowę domów West Home na przygotowanych działkach w głównych regionach świata.',
+      regions: ['Ameryka Północna', 'Europa', 'Bliski Wschód', 'Azja i Pacyfik']
     },
     materials: {
-      badge: 'MaterialnoĹ›Ä‡',
+      badge: 'Materialność',
       title: 'Inteligencja',
-      titleBold: 'MateriaĹ‚owa.',
-      desc: 'UĹĽywamy materiaĹ‚Ăłw, ktĂłre starzejÄ… siÄ™ z godnoĹ›ciÄ…. Drewno CLT, anodowane aluminium i szlifowany kamieĹ„.',
+      titleBold: 'Materiałowa.',
+      desc: 'Używamy materiałów, które starzeją się z godnością. Drewno CLT, anodowane aluminium i szlifowany kamień.',
       items: {
         structural: {
           title: 'Nordic CLT',
-          subtitle: 'RdzeĹ„ Konstrukcyjny',
-          desc: 'Drewno CLT o wysokiej gÄ™stoĹ›ci z zarzÄ…dzanych lasĂłw pĂłĹ‚nocnych. Oferuje doskonaĹ‚Ä… masÄ™ termicznÄ… i ujemny Ĺ›lad wÄ™glowy.',
+          subtitle: 'Rdzeń konstrukcyjny',
+          desc: 'Drewno CLT o wysokiej gęstości z zarządzanych lasów północnych. Oferuje doskonałą masę termiczną i ujemny ślad węglowy.',
           specs: [
             { label: 'Klasa', value: 'C24 PEFC' },
-            { label: 'NoĹ›noĹ›Ä‡', value: '450kg/mÂł' },
-            { label: 'WÄ™giel', value: 'Ujemny' },
-            { label: 'Szlif', value: 'GĹ‚adki' }
+            { label: 'Nośność', value: '450kg/m²' },
+            { label: 'Węgiel', value: 'Ujemny' },
+            { label: 'Szlif', value: 'Gładki' }
           ]
         },
         facade: {
-          title: 'SzkĹ‚o Vision',
-          subtitle: 'Czysta PrzejrzystoĹ›Ä‡',
-          desc: 'PotrĂłjne pakiety szybowe wypeĹ‚nione argonem z powĹ‚okÄ… niskoemisyjnÄ…. Maksymalizacja Ĺ›wiatĹ‚a przy standardach Passive House.',
+          title: 'Szkło Vision',
+          subtitle: 'Czysta przejrzystość',
+          desc: 'Potrójne pakiety szybowe wypełnione argonem z powłoką niskoemisyjną. Maksymalizacja światła przy standardach Passive House.',
           specs: [
-            { label: 'Ug', value: '0.5 W/mÂ˛K' },
-            { label: 'ĹšwiatĹ‚o', value: '72% VT' },
+            { label: 'Ug', value: '0.5 W/m²K' },
+            { label: 'Światło', value: '72% VT' },
             { label: 'Bezpiecz.', value: 'Hartowane' },
             { label: 'Gaz', value: 'Argon' }
           ]
         },
         tactile: {
-          title: 'KamieĹ„ Szlifowany',
-          subtitle: 'Masa Termiczna',
-          desc: 'WykoĹ„czenia z kamienia naturalnego szlifowane na mat. Zintegrowane z podĹ‚ogami i Ĺ›cianami dla trwaĹ‚oĹ›ci i akumulacji ciepĹ‚a.',
+          title: 'Kamień szlifowany',
+          subtitle: 'Masa termiczna',
+          desc: 'Wykończenia z kamienia naturalnego szlifowane na mat. Zintegrowane z podłogami i ścianami dla trwałości i akumulacji ciepła.',
           specs: [
-            { label: 'ĹąrĂłdĹ‚o', value: 'EU Quota' },
-            { label: 'Dotyk', value: 'Matowy Jedwab' },
-            { label: 'GÄ™stoĹ›Ä‡', value: '2.6g/cmÂł' },
+            { label: 'Źródło', value: 'EU Quota' },
+            { label: 'Dotyk', value: 'Matowy jedwab' },
+            { label: 'Gęstość', value: '2.6g/cm³' },
             { label: 'LZO', value: 'Zero VOC' }
           ]
         },
         detail: {
-          title: 'Stop Anodowany',
-          subtitle: 'Precyzyjny Detal',
-          desc: 'Aluminium lotnicze uĹĽywane w ramach i okuciach. Zaprojektowane z milimetrowÄ… precyzjÄ… i wykoĹ„czone dla ekstremalnej trwaĹ‚oĹ›ci.',
+          title: 'Stop anodowany',
+          subtitle: 'Precyzyjny detal',
+          desc: 'Aluminium lotnicze używane w ramach i okuciach. Zaprojektowane z milimetrową precyzją i wykończone dla ekstremalnej trwałości.',
           specs: [
             { label: 'Klasa', value: '6061-T6' },
             { label: 'Toler.', value: '0.1mm' },
             { label: 'Recykling', value: '100% Rec.' },
-            { label: 'PowĹ‚oka', value: '25ÎĽm Anod.' }
+            { label: 'Powłoka', value: '25μm Anod.' }
           ]
         }
       }
     },
     process: {
-      badge: 'Cykl Ĺ»ycia',
+      badge: 'Cykl Życia',
       title: 'Liniowy. Przewidywalny.',
-      titleItalic: 'InĹĽynieryjny.',
-      desc: 'Proces produkcji inspirowany przemysĹ‚em motoryzacyjnym. Zero opĂłĹşnieĹ„ pogodowych, staĹ‚e koszty.'
+      titleItalic: 'Inżynieryjny.',
+      desc: 'Proces produkcji inspirowany przemysłem motoryzacyjnym. Zero opóźnień pogodowych, stałe koszty.'
     },
     cta: {
       badge: 'Sloty produkcyjne 2025 otwarte',
       title: 'Zaprojektowany dla',
       titleBold: 'Sanktuarium.',
-      desc: 'Zarezerwuj swĂłj slot produkcyjny na rok modelowy 2025. Ograniczona dostÄ™pnoĹ›Ä‡ konfiguracji Zenith.',
+      desc: 'Zarezerwuj swój slot produkcyjny na rok modelowy 2025. Ograniczona dostępność konfiguracji Zenith.',
       btn: 'Konfiguruj',
-      download: 'Pobierz Katalog'
+      download: 'Pobierz katalog'
     },
     features: {
-      badge: 'Specyfikacja Techniczna',
-      title: 'MoĹĽliwoĹ›ci Systemu',
+      badge: 'Specyfikacja techniczna',
+      title: 'Możliwości systemu',
       c1Mono: '01 - Konstrukcja',
       c1Title: 'Mass Timber CLT',
-      c1Desc: 'Ujemny wÄ™glowo rdzeĹ„ konstrukcyjny zapewniajÄ…cy ogromnÄ… wytrzymaĹ‚oĹ›Ä‡.',
+      c1Desc: 'Ujemny węglowo rdzeń konstrukcyjny zapewniający ogromną wytrzymałość.',
       c2Mono: '02 - Inteligencja',
       c2Title: 'R-OS Core',
-      c2Neural: 'SieÄ‡ Neuronowa',
-      c2Uptime: '99.9% Czasu Pracy',
+      c2Neural: 'Sieć neuronowa',
+      c2Uptime: '99.9% czasu pracy',
       c3Mono: '03 - Akustyka',
-      c3Label: 'OdsprzÄ™glona',
-      c4Mono: '04 - WydajnoĹ›Ä‡',
+      c3Label: 'Odsprzęglona',
+      c4Mono: '04 - Wydajność',
       c4Label: 'Net Zero',
-      c5Title: 'Ochrona Perymetru',
+      c5Title: 'Ochrona perymetru',
       c5Secure: 'Zabezpieczony'
     },
     identity: {
-      badge: 'ToĹĽsamoĹ›Ä‡',
+      badge: 'Tożsamość',
       title: 'Zdefiniowane przez',
-      titleBold: 'FizykÄ™.',
-      desc: 'Nie projektujemy tylko domĂłw; inĹĽynierujemy Ĺ›rodowiska oparte na pierwszych zasadach.',
+      titleBold: 'Fizykę.',
+      desc: 'Nie projektujemy tylko domów; inżynierujemy środowiska oparte na pierwszych zasadach.',
       card1Title: 'Precyzja',
-      card1Desc: 'Tolerancje produkcyjne +/- 1mm zapewniajÄ… szczelnoĹ›Ä‡ i wydajnoĹ›Ä‡.',
-      card2Title: 'TrwaĹ‚oĹ›Ä‡',
-      card2Desc: 'MateriaĹ‚y dobrane na 100-letni cykl ĹĽycia z minimalnÄ… konserwacjÄ….',
+      card1Desc: 'Tolerancje produkcyjne +/- 1mm zapewniają szczelność i wydajność.',
+      card2Title: 'Trwałość',
+      card2Desc: 'Materiały dobrane na 100-letni cykl życia z minimalną konserwacją.',
       card3Title: 'Inteligencja',
-      card3Desc: 'Systemy pasywne, ktĂłre pracujÄ… dla Ciebie, a nie przeciwko Tobie.'
+      card3Desc: 'Systemy pasywne, które pracują dla Ciebie, a nie przeciwko Tobie.'
     },
     gallery: {
       badge: 'Detal',
-      title: 'Interfejs MateriaĹ‚owy',
-      caption1: 'Wolumen WnÄ™trza / R-Sequence',
-      caption2: 'Anodowany Interfejs / Detal'
+      title: 'Interfejs materiałowy',
+      caption1: 'Wolumen wnętrza / R-Sequence',
+      caption2: 'Anodowany interfejs / Detal'
     },
     bespoke: {
       badge: 'Program Bespoke',
       title: 'Poza',
       titleBold: 'Standard.',
-      desc: 'Dla klientĂłw wymagajÄ…cych unikalnych rozwiÄ…zaĹ„, nasz zespĂłĹ‚ inĹĽynierĂłw oferuje peĹ‚ne usĹ‚ugi bespoke.',
+      desc: 'Dla klientów wymagających unikalnych rozwiązań, nasz zespół inżynierów oferuje pełne usługi bespoke.',
       step1: 'Konsultacja',
-      step2: 'Cyfrowy BliĹşniak',
+      step2: 'Cyfrowy bliźniak',
       step3: 'Fabrykacja',
       cta: 'Zapytaj o Bespoke'
     },
     footer: {
-      address: 'ZĹ‚ota 44\n00-120 Warszawa, Polska',
+      address: 'Złota 44\n00-120 Warszawa, Polska',
       fleet: 'Kolekcja',
       company: 'Firma',
       connect: 'Kontakt',
@@ -493,22 +493,22 @@ const translations = {
       technology: 'Technologia',
       careers: 'Kariera',
       press: 'Prasa',
-      rights: 'Â© 2025 West Home Systems.',
-      privacy: 'PrywatnoĹ›Ä‡',
+      rights: '© 2025 West Home Systems.',
+      privacy: 'Prywatność',
       terms: 'Regulamin',
       cookies: 'Cookies',
-      tagline: 'Zaprojektowane dla Ciszy'
+      tagline: 'Zaprojektowane dla ciszy'
     },
     dealer: {
-      title: 'ZnajdĹş Dealera',
-      subtitle: 'Autoryzowani Sprzedawcy',
+      title: 'Znajdź dealera',
+      subtitle: 'Autoryzowani sprzedawcy',
       searchPlaceholder: 'Szukaj miasta, nazwy lub kodu...',
       found: 'znalezionych lokalizacji',
-      notFound: 'Nie znaleziono dealerĂłw dla',
-      hours: 'Godziny Otwarcia',
+      notFound: 'Nie znaleziono dealerów dla',
+      hours: 'Godziny otwarcia',
       contact: 'Kontakt',
       mapBtn: 'Mapa',
-      callBtn: 'ZadzwoĹ„'
+      callBtn: 'Zadzwoń'
     }
   },
   ES: {
