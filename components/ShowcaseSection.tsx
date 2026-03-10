@@ -135,8 +135,8 @@ const ShowcaseSection: React.FC = () => {
           <div className="w-full max-w-[1800px] mx-auto px-6 md:px-12 relative">
             <div className="flex flex-col md:flex-row items-center relative">
               <div className="w-full md:w-3/4 h-[400px] sm:h-[500px] md:h-[85vh] relative z-10">
-                <div className="w-full h-full p-1 rounded-lg bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/30 backdrop-blur-md">
-                  <div className="w-full h-full rounded-md overflow-hidden relative bg-white shadow-inner group">
+                <div className="w-full h-full p-1 rounded-none bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/30 backdrop-blur-md">
+                  <div className="w-full h-full rounded-none overflow-hidden relative bg-white shadow-inner group">
                     <img
                       src="https://i.imgur.com/7ou8tEP.jpeg"
                       alt="Structure Detail"
@@ -230,8 +230,8 @@ const ShowcaseSection: React.FC = () => {
         <div className="w-full max-w-[1800px] mx-auto px-6 md:px-12 relative">
           <div className="flex flex-col md:flex-row items-center relative">
             <div className="w-full md:w-3/4 h-[400px] sm:h-[500px] md:h-[85vh] relative z-10">
-              <div className="w-full h-full p-1 rounded-lg bg-gradient-to-br from-white/85 to-white/45 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md">
-                <div className="w-full h-full rounded-md overflow-hidden relative bg-white shadow-inner group">
+              <div className="w-full h-full p-1 rounded-none bg-gradient-to-br from-white/85 to-white/45 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md">
+                <div className="w-full h-full rounded-none overflow-hidden relative bg-white shadow-inner group">
                   <img
                     src="https://i.imgur.com/7ou8tEP.jpeg"
                     alt="Structure Detail"
@@ -278,4 +278,3 @@ const ShowcaseSection: React.FC = () => {
 };
 
 export default ShowcaseSection;
-

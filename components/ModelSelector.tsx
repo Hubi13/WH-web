@@ -64,8 +64,8 @@ const ModelSelector: React.FC = () => {
                         key={activeModel.id}
                         className="lg:col-span-8 relative aspect-[4/3] sm:aspect-[16/9] animate-fade-in-up group"
                     >
-                        <div className="absolute inset-0 p-1 rounded-lg bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md">
-                            <div className="w-full h-full rounded-md overflow-hidden relative bg-white shadow-inner">
+                        <div className="absolute inset-0 p-1 rounded-none bg-gradient-to-br from-white/80 to-white/40 border border-white/60 shadow-2xl shadow-black/20 backdrop-blur-md">
+                            <div className="w-full h-full rounded-none overflow-hidden relative bg-white shadow-inner">
                                 <img
                                     src={activeModel.image}
                                     alt={`${activeModel.name} modular home`}

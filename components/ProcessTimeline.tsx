@@ -29,13 +29,13 @@ const ProcessTimeline: React.FC = () => {
                     <p className="text-white/60 max-w-3xl mx-auto leading-relaxed">{t.process.desc}</p>
                 </div>
 
-                <div className="rounded-xl border border-white/15 bg-white/[0.03] p-5 md:p-7 mb-6">
+                <div className="rounded-none border border-white/15 bg-white/[0.03] p-5 md:p-7 mb-6">
                     <div className="flex items-center justify-between gap-4 mb-4">
                         <div className="text-[10px] uppercase tracking-[0.24em] text-white/45">Step by Step</div>
                         <div className="font-mono text-sm text-white/70">Step {activeIndex + 1} / {LIFECYCLE_STEPS.length}</div>
                     </div>
 
-                    <div className="h-[2px] w-full rounded-full bg-white/15 overflow-hidden mb-6">
+                    <div className="h-[2px] w-full rounded-none bg-white/15 overflow-hidden mb-6">
                         <div className="h-full bg-white transition-all duration-500" style={{ width: `${((activeIndex + 1) / LIFECYCLE_STEPS.length) * 100}%` }}></div>
                     </div>
 
@@ -49,7 +49,7 @@ const ProcessTimeline: React.FC = () => {
                                     key={step.id}
                                     type="button"
                                     onClick={() => setActiveId(step.id)}
-                                    className={`text-left rounded-lg border p-4 transition-colors ${isActive
+                                    className={`text-left rounded-none border p-4 transition-colors ${isActive
                                             ? 'border-white/45 bg-white/10'
                                             : isDone
                                                 ? 'border-white/25 bg-white/[0.06]'
@@ -59,7 +59,7 @@ const ProcessTimeline: React.FC = () => {
                                 >
                                     <div className="flex items-center justify-between mb-3">
                                         <span className="text-[10px] uppercase tracking-[0.2em] text-white/45">Step 0{index + 1}</span>
-                                        <div className={`w-8 h-8 rounded-full border flex items-center justify-center ${isActive ? 'border-white bg-white text-black' : 'border-white/25 text-white/70'}`}>
+                                        <div className={`w-8 h-8 rounded-none border flex items-center justify-center ${isActive ? 'border-white bg-white text-black' : 'border-white/25 text-white/70'}`}>
                                             <step.icon size={15} />
                                         </div>
                                     </div>
@@ -78,5 +78,4 @@ const ProcessTimeline: React.FC = () => {
 };
 
 export default ProcessTimeline;
-
 
