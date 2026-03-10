@@ -116,19 +116,11 @@
 </script>
 
   <style>
-    /* Keep media edges sharp while preserving rounded UI controls. */
-    img,
-    picture,
-    video,
-    canvas {
+    /* Enforce sharp corners globally for a strict, technical UI language. */
+    *,
+    *::before,
+    *::after {
       border-radius: 0 !important;
-    }
-
-    button,
-    input[type="button"],
-    input[type="submit"],
-    input[type="reset"] {
-      border-radius: 9999px !important;
     }
   </style>
 </head>

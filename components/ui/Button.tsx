@@ -13,8 +13,8 @@ export const Button: React.FC<ButtonProps> = ({
   className = '', 
   ...props 
 }) => {
-  // Global intent: buttons remain rounded and distinct from sharp media frames.
-  const baseStyles = "inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 active:scale-95 text-sm tracking-wide";
+  // Enforced sharp corners
+  const baseStyles = "inline-flex items-center justify-center px-6 py-3 rounded-none font-medium transition-all duration-300 active:scale-95 text-sm tracking-wide";
   
   const variants = {
     primary: "bg-rhome-900 text-white hover:bg-rhome-800 shadow-lg shadow-rhome-900/20",
